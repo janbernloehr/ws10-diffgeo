@@ -1,178 +1,25 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[%
+	paper=a5,%
+	fleqn,%
+	DIV=18,%
+	BCOR=0mm,
+	fontsize=11pt,
+	titlepage=false,%
+	bibliography=totoc,
+	DIV=18,%
+	twoside=true,
+	pdftitle=Riemannsche Geometrie,
+	pdfauthor=Uwe Semmelmann,
+	numbers=noendperiod]%
+	{scrbook}
 %
 \date{14. Februar 2011}
-%
-\usepackage[latin1]{inputenc}
-%\usepackage[T1]{fontenc}
-\usepackage[ngerman]{babel}
 
-\usepackage{graphicx}
-\usepackage{amssymb}
-\usepackage{latexsym}
-%\usepackage{fullpage}
-\usepackage{amscd}
-\usepackage{amsmath}
+\usepackage{scrpage2}
+\usepackage[lc,color,lgerman]{jancommon}
+\usepackage{janmath,custom}
 
-\usepackage[
-% Hyperlink-Optionen
-hyperfootnotes=true, % Fu\ss{}noten verlinken
-hyperindex=true, % Seitenzahlen als Link
-%backref=true, % R\"ucklinks von bibitem,
-% erfordert Leerzeile nach jedem bibitem
-breaklinks=true, % Zeilenumbruch bei Links
-% Farben
-colorlinks=true, % true = farbige Links, false = Rahmen
-linkcolor=red, % Farbe f\"ur Links auf gleicher Seite
-%pagecolor=gray, % Farbe f\"ur Links auf anderen Seiten
-citecolor=gray, % Farbe f\"ur Links auf Zitatstellen
-filecolor=magenta,
-urlcolor=red, % Farbe f\"ur Links auf URLs
-anchorcolor=blue, % Farbe f\"ur Anker (?)
-menucolor=red, % Farbe f\"ur Acrobatmen\"ueintr\"age
-% Fehlermeldungen reduzieren
-plainpages=false,
-% PDF-Metainformationen
-unicode=true, % Mit Unicode kodierte Texte
-baseurl={http://url},
-pdfauthor={Prof. Uwe Semmelmann},
-pdfproducer={pdflatex},
-% Adobe Reader: Anzeigeoptionen
-bookmarks=true, % Acrobat-Lesezeichen einf\"ugen
-bookmarksnumbered=true, % Kapitelnummern f\"ur Lesezeichen
-bookmarksopen=true, % Acrobat-Lesezeichen links ge\"offnet
-bookmarksopenlevel=2, % Ge\"offnete Hierarchiestufe
-%bookmarkstype=Richter_LaTeX_Tipps.toc,
-% Lesezeichentyp. Fehlen aber.
-pdfview=FitH, % Zoom beim Link-Traversieren
-% FitH=Seitenbreite anpassen
-% weitere: Fit, FitH, FitV, FitR, FitBH
-pdfstartview=FitH, % Zoom beim Öffnen
-pdfstartpage={1}, % Seite, die angezeigt wird
-pdfpagelayout=OneColumn % Anzeigemodus, hier 1 Seite fortlaufend
-% SinglePage, OneColumn,
-% TwoColumnLeft, TwoColumnRight
-%pdfpagemode=None, % Optionen: UseOutlines = Bookmarks links
-% UseThumbs, FullScreen
-]{hyperref}
 
-%
-\setlength{\textheight}{23.5cm}
-\setlength{\textwidth}{15.5cm}
-\setlength{\topmargin}{-1cm}
-\setlength{\oddsidemargin}{0.3cm}
-\setlength{\evensidemargin}{.5cm}
-\parindent=0pt % paragraph indentation
-\thispagestyle{empty}
-%
-\def\R{\mathbb{R}}
-\def\C{\mathbb{C}}
-\def\H{\mathbb{H}}
-\def\N{\mathbb{N}}
-\def\Z{\mathbb{Z}}
-\def\Q{\mathbb{Q}}
-\def\K{\mathbb{K}}
-%
-\def\O{\mathrm{O}}
-\def\so{\mathfrak{so}}
-\def\sp{\mathfrak{sp}}
-\def\su{\mathfrak{su}}
-\def\u{\mathfrak{u}}
-\def\sl{\mathfrak{sl}}
-\def\SO{\mathrm{SO}}
-\def\SL{\mathrm{SL}}
-\def\Spin{\mathrm{Spin}}
-\def\SU{\mathrm{SU}}
-\def\Sp{\mathrm{Sp}}
-\def\GL{\mathrm{GL}}
-\def\U{\mathrm{U}}
-\def\G{\mathrm{G}}
-\def\Ad{\mathrm{Ad}}
-\def\ad{\mathrm{ad}}
-%
-\def\Cas{\mathrm{Cas}}
-\def\End{\mathrm{End}\,}
-\def\Hom{\mathrm{Hom}\,}
-\def\Hol{\mathrm{Hol}}
-\def\hol{\mathfrak{hol}}
-\def\Iso{\mathrm{Iso}}
-\def\id{\mathrm{id}}
-\def\im{\mathrm{im}\,}
-\def\rg{\mathrm{rg}\,}
-\def\vol{\mathrm{vol}}
-\def\pr{\mathrm{pr}}
-\def\Sym{\mathrm{Sym}}
-\def\Im{\mathrm{Im}}
-\def\Lie{\mathrm{Lie}}
-\def\Der{\mathrm{Der}}
-\def\Tr{\mathrm{Tr}}
-\def\Diff{\mathrm{Diff}}
-%
-\def\#{\sharp}
-\def\b{\flat}
-\def\D{\Delta}
-\def\e{\varepsilon}
-\def\G{\mathbf{G}}
-\def\g{\mathfrak{g}}
-\def\k{\mathfrak{k}}
-\def\m{\mathfrak{m}}
-%\def\K{\mathrm{KI}}
-\def\L{\Lambda}
-\def\l{\lambda}
-\def\p{\mathfrak{p}}
-\def\h{\mathfrak{h}}
-\def\S{\mathrm{Sym}}
-\def\W{\mathcal{W}\,}
-\def\tt{\mathfrak{t}\,}
-\def\diag{\mathrm{diag}\,}
-\def\grad{\mathrm{grad}\,}
-%
-\def\Aut{\mathrm{Aut}}
-\def\ins{\,\lrcorner\,\,}
-\setlength{\parindent}{0pt}
-\def\bea{\begin{eqnarray*}}
-\def\eea{\end{eqnarray*}}
-\def\Ric{\mathrm{Ric}}
-\def\tr{\mathrm{tr}}
-\def\la{\langle}
-\def\ra{\rangle}
-\def\Ul{\mathcal{U}\,}
-\def\E{\mathcal{E}\,}
-\def\spin{\mathfrak{spin}}
-\def\gl{\mathfrak{gl}}
-\def\ad{\mathrm{ad}}
-\def\Re{\mathrm{Re}}
-\def\sgn{\mathrm{sgn}}
-\def\Zent{\mathrm{Zent}}
-\def\Eig{\mathrm{Eig}}
-\def\Zl{\mathrm{Zent}\,\Ul (\g)}
-\def\Abb{\mathrm{Abb}}
-\def\Id{\mathrm{Id}}
-\def\sign{\mathrm{sign}}
-\def\ord{\mathrm{ord}}
-\def\supp{\mathrm{supp}\,}
-%
-\def\al{i\,}
-\def\W{B}
-%
-\def\<#1,#2>{\langle\,#1,\,#2\,\rangle}
-%
-\renewcommand{\theequation}{\thesection.\arabic{equation}}
-%
-\newtheorem{Lemma}{Lemma}[section]
-\newtheorem{Proposition}[Lemma]{Proposition}
-\newtheorem{Satz}[Lemma]{Satz}
-\newtheorem{Theorem}[Lemma]{Theorem}
-\newtheorem{Folgerung}[Lemma]{Folgerung}
-\newtheorem{Definition}[Lemma]{Definition}
-\newtheorem{Remark}[Lemma]{Remark}
-%
-\def\proof{\noindent\textbf{Beweis:}\quad}
-\def\summary#1{(\textsl{#1})\hfill\break}
-\def\nosummary{\hfill\break}
-\def\pfill{\par\vskip3mm plus1mm minus1mm\noindent}
-\def\qed{\quad\hfill\ensuremath{\Box}}
-%
-\newcommand{\firstline}[2]{\makebox[#1][l]{$\displaystyle{#2}$}&&}
 %
 \begin{document}
 
@@ -184,14 +31,14 @@ pdfpagelayout=OneColumn % Anzeigemodus, hier 1 Seite fortlaufend
 \maketitle
 
 
-\section{Topologische Mannigfaltigkeiten}
+\chapter{Topologische Mannigfaltigkeiten}
 
 Topologische Mannigfaltigkeiten sollen als spezielle topologische R\"aume definiert werden. Daf\"ur sind zun\"achst einige
 Grundbegriffe der Topologie zu wiederholen.
 
 \bigskip
 
-Sei  $M$ eine Menge. Ein Mengensystem $\mathcal O = \mathcal O_M \subset \mathcal P(M)$ heisst {\it Topologie} auf $M$, falls
+Sei  $M$ eine Menge. Ein Mengensystem $\mathcal O = \mathcal O_M \subset \mathcal P(M)$ heisst {\itshape Topologie} auf $M$, falls
 \begin{enumerate}
 \item \quad $\emptyset, M \in \mathcal O$
 \item \quad $U, V \in \mathcal O $  dann ist auch $\; U \cap V \in \mathcal O$
@@ -200,82 +47,90 @@ Sei  $M$ eine Menge. Ein Mengensystem $\mathcal O = \mathcal O_M \subset \mathca
 
 \bigskip
 
-Ein Paar $(M, \mathcal O)$ heisst {\it topologischer Raum}. Eine Teilmenge heisst
-{\it offen}, falls $U \in \mathcal O$. Eine Teilmenge $A \subset M$ heisst {\it abgeschlossen}, falls
+Ein Paar $(M, \mathcal O)$ heisst {\itshape topologischer Raum}. Eine Teilmenge heisst
+{\itshape offen}, falls $U \in \mathcal O$. Eine Teilmenge $A \subset M$ heisst {\itshape abgeschlossen}, falls
 $M \setminus A$ offen.
 
 \medskip
 
-{\bf Beispiele:} (1) Die offenen Mengen der {\it Standardtopologie} auf $\R^n$ sind die Mengen $U \subset \R^n$, f\"ur die
-zu jedem Punkt $x\in U$ eine kleine Kugel $B_r(x)$ existiert, die ganz in $U$ liegt. (2) Die {\it diskrete Topologie} auf
-einer Menge $M$ ist definiert durch $\mathcal O = \mathcal P(M)$, d.h. jede Teilmenge von $M$ ist offen. (3) Sei
-$(M, \mathcal O_M)$ ein topologischer Raum und $X\subset M$ eine Teilmenge. Dann sind die offenen Mengen der
-{\it Teilraumtopologie} (auch {\it induzierte} Topologie) auf $X$ genau die Schnitte von $X$ mit offenen Mengen in $M$.
+\begin{ex}
+Die offenen Mengen der {\itshape Standardtopologie} auf $\R^n$ sind die Mengen $U \subset \R^n$, f\"ur die
+zu jedem Punkt $x\in U$ eine kleine Kugel $B_r(x)$ existiert, die ganz in $U$ liegt.\boxc
+\end{ex}
+\begin{ex}
+Die {\itshape diskrete Topologie} auf einer Menge $M$ ist definiert durch $\mathcal O = \mathcal P(M)$, d.h. jede Teilmenge von $M$ ist offen.\boxc
+\end{ex}
+\begin{ex}
+Sei $(M, \mathcal O_M)$ ein topologischer Raum und $X\subset M$ eine Teilmenge. Dann sind die offenen Mengen der
+{\itshape Teilraumtopologie} (auch {\itshape induzierte} Topologie) auf $X$ genau die Schnitte von $X$ mit offenen Mengen in $M$.\boxc
+\end{ex}
 
 \bigskip
 
-Ein Mengensystem $\mathcal B \subset \mathcal P(M)$ heisst {\it Basis der Topologie} $\mathcal O_M$, falls die offenen Mengen
+Ein Mengensystem $\mathcal B \subset \mathcal P(M)$ heisst {\itshape Basis der Topologie} $\mathcal O_M$, falls die offenen Mengen
 aus $\mathcal O_M$ genau die Vereinigungen der Mengen aus $\mathcal B$ sind. Insbesondere ist also $\mathcal B \subset
 \mathcal O_M$.
 
 \medskip
 
-{\bf Beispiel:} Eine (abz\"ahlbare) Basis der Standardtopologie auf $\R^n$ bilden die Kugeln $B_r(x)$ mit rationalem Radius $r$
-um Punkte $x\in \R^n$ mit rationalen Koordinaten.
-
-
-
-\bigskip
-
-Eine Abbildung $f: (M, \mathcal O_M) \rightarrow (N, \mathcal O_N)$ heisst {\it stetig}, falls $f^{-1}(V) \in \mathcal O_M$
-f\"ur alle $V \in \mathcal O_N$. Eine bijektive Abbildung $f:M \rightarrow N$ heisst {\it Hom\"oomorphismus} falls $f$ und
-$f^{-1}$ stetig sind. In diesem Fall nennt man die R\"aume $M$ und $N$ zueinander {\it hom\"oomorph}.
+\begin{ex} Eine (abz\"ahlbare) Basis der Standardtopologie auf $\R^n$ bilden die Kugeln $B_r(x)$ mit rationalem Radius $r$
+um Punkte $x\in \R^n$ mit rationalen Koordinaten.\boxc
+\end{ex}
 
 
 \bigskip
 
+Eine Abbildung $f: (M, \mathcal O_M) \rightarrow (N, \mathcal O_N)$ heisst {\itshape stetig}, falls $f^{-1}(V) \in \mathcal O_M$
+f\"ur alle $V \in \mathcal O_N$. Eine bijektive Abbildung $f:M \rightarrow N$ heisst {\itshape Hom\"oomorphismus} falls $f$ und
+$f^{-1}$ stetig sind. In diesem Fall nennt man die R\"aume $M$ und $N$ zueinander {\itshape hom\"oomorph}.
 
-Ein topologischer Raum $M$ heisst {\it lokal hom\"oomorph} zu $\R^n$ (auch {\it lokal euklidisch}), falls f\"ur alle $p\in M$
+
+\bigskip
+
+
+Ein topologischer Raum $M$ heisst {\itshape lokal hom\"oomorph} zu $\R^n$ (auch {\itshape lokal euklidisch}), falls f\"ur alle $p\in M$
 eine offene Menge $U\subset M$ mit $p\in U$, eine offene Menge $V \subset \R^n$ und ein Hom\"oomorphismus $\phi :U\rightarrow V$
 existieren.
 
  \bigskip
 
-Ein topologischer Raum $M$ heisst {\it zusammenh\"angend}, falls kein $U\subset M, U \neq \emptyset, M$ existiert, dass zugleich offen
+Ein topologischer Raum $M$ heisst {\itshape zusammenh\"angend}, falls kein $U\subset M, U \neq \emptyset, M$ existiert, dass zugleich offen
 und abgeschlossen ist. \"Aquivalent ist, dass $M$ nicht als nicht-triviale Vereinigung zweier disjunkter offener Mengen dargestellt
 werden kann. Eine Teilmenge $X\subset M$ heisst zusammenh\"angend, falls $X$ mit der Teilraumtopologie zusammenh\"angend ist.
 
 \medskip
 
-Ein topologischer Raum $M$ heisst {\it wegzusammenh\"angend}, falls sich je zwei Punkte in $M$ durch einen stetigen Weg in $M$
+Ein topologischer Raum $M$ heisst {\itshape wegzusammenh\"angend}, falls sich je zwei Punkte in $M$ durch einen stetigen Weg in $M$
 verbinden lassen. D.h. f\"ur je zwei Punkte $p,q \in M$ existiert eine stetige Abbildung $c:[0,1]\rightarrow M$ mit $c(0)=p$
 und $c(1)=q$.
 
 \begin{Lemma}
-Wegzusammenh\"angende R\"aume sind zusammenh\"angend. Zusammenh\"angende, lokal euklidische R\"aume sind auch wegzusammenh\"angend.
+Wegzusammenh\"angende R\"aume sind zusammenh\"angend. Zusammenh\"angende, lokal euklidische R\"aume sind auch wegzusammenh\"angend.\fish
 \end{Lemma}
 
 %\bigskip
 
-Ein topologischer Raum $M$ heisst {\it hausdorff} (auch $T_2$), falls f\"ur alle $p,q \in M, p\neq q$ offene Mengen $U, V \subset M$
+Ein topologischer Raum $M$ heisst {\itshape hausdorff} (auch $T_2$), falls f\"ur alle $p,q \in M, p\neq q$ offene Mengen $U, V \subset M$
 existieren mit $p\in U, q\in V$ und $U \cap V = \emptyset$.
 
 \medskip
 
-{\bf Bemerkung} Aus lokal euklidisch folgt {\it nicht} hausdorff.
+\begin{rem}
+Aus lokal euklidisch folgt {\itshape nicht} hausdorff.\map
+\end{rem}
 
 \bigskip
 
 \begin{Definition}
-Eine $n$-dimensionale {\em topologische Mannigfaltigkeit } ist ein topologischer Raum $M$ mit:
+Eine $n$-dimensionale \emph{ topologische Mannigfaltigkeit } ist ein topologischer Raum $M$ mit:
 \begin{enumerate}
 \item \quad $M$ ist lokal hom\"oomorph zu $\R^n$
 \item \quad $M$ ist hausdorff
 \item \quad $M$ besitzt eine abz\"ahlbare Basis der Topologie
 \end{enumerate}
 
-Die lokalen Hom\"oomorphismen $\phi: U \subset M \rightarrow V \subset \R^n$ heissen {\it Karten}
-oder lokale Koordinatensysteme von $M$.
+Die lokalen Hom\"oomorphismen $\phi: U \subset M \rightarrow V \subset \R^n$ heissen {\itshape Karten}
+oder lokale Koordinatensysteme von $M$.\fish
 \end{Definition}
 
 \medskip
@@ -283,20 +138,16 @@ oder lokale Koordinatensysteme von $M$.
 Genaugenommen muss man noch \"uberpr\"ufen, dass die Dimension wohldefiniert ist, also nicht vom Punkt abh\"angig ist.
 Das folgt aus dem Satz von Brouwer bzw. aus dem Satz \"uber die Invarianz des Gebietes.
 
-\medskip
+\begin{prop}[Satz (Brouwer)]
+Sei $U\subset \R^n $ offen und $f:U \rightarrow \R^n$ stetig und injektiv. Dann ist $f(U)\subset \R^n$
+offen.\fish
+\end{prop}
 
-{\bf Satz: (Brouwer)} {\it Sei $U\subset \R^n $ offen und $f:U \rightarrow \R^n$ stetig und injektiv. Dann ist $f(U)\subset \R^n$
-offen. }
+\begin{cor}
+Seien $U \subset \R^n$ und $V\subset \R^m$ offene Mengen. Sind $U$ und $V$ zueinander hom\"oomorph, so folgt $n=m$.\fish
+\end{cor}
 
-\medskip
-
-{\bf Folgerung:}
-{\it Seien $U \subset \R^n$ und $V\subset \R^m$ offene Mengen. Sind $U$ und $V$ zueinander hom\"oomorph, so folgt
-$n=m$.}
-
-\medskip
-
-\proof
+\begin{proof}
 Man nimmt $n\neq m$ an und o.B.d.A. auch $m<n$. Sei $i:\R^m\rightarrow \R^n$ die kanonische Einbettung
 $i(x_1,\ldots, x_m)= (x_1,\ldots, x_m,0,\ldots,0)$. Dann ist $i$ stetig, injektiv und $i(\R^m)$ enth\"alt
 keine in $\R^n$ offene Menge.
@@ -307,16 +158,15 @@ Sei nun $\phi : U \rightarrow V$ der laut Voraussetzung existierende Hom\"oomorp
 $f:= i|_V \circ \phi : U \rightarrow \R^n$ stetig und injektiv. Aus dem Satz von Brouwer folgt nun, dass
 $f(U) = i(V) \subset i(\R^n)$ offen in $\R^n$. Das ist ein Widerspruch und es muss also $m=n$ gelten.
 \qed
-
-\bigskip
+\end{proof}
 
 Im Folgenden sollen drei Beispiele topologischer Mannigfaltigkeiten vorgestellt werden.
 
 \begin{enumerate}
-\item Der $n$-dimensionale {\it euklidische Raum} $M=\R^n$. Hier hat man eine Karte, die durch die Identit\"at
+\item Der $n$-dimensionale {\itshape euklidische Raum} $M=\R^n$. Hier hat man eine Karte, die durch die Identit\"at
 gegeben ist. Analog ist auch jede offene Teilmenge $M\subset \R^n$ eine $n$-dimensionale Mannigfaltigkeit.
 
-\item Die $n$-dimensionale {\it Sph\"are}: $S^n := \{x\in \R^{n+1} | \, x_1^2 + \ldots + x_{n+1}^2 = 1\}$. Als Topologie
+\item Die $n$-dimensionale {\itshape Sph\"are}: $S^n := \{x\in \R^{n+1} | \, x_1^2 + \ldots + x_{n+1}^2 = 1\}$. Als Topologie
 auf $S^n \subset \R^{n+1}$ w\"ahlt man die von der Standardtopologie auf $\R^{n+1}$ induzierte Topologie. Dann ist klar,
 dass der topologische Raum $S^n$ hausdorff ist und eine abz\"ahlbare Basis der Topologie besitzt. Auf $S^n$ kann
 man mittels der stereographischen Projektion zwei Karten definieren, die zeigen, dass $S^n$ lokal hom\"oomorph
@@ -328,7 +178,7 @@ $$
 g_1(x) = \frac{1}{1-x_{n+1}}\,(x_1,\ldots, x_n), \qquad g_2(x) = \frac{1}{1+x_{n+1}}\,(x_1,\ldots, x_n) \ .
 $$
 
-\item Der $n$-dimensionale {\it hyperbolische Raum}: $H^n :=\{ x \in \R^{n+1} |\, x_0^2 -x_1^2 -
+\item Der $n$-dimensionale {\itshape hyperbolische Raum}: $H^n :=\{ x \in \R^{n+1} |\, x_0^2 -x_1^2 -
 \ldots - x_n^2 = 1, x_0 >0\}$. Hier reicht eine Karte, d.h. $H^n$ ist hom\"oomorph zu $\R^n$. Man definiert
 $\phi : H^n \subset \R^{n+1}\rightarrow \R^n$ durch $\phi(x) = (x_1,\ldots, x_n)$. Die (stetige)
 Umkehrabbildung ist gegeben durch
@@ -339,13 +189,14 @@ $$
 
 \bigskip
 
-{\bf Bemerkung:} Der Doppelkegel $M = \{(x,y,z) \in \R^3 | z^2 = x^2 + y^2\}$ ist keine topologische
+\begin{rem*} Der Doppelkegel $M = \{(x,y,z) \in \R^3 | z^2 = x^2 + y^2\}$ ist keine topologische
 Mannigfaltigkeit.
+\end{rem*}
 
 \bigskip
 
 \begin{Satz}
-Eine 0-dimensionale Mannigfaltigkeit ist eine abz\"ahlbare Menge von Punkten mit der diskreten Topologie.
+Eine 0-dimensionale Mannigfaltigkeit ist eine abz\"ahlbare Menge von Punkten mit der diskreten Topologie.\fish
 \end{Satz}
 \proof
 Sei $M$ eine 0-dimensionale Mannigfaltigkeit und $p\in M$. Dann existiert eine offene Menge $U\subset M$ mit
@@ -355,21 +206,22 @@ offene Mengen und $M$ tr\"agt damit die diskrete Topologie.
 
 \medskip
 
-{\bf Bemerkung:} Eine zusammenh\"angende 1-dimensionale Mannigfaltigkeit ist hom\"oomorph zu $S^1$ oder $\R^1$.
+\begin{rem*} Eine zusammenh\"angende 1-dimensionale Mannigfaltigkeit ist hom\"oomorph zu $S^1$ oder $\R^1$.
+\end{rem*}
 
 \bigskip
 
 \begin{Satz} Sei $M$ eine n-dimensionale und $N$ eine m-dimensionale Mannigfaltigkeit. Dann ist $M\times N$
-eine Mannigfaltigkeit der Dimension $n+m$.
+eine Mannigfaltigkeit der Dimension $n+m$.\fish
 \end{Satz}
 
 \medskip
 
-{\bf Beispiel:} Sei $M=N=S^1$, dann ist $T^2= S^1 \times S^1$ der 2-dimensionale {\it Torus}. Allgemeiner
-hat man den n-dimensionalen Torus $T^n = S^1 \times \ldots \times S^1$.
+\begin{ex} Sei $M=N=S^1$, dann ist $T^2= S^1 \times S^1$ der 2-dimensionale {\itshape Torus}. Allgemeiner
+hat man den n-dimensionalen Torus $T^n = S^1 \times \ldots \times S^1$.\boxc
+\end{ex}
 
-
-\section{Differenzierbare Mannigfaltigkeiten}
+\chapter{Differenzierbare Mannigfaltigkeiten}
 
 Es soll nun f\"ur topologische Mannigfaltigkeiten der Begriff einer differenzierbaren Abbildung definiert werden.
 Dazu muss zun\"achst auf der topologischen Mannigfaltigkeit eine differenzierbare Struktur eingef\"uhrt werden. Sei
@@ -381,24 +233,23 @@ $$
 Man sieht, dass f\"ur die Definition der Differenzierbarkeit von $f$ mit Hilfe von Karten, die Differenzierbarkeit
 der Kartenwechsel $x\circ y^{-1}$ ben\"otigt wird.
 
-\medskip
-
 \begin{Definition}
-Zwei Karten $(U,x), (V,y)$ heissen {\em vertr\"aglich} falls die Abbildung
+Zwei Karten $(U,x), (V,y)$ heissen \emph{ vertr\"aglich} falls die Abbildung
 $$
 x\circ y^{-1} : y(U \cap V) \rightarrow x(U\cap V)
 $$
-ein Diffeomorphismus von offenen Mengen in $\R^n$ ist. Die Abbildung $x\circ y^{-1}$ heisst {\em Kartenwechsel}.
-Eine Menge von Karten $\mathcal A = \{(U_\alpha, x_\alpha)\}$ heisst {\em Atlas} von $M$, falls die Karten $M$
+ein Diffeomorphismus von offenen Mengen in $\R^n$ ist. Die Abbildung $x\circ y^{-1}$ heisst \emph{ Kartenwechsel}.
+Eine Menge von Karten $\mathcal A = \{(U_\alpha, x_\alpha)\}$ heisst \emph{ Atlas} von $M$, falls die Karten $M$
 \"uberdecken und je zwei Karten vertr\"aglich sind.
-Ein Atlas $\mathcal A$ heisst {\em maximaler Atlas}, falls jede Karte, die mit allen Karten in $\mathcal A$
-vertr\"aglich ist, schon in $\mathcal A$ liegt.
+Ein Atlas $\mathcal A$ heisst \emph{ maximaler Atlas}, falls jede Karte, die mit allen Karten in $\mathcal A$
+vertr\"aglich ist, schon in $\mathcal A$ liegt.\fish
 \end{Definition}
 
-{\bf Bemerkung}: Sei $\mathcal A$ ein Atlas f\"ur $M$, dann definiert man
+\begin{rem} Sei $\mathcal A$ ein Atlas f\"ur $M$, dann definiert man
 $$
 \mathcal A_{max} := \mbox{Menge aller Karten von $M$, die mit allen Karten aus} \quad \mathcal A \quad \mbox{vertr\"aglich sind}.
 $$
+\end{rem}
 
 \begin{Lemma}
 
@@ -406,30 +257,36 @@ $$
 \item \quad $ \mathcal A \subset \mathcal A_{max}$
 \item \quad $\mathcal A _{max}$ ist ein Atlas
 \item \quad $\mathcal A _{max}$ ist maximaler Atlas
-\item \quad  Jeder Atlas ist in genau einem maximalen Atlas enthalten
+\item \quad  Jeder Atlas ist in genau einem maximalen Atlas enthalten.\fish
 \end{enumerate}
 \end{Lemma}
 
 \begin{Definition}
-Eine n-dimensionale {\em differenzierbare Mannigfaltigkeit} ist eine n-dimensionale topologische
-Mannigfaltigkeit zusammen mit einem maximalen Atlas.
+Eine n-dimensionale \emph{ differenzierbare Mannigfaltigkeit} ist eine n-dimensionale topologische
+Mannigfaltigkeit zusammen mit einem maximalen Atlas.\fish
 \end{Definition}
 
-{\bf Bemerkung:}
-Differenzierbare Mannigfaltigkeiten nennt man auch $\mathcal C^\infty$- oder {\it glatte} Mannigfaltigkeiten. Ein
-maximaler Atlas definiert eine {\it differenzierbare} Struktur. Es gibt topologische Mannigfaltigkeiten, die keine
+\begin{rem*}
+Differenzierbare Mannigfaltigkeiten nennt man auch $\mathcal C^\infty$- oder {\itshape glatte} Mannigfaltigkeiten. Ein
+maximaler Atlas definiert eine {\itshape differenzierbare} Struktur. Es gibt topologische Mannigfaltigkeiten, die keine
 differenzierbare Strukturen zulassen. Auf einer topologischen Mannigfaltigkeit kann es "unterschiedliche" differenzierbare
 Strukturen geben.
+\end{rem*}
 
 \medskip
 
-{\bf Notation:} Im Weiteren soll mit "Mannigfaltigkeit" immer "differenzierbare Mannigfaltigkeit" gemeint sein.
+\begin{rem*}[Notation.]
+Im Weiteren soll mit "Mannigfaltigkeit" immer "differenzierbare Mannigfaltigkeit" gemeint sein.\map
+\end{rem*}
 
 \bigskip
 
-{\bf Beispiele:} (1) Jede offene Teilmenge $U\subset \R^n$ ist trivialerweise eine n-dimensionale
-differenzierbare Mannigfaltigkeit. Als Atlas nimmt man hier $\mathcal A = \{(U, \id)\}$.
-(2) Die Sph\"are $S^n$ ist eine $n$-dimensionale Mannigfaltigkeit. Seien $(U_i, g_i), i=1,2$
+\begin{ex}Jede offene Teilmenge $U\subset \R^n$ ist trivialerweise eine n-dimensionale
+differenzierbare Mannigfaltigkeit. Als Atlas nimmt man hier $\mathcal A
+ = \{(U, \id)\}$.\boxc
+\end{ex}
+\begin{ex}
+Die Sph\"are $S^n$ ist eine $n$-dimensionale Mannigfaltigkeit. Seien $(U_i, g_i), i=1,2$
 die oben eingef\"uhrten Karten. Zu \"uberpr\"ufen bleibt, ob der Kartenwechsel $g_1 \circ g_2^{-1}$
 differenzierbar ist. F\"ur $x\in g_2(U_1\cap U_2)= g_2(S^n\setminus \{NP, SP\})= \R^n\setminus \{0\}\subset \R^n$ gilt:
 $$
@@ -439,33 +296,35 @@ g_1 \circ g_2^{-1}(x) = g_1(\frac{1-\|x\|^2}{1+\|x\|^2},\frac{2x}{1+\|x\|^2})=
 \frac{2x}{2\|x\|^2} = \frac{x}{\|x\|^2}
 $$
 Damit sind die Karten $(U_1,g_1)$ und  $(U_2,g_2)$ vertr\"aglich. Da sie auch $S^n$ \"uberdecken erh\"alt man den
-Atlas $\mathcal A = \{(U_i, g_i), i=1,2 \}$.
+Atlas $\mathcal A = \{(U_i, g_i), i=1,2 \}$.\boxc
+\end{ex}
 
 \bigskip
 
 \begin{Definition}
 Seien $M, N$ differenzierbare Mannigfaltigkeiten. Eine stetige Abbildung $f:M\rightarrow N$ heisst
-{\em differenzierbar}, wenn es um jeden Punkt $p\in M$ Karten $(U,x)$ um $p$ und $(V,y)$ um $f(p)$
+\emph{ differenzierbar}, wenn es um jeden Punkt $p\in M$ Karten $(U,x)$ um $p$ und $(V,y)$ um $f(p)$
 gibt, so dass auf einer Umgebung $W \subset x(f^{-1}(V)\cap U)$ von $x(p)$ die Abbildung
 $$
 y \circ f \circ x^{-1} : W \subset x(f^{-1}(V)\cap U) \rightarrow y(V)
 $$
-differenzierbar ist. Ein {\em Diffeomorphismus} ist ein Hom\"oomorphismus $f$, f\"ur den $f$ und
+differenzierbar ist. Ein \emph{ Diffeomorphismus} ist ein Hom\"oomorphismus $f$, f\"ur den $f$ und
 $f^{-1}$ differenzierbar sind. In diesem Fall nennt man die Mannigfaltigkeiten $M$ und $N$
-{\em diffeomorph}.
+\emph{ diffeomorph}.\fish
 \end{Definition}
 
 \medskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 (1) Genauer kann man noch von Differenzierbarkeit in einem Punkt und k-facher Differenzierbarkeit sprechen.
 Im Weiteren soll "differenzierbar" immer "beliebig oft differenzierbar" bedeuten. Solche Abbildungen nennt
-man dann {\it glatt} oder $\mathcal C^\infty$. (2) Ist $f$ in $p$ bzgl. eines Paares von Karten differenzierbar,
+man dann {\itshape glatt} oder $\mathcal C^\infty$. (2) Ist $f$ in $p$ bzgl. eines Paares von Karten differenzierbar,
 so auch f\"ur alle anderen Karten um $p$ bzw. $f(p)$.
+\end{rem*}
 
 \bigskip
 
-{\bf Beispiele:}
+\begin{ex}
 \begin{enumerate}
 \item Die antipodale Abbildung $f: S^n\rightarrow S^n, f(y)=-y$ ist differenzierbar. (\"UA)
 \item   Auf $\R$ seien die Atlanten $\mathcal A_1 = \{x=\id:\R \rightarrow \R\}$ und
@@ -473,12 +332,13 @@ $\mathcal A_2 = \{\tilde x :\R \rightarrow \R, \tilde x(t) = t^3\}$ fixiert. Dan
 $x$  und $\tilde x$ keine vertr\"aglichen Karten, da $x\circ \tilde x^{-1}(t) = \sqrt[3]{t}$
 nicht differenzierbar ist. Damit ist $\id : (\R, \mathcal A_{1,max})\rightarrow (\R, \mathcal A_{2,max})$
 differenzierbar, aber kein Diffeomorphismus. Allerdings liefert die Abbildung $f(t) = \sqrt[3]{t}$
-einen Diffeomorphismus $f:(\R, \mathcal A_{1,max})\rightarrow (\R, \mathcal A_{2,max})$.
+einen Diffeomorphismus $f:(\R, \mathcal A_{1,max})\rightarrow (\R, \mathcal A_{2,max})$.\boxc
 \end{enumerate}
+\end{ex}
 
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
 \item F\"ur $n\neq 4$ ist jede differenzierbare Struktur auf $\R^n$ diffeomorph zur Standardstruktur
 $\mathcal A_{max}$ zu $\mathcal A = \{(\R^n, \id)\}$.
@@ -491,7 +351,7 @@ Struktur.
 Diese nennt man exotische Sph\"aren. In jeder Dimension $n, n\ge 7$ gibt es h\"ochstens endlich viele exotische Sph\"aren.
 Die Existenz einer exotischen $S^4$ ist ungekl\"art.
 \end{enumerate}
-
+\end{rem*}
 
 \bigskip
 
@@ -510,7 +370,7 @@ Die Eigenschaften kompakt und zusammenh\"angend \"ubertragen sich von $X$ auf $X
 
 \medskip
 
-Auf $S^n$ betrachtet man die \"Aquivalenzrelation $x \sim -x$. Dann ist der {\it reell-projektive Raum}
+Auf $S^n$ betrachtet man die \"Aquivalenzrelation $x \sim -x$. Dann ist der {\itshape reell-projektive Raum}
 definiert als
 $$
 \R  {\mathrm P}^n = S^n/_\sim
@@ -519,7 +379,7 @@ mit der Quotientenraumtopologie. Man kann $\R  {\mathrm P}^n$ auch mit dem Raum 
 identifizieren. Daf\"ur bildet man die \"Aquivalenzklasse $[x]$ auf die Gerade durch $x$ ab.
 
 \begin{Lemma}
-Der reell-projektive Raum $\R  {\mathrm P}^n$ ist eine n-dimensionale kompakte, zusammenh\"angende Mannigfaltigkeit.
+Der reell-projektive Raum $\R  {\mathrm P}^n$ ist eine n-dimensionale kompakte, zusammenh\"angende Mannigfaltigkeit.\fish
 \end{Lemma}
 
 %\medskip
@@ -534,28 +394,29 @@ wenn $v$ und $w$ linear abh\"angig sind.
 
 \bigskip
 
-{\bf Bemerkung:} Es gilt $\R {\mathrm P}^1 \cong S^1, \C {\mathrm P}^1 \cong S^2, \H {\mathrm P}^1 \cong S^4 $. F\"ur $n\ge 2$ ist $\R {\mathrm P}^n \neq S^n$.
+\begin{rem*} Es gilt $\R {\mathrm P}^1 \cong S^1, \C {\mathrm P}^1 \cong S^2, \Hc {\mathrm P}^1 \cong S^4 $. F\"ur $n\ge 2$ ist $\R {\mathrm P}^n \neq S^n$.
+\end{rem*}
 
 
 
-
-\section{Der Satz vom regul\"aren Wert}
+\chapter{Der Satz vom regul\"aren Wert}
 
 In diesem Abschnitt soll die Konstruktion differenzierbarer Mannigfaltigkeiten als Urbild regul\"arer Werte
 beschrieben werden. Sei $f:M\rightarrow N$ eine differenzierbare Abbildung.
 
 \begin{Definition}
-Seien $(U,x)$ bzw. $(V,y)$ Karten um $p$ bzw. $f(p)$. Dann ist der {\em Rang} von $f$ in $p$ definiert als
+Seien $(U,x)$ bzw. $(V,y)$ Karten um $p$ bzw. $f(p)$. Dann ist der \emph{ Rang} von $f$ in $p$ definiert als
 der Rang der Jacobi-Matrix von $y\circ f \circ x^{-1}$, d.h.
 $$
 \rg_p(f) = \mathrm{Rang} \left( \frac{\partial (y\,f\,x^{-1})_i}{\partial x_j}\right) = J_p(y\,f\,x^{-1})\ ,
 $$
-wobei $J_p(r)$ im Weiteren die Jacobi-Matrix einer Abbildung $r$ im Punkt $p$ bezeichnet.
+wobei $J_p(r)$ im Weiteren die Jacobi-Matrix einer Abbildung $r$ im Punkt $p$ bezeichnet.\fish
 \end{Definition}
 
 
-{\bf Bemerkung:} (1) Ist $r$ ein Diffeomorphismus, dann ist $J_p(r)$ invertierbar. (2) Der Rang der Jacobi-Matrix
+\begin{rem*} (1) Ist $r$ ein Diffeomorphismus, dann ist $J_p(r)$ invertierbar. (2) Der Rang der Jacobi-Matrix
 h\"angt nicht von den Karten ab, d.h. $\rg_p(f)$ ist wohldefiniert.
+\end{rem*}
 
 \medskip
 
@@ -574,11 +435,11 @@ $$
 Aus der Analysis ist bekannt, dass der Rang das lokale Verhalten von Abbildungen bestimmt. Die entsprechenden S\"atze
 \"ubertragen sich nun direkt auf Mannigfaltigkeiten.
 
-\medskip
-
-{\bf Umkehrsatz:}{\it  \, Sei $f:M\rightarrow N$ eine differenzierbare Abbildung zwischen zwei Mannigfaltigkeiten der
+\begin{prop}[Umkehrsatz]
+Sei $f:M\rightarrow N$ eine differenzierbare Abbildung zwischen zwei Mannigfaltigkeiten der
 Dimension $n$. Sei $p\in M$ ein Punkt mit $\rg_p(f)=n$. Dann existiert eine Umgebung von $p$, auf der $f$ ein
-Diffeomorphismus ist.}
+Diffeomorphismus ist.
+\end{prop}
 
 \medskip
 
@@ -592,43 +453,45 @@ Den letzten Satz kann man etwas verallgemeinern, wenn man von der Jacobi-Matrix 
 surjektiv sein soll. Dazu definiert man zun\"achst
 
 \begin{Definition}
-Sei $f:M\rightarrow N$ eine differenzierbare Abbildung. Dann hei\ss t ein Punkt $p \in M$ {\em regul\"ar}, falls
-$\rg_p(f) = \dim N$, d.h. falls $J(yfx^{-1})$ surjektiv in $p$ ist.
+Sei $f:M\rightarrow N$ eine differenzierbare Abbildung. Dann hei\ss t ein Punkt $p \in M$ \emph{ regul\"ar}, falls
+$\rg_p(f) = \dim N$, d.h. falls $J(yfx^{-1})$ surjektiv in $p$ ist.\fish
 \end{Definition}
 
-{\bf Bemerkung:}
+\begin{rem*}
 (1) Ist $p$ regul\"ar, dann folgt $\dim M \ge \dim N$ (2) Ist $\dim M < \dim N$, dann sind alle Punkte in
-$M$ {\it kritisch}, d.h. nicht regul\"ar.
+$M$ {\itshape kritisch}, d.h. nicht regul\"ar.
+\end{rem*}
 
-\bigskip
-
-{\bf Satz vom regul\"aren Punkt:}{\it \, Sei $f:M\rightarrow N$ differenzierbar und sei $p\in M$ regul\"ar. Dann
+\begin{prop}[Satz vom regul\"aren Punkt]
+Sei $f:M\rightarrow N$ differenzierbar und sei $p\in M$ regul\"ar. Dann
 existieren Karten $(U,x)$ um $p$ und $(V,y)$ um $f(p)$ mit $f(U)\subset V$ und
 $$
 y\,f\,x^{-1}: (x_1,\ldots,x_{n+s}) \mapsto (x_{1+s},\ldots,x_{n+s})
 $$
 wobei $\dim M = n+s$ und $\dim N = n$, d.h. in lokalen Koordinaten stimmt $f$  mit der kanonischen
-Projektion von $\R^{n+s}$ auf $\R^n$ \"uberein.}
+Projektion von $\R^{n+s}$ auf $\R^n$ \"uberein.
+\end{prop}
 
 \bigskip
 
 \begin{Definition}
 Eine Teilmenge $M_0\subset M$, einer n-dimensionalen Mannigfaltigkeit $M$ nennt man k-dimensionale
-{\em Untermannigfaltigkeit}, wenn es um jeden Punkt von $M_0$ eine Karte $(U,x)$ von $M$ gibt mit
+\emph{ Untermannigfaltigkeit}, wenn es um jeden Punkt von $M_0$ eine Karte $(U,x)$ von $M$ gibt mit
 $$
 x(U \cap M_0) = \R^k \cap x(U) \ .
 $$
-Die Differenz $\dim M - \dim M_0$ nennt man die {\em Kodimension} von $M_0$ in $M$.
+Die Differenz $\dim M - \dim M_0$ nennt man die \emph{ Kodimension} von $M_0$ in $M$.\fish
 \end{Definition}
 
 \medskip
 
-{\bf Bemerkungen:} (1) Jede Untermannigfaltigkeit ist wieder eine Mannigfaltigkeit. Untermannigfaltigkeiten
+\begin{rem*}[Bemerkungen.] (1) Jede Untermannigfaltigkeit ist wieder eine Mannigfaltigkeit. Untermannigfaltigkeiten
 von $M$ der Kodimension 0 sind genau die offenen Mengen in $M$. Untermannigfaltigkeiten der Dimension 0 sind
 genau die diskreten Teilmengen in $M$. (2) Eine Teilmenge $M \subset \R^n$ ist genau dann eine Untermannigfaltigkeit
 der Dimension k von $\R^n$, wenn $M$ lokal diffeomorph zu einer offenen Menge in $\R^k$ ist. (3) Der Satz von
 Whitney besagt, dass jede n-dimensionale Mannigfaltigkeit diffeomorph zu einer Untermannigfaltigkeit von $\R^{2n}$
 ist. Genauer kann man noch sagen:
+\end{rem*}
 
 \medskip
 
@@ -649,19 +512,18 @@ diffeomorph zu einer Untermannigfaltigkeit von $\R^3$.
 
 \begin{Definition}
 Sei $f:M\rightarrow N$ eine differenzierbare Abbildung. Ein Punkt $q\in N$ hei\ss t
-{\em regul\"arer Wert} von $f$, falls jedes $p \in f^{-1}(q)$ ein regul\"arer Punkt
-von $f$ ist.
+\emph{ regul\"arer Wert} von $f$, falls jedes $p \in f^{-1}(q)$ ein regul\"arer Punkt
+von $f$ ist.\fish
 \end{Definition}
 
 
-
-\bigskip
-
-{\bf Satz vom regul\"aren Wert:}{\it \, Ist $q\in N$ ein regul\"arer Wert einer differenzierbaren Abbildung
+\begin{prop}[Satz vom regul\"aren Wert] Ist $q\in N$ ein regul\"arer Wert einer differenzierbaren Abbildung
 $f:M\rightarrow N$, dann ist $f^{-1}(q)$ eine Untermannigfaltigkeit von $M$ und es gilt
 $$
-\dim  f^{-1}(q) = \dim M - \dim N \ .
-$$ }
+\dim  f^{-1}(q) = \dim M - \dim N \ .\fish
+$$ 
+\end{prop}
+
 \proof
 Sei $p \in f^{-1}(q)$ ein regul\"arer Punkt. Dann w\"ahlt man Karten $(U,x)$ um $p$ und $(V,y)$ um $q$, wie
 sie nach dem Satz vom regul\"aren Punkt existieren. O.B.d.A. kann man auch noch $y(q)=0$ voraussetzen. Dann gilt
@@ -699,7 +561,7 @@ D.h. $N$ ist die Menge der symmetrischen Matrizen.
 
 \begin{Lemma}
 F\"ur die Abbildung $f:M(n,\R)\rightarrow \Sym(n,\R), A \mapsto A^TA$ ist die Einheitsmatrix $E$ ein regul\"arer
-Wert. Damit ist die orthogonale Gruppe $\O(n)=f^{-1}(E)$ eine Mannigfaltigkeit der Dimension $\frac12n(n-1)$.
+Wert. Damit ist die orthogonale Gruppe $\O(n)=f^{-1}(E)$ eine Mannigfaltigkeit der Dimension $\frac12n(n-1)$.\fish
 \end{Lemma}
 \proof
 Zu zeigen ist, dass die Jacobi-Matrix der Abbildung $f$ in jedem Punkt $p\in f^{-1}(E)=\O(n)$ surjektiv ist.
@@ -725,22 +587,23 @@ $f$ eine Mannigfaltigkeit, n\"amlich eine Untermannigfaltigkeit von $\R^{n^2}$ d
 
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 (1) Die spezielle orthogonale Gruppe $\SO(n)$ ist eine offene Teilmenge von $O(n)$ und daher eine Untermannigfaltigkeit
 der Kodimension 0. (2) Die Mannigfaltigkeit $\O(n)$ zerf\"allt in zwei Zusammenhangskomponenten. (3)
 Die klassischen Matrizengruppen $\GL_n, \U_n, \SU_n, \Sp_n,\ldots$ sind alles Mannigfaltigkeiten. Zus\"atzlich
-sind die Gruppenoperationen differenzierbare Abbildungen. Solche Gruppen nennt man {\it Lie-Gruppen}.
+sind die Gruppenoperationen differenzierbare Abbildungen. Solche Gruppen nennt man {\itshape Lie-Gruppen}.
+\end{rem*}
 
 \bigskip
 
 
-\section{Der Tangentialraum}
+\chapter{Der Tangentialraum}
 
 Sei $f:\R^n\rightarrow \R^m$ eine differenzierbare Abbildung. Dann ist eine lineare Approximation von $f$ in $x$
 gegeben durch das Differential $df_x:\R^n\rightarrow \R^m$, d.h. die lineare Abbildung $df_x=J_x$. Nun m\"ochte man
 Abbildungen zwischen Mannigfaltigkeiten approximieren. Dazu definiert man zu jedem Punkt $p$
-der Mannigfaltigkeit $M$ einen abstrakten Vektorraum $T_pM$, den {\it Tangentialraum} in $p$, und dann definiert man zu
-jeder Abbildung $f:M\rightarrow N$ eine lineare Abbildung $df_p : T_pM \rightarrow T_{f(p)}N$, das {\it Differential}
+der Mannigfaltigkeit $M$ einen abstrakten Vektorraum $T_pM$, den {\itshape Tangentialraum} in $p$, und dann definiert man zu
+jeder Abbildung $f:M\rightarrow N$ eine lineare Abbildung $df_p : T_pM \rightarrow T_{f(p)}N$, das {\itshape Differential}
 von $f$ in $p$.
 
 \medskip
@@ -759,10 +622,10 @@ $$
 $$
 
 \begin{Definition}
-{\em Tangentialvektoren} an $M$ im Punkt $p\in M$ sind \"Aquivalenzklassen bzgl. $\sim$ von Kurven in $M$ durch $p$. Der
-{\em Tangentialraum} von $M$ in $p$ ist die Menge all dieser \"Aquivalenzklassen:
+\emph{ Tangentialvektoren} an $M$ im Punkt $p\in M$ sind \"Aquivalenzklassen bzgl. $\sim$ von Kurven in $M$ durch $p$. Der
+\emph{ Tangentialraum} von $M$ in $p$ ist die Menge all dieser \"Aquivalenzklassen:
 $$
-T_pM = \{\gamma: (-\varepsilon,\varepsilon)\rightarrow M \; \mbox{differenzierbar}, \gamma (0) = p\}/_\sim \ .
+T_pM = \{\gamma: (-\varepsilon,\varepsilon)\rightarrow M \; \mbox{differenzierbar}, \gamma (0) = p\}/_\sim \ .\fish
 $$
 \end{Definition}
 
@@ -775,7 +638,7 @@ $$
 
 \begin{Lemma}
 Sei $M$ eine n-dimensionale Mannigfaltigkeit, $p\in M$. Dann ist der Tangentialraum $T_pM$ ein n-dimensionaler
-reeller Vektorraum.
+reeller Vektorraum.\fish
 \end{Lemma}
 \proof
 Sei $(U,x)$ eine Karte um $p$, dann definiert man:
@@ -802,7 +665,7 @@ $dx_p$ ist das Differential der Kartenabbildung $x$ im Punkt $p$ (siehe unten).
 
 \medskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Die kanonische differenzierbare Struktur auf $\R^n$ ist definiert durch die Karte $(\R^n,x=\id)$. Daher liefert
 $dx_p$ hier die kanonische Identifizierung
 $$
@@ -811,18 +674,18 @@ $$
 die nach Definition ein linearer Isomorphismus ist.
 In der umgekehrten Richtung ordnet man einem Vektor $v\in \R^n$ die Klasse $[\alpha]$ zu mit
 $\alpha(t) = p+tv$. Dabei ist $\alpha$ eine Kurve durch $p$ mit $\dot\alpha(0)=v$.
-
+\end{rem*}
 
 \medskip
 
 
 \begin{Definition}
-Sei $f:M\rightarrow N$ eine differenzierbare Abbildung. Dann ist das {\em Differential} von $f$ in $p$ definiert
+Sei $f:M\rightarrow N$ eine differenzierbare Abbildung. Dann ist das \emph{ Differential} von $f$ in $p$ definiert
 durch
 $$
 df_p : T_pM \rightarrow T_{f(p)}N, \quad [\gamma]\mapsto [f\circ \gamma]  \ .
 $$
-Man schreibt auch: $df_p (\dot\gamma(0)) = \dot{f\circ \gamma}(0)$.
+Man schreibt auch: $df_p (\dot\gamma(0)) = \dot{f\circ \gamma}(0)$.\fish
 \end{Definition}
 
 \medskip
@@ -834,7 +697,7 @@ direkt auf Mannigfaltigkeiten.
 
 \begin{Lemma}
 Das Differential ist wohldefiniert, d.h. unabh\"angig von der Wahl der Repr\"asentanten, linear
-und erf\"ullt die Kettenregel.
+und erf\"ullt die Kettenregel.\fish
 \end{Lemma}
 \proof
 Seien $\alpha$ und $\tilde\alpha$ zwei \"aquivalente Kurven auf $M$ durch $p$, d.h es gilt
@@ -861,8 +724,9 @@ Abbildungen linear.
 
 \bigskip
 
-{\bf Bemerkungen:} (1) $(d\,\id_M)_p = \id_{T_pM}$. (2) Ist $f$ ein Diffeomorphismus, dann ist $df_p$ f\"ur alle $p$ ein
+\begin{rem*}[Bemerkungen.] (1) $(d\,\id_M)_p = \id_{T_pM}$. (2) Ist $f$ ein Diffeomorphismus, dann ist $df_p$ f\"ur alle $p$ ein
 Isomorphismus. (3) Ist $df_p$ ein Isomorphismus, dann ist $f$ lokal um $p$ ein Diffeomorphismus.
+\end{rem*}
 
 \bigskip
 
@@ -876,22 +740,23 @@ Zwei Funktionen $f$ und $h$ definiert auf einer Umgebung $U$ von $p$ hei\ss en \
 Umgebung $V\subset U$ von $p$ existiert, so dass $f|_V = h|_V$ gilt.
 
 \begin{Definition} Die \"Aquivalenzklassen bzgl. $\sim$ differenzierbarer Funktionen, definiert  auf Umgebungen von
-$p\in M$ nennt man {\em Funktionskeime} in $p$. Man schreibt $\mathcal C^\infty_p(M)$ f\"ur den Raum der
-Funktionskeime in $p$.
+$p\in M$ nennt man \emph{ Funktionskeime} in $p$. Man schreibt $\mathcal C^\infty_p(M)$ f\"ur den Raum der
+Funktionskeime in $p$.\fish
 \end{Definition}
 
 \medskip
 
-{\bf Bemerkung:} Man kann Funktionskeime addieren und multiplizieren, z.B. definiert man $[f]\cdot [g] =[f\cdot g]$.
+\begin{rem*} Man kann Funktionskeime addieren und multiplizieren, z.B. definiert man $[f]\cdot [g] =[f\cdot g]$.
 Damit wird $\mathcal C^\infty_p(M)$ eine
 reelle Algebra, d.h. ein Vektorraum mit einer vertr\"aglichen Multiplikation.
+\end{rem*}
 
 \bigskip
 
 \begin{Lemma}
 Sei $M$ eine n-dimensionale Mannigfaltigkeit. Dann ist:
 $
-\mathcal C^\infty_p(M) \cong \mathcal C^\infty_0(\R^n) \ .
+\mathcal C^\infty_p(M) \cong \mathcal C^\infty_0(\R^n) \ .\fish
 $
 \end{Lemma}
 \proof
@@ -901,26 +766,27 @@ $[f]\mapsto [f\circ x^{-1}]$.
 
 \bigskip
 
-\begin{Definition} Eine {\em Derivation} auf $\mathcal C^\infty_p(M)$ ist eine lineare Abbildung
+\begin{Definition} Eine \emph{ Derivation} auf $\mathcal C^\infty_p(M)$ ist eine lineare Abbildung
 $v:\mathcal C^\infty_p(M)\rightarrow \R$ mit
 $$
 v([f][g])= v([f])g(p) + f(p)v([g]) \ .
 $$
 Die Menge der Derivationen auf $\mathcal C^\infty_p(M)$ wird mit $\mathcal D_p(M)$
-bezeichnet.
+bezeichnet.\fish
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkung:} (1) $\mathcal D_p(M)$ ist ein reeller Vektorraum
+\begin{rem*}[Bemerkungen.] (1) $\mathcal D_p(M)$ ist ein reeller Vektorraum
 (2) $\mathcal D_p(M)\cong \mathcal D_0(\R^n)$. Dieser Isomorphismus ist
 folgendermassen definiert: Sei $v$ eine
 Derivation in $\mathcal D_0(\R^n)$, dann definiert die Abbildung
 $f\mapsto v(f\circ x^{-1})$ eine Derivation in $\mathcal D^\infty_p(M)$
+\end{rem*}
 
 \medskip
 
-{\bf Beispiel:}
+\begin{ex}
 Jeder Vektor $v=(v_1,\ldots, v_n)\in \R^n$ definiert durch die Richtungsableitung eine
 Derivation auf $\mathcal C^\infty_p(\R^n)$:
 $$
@@ -931,8 +797,8 @@ Dabei entsprechen also
 die Vektoren $\,e_i\,$ der kanonischen Basis, den partiellen
 Ableitungen $\frac{\partial }{\partial x_i}, i=1,\ldots, n$. Im folgenden Satz wird gezeigt,
 dass auch umgekehrt jede Derivation von dieser Form ist, d.h. man eine Isomorphie
-$\R^n\cong \mathcal D_p(\R^n)$ hat.
-
+$\R^n\cong \mathcal D_p(\R^n)$ hat.\boxc
+\end{ex}
 
 \bigskip
 
@@ -943,7 +809,7 @@ $$
 \delta ([f]) = \sum^n_{j=1}\, \delta([x_j])\, \left.\frac{\partial f}{\partial x_j}\right|_0  \ .
 $$
 Insbesondere hat der Raum der Derivationen auf $\mathcal C^\infty_0(\R^n)$ die Dimension $n$,
-mit den Derivationen $\frac{\partial }{\partial x_i}, i=1,\ldots, n$, als Basis.
+mit den Derivationen $\frac{\partial }{\partial x_i}, i=1,\ldots, n$, als Basis.\fish
 \end{Satz}
 \proof
 Die Aussage des Satzes folgt aus einem fundamentalen Lemma, das zuerst bewiesen werden muss.
@@ -954,7 +820,7 @@ $f$ geschrieben werden als:
 $$
 f(x) = f(0) + \sum^n_{j=1}\,x_j\,h_j(x) \ ,
 $$
-f\"ur gewisse differenzierbare Funktionen $h_j$ mit $h_j(0) = \left.\frac{\partial f}{\partial x_j} \right|_0$.
+f\"ur gewisse differenzierbare Funktionen $h_j$ mit $h_j(0) = \left.\frac{\partial f}{\partial x_j} \right|_0$.\fish
 \end{Lemma}
 Beweis des Lemmas: Aus dem Hauptsatz der Differential- und Integralrechnung und der Kettenregel folgt
 $$
@@ -982,14 +848,14 @@ auch linear unabh\"angig, bilden also eine Basis in $\mathcal D_0(\R^n)$.
 
 
 \begin{Definition}
-Sei $v\in T_pM$ und $f\in \mathcal C^\infty(M)$. Dann ist die {\em Lie-Ableitung} von $f$ in Richtung
+Sei $v\in T_pM$ und $f\in \mathcal C^\infty(M)$. Dann ist die \emph{ Lie-Ableitung} von $f$ in Richtung
 $v$ definiert als:
 $$
 L_v(f) = v(f) = df_p(v) = \left.\frac{d}{dt}\right|_{t=0} f(\alpha(t)) \ ,
 $$
 wobei $\alpha : (-\varepsilon, \varepsilon)\rightarrow M$ eine glatte Kurve in $M$ ist mit
 $\alpha(0)=p$ und $\dot \alpha(0)=v$. Auf Funktionskeimen definiert man die Lie-Ableitung
-durch $L_v([f]) = [L_v(f)]$.
+durch $L_v([f]) = [L_v(f)]$.\fish
 \end{Definition}
 
 
@@ -1001,7 +867,7 @@ durch $L_v([f]) = [L_v(f)]$.
 Die Abbildung $\,\xi\mapsto L_\xi$ definiert eine lineare Isomorphie zwischen $T_pM$ und dem
 Raum der Derivationen auf $\mathcal C^\infty_p(M)$, d.h.
 $$
-T_pM \cong \mathcal D_p(M) \ .
+T_pM \cong \mathcal D_p(M) \ .\fish
 $$
 \end{Satz}
 \proof
@@ -1019,18 +885,19 @@ $\xi=0$ folgt. Die Zuordnung ist bijektiv aus Dimensionsgr\"unden: $\dim T_M = n
 
 \bigskip
 
-{\bf Bezeichnung:}
+\begin{rem*}[Bezeichnung.]
 Sei $f \in \mathcal C^\infty(M)$ und sei $(U,x)$ eine Karte um $p\in M$. Dann schreibt man
 $$
 \frac{\partial f }{\partial x_j}(p) = \left.\frac{\partial }{\partial x_j}\right|_p(f)
 = \frac{\partial f x^{-1}}{\partial x_j}(x(p)) \ .
 $$
 Genaugenommen betrachtet man $f$ auf der Kartenumgebung $U$ von $p$ bzw. geht zu dem Funktionskeim
-$[f]$ in $p$ \"uber.
+$[f]$ in $p$ \"uber.\map
+\end{rem*}
 
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
 \item
 Die Derivationen $\left.\frac{\partial }{\partial x_j}\right|_p, j=1,\ldots,  n$ bilden eine Basis
@@ -1055,14 +922,15 @@ $$
 \alpha_j(t) = x^{-1} (x(p) + te_j) \ .
 $$
 \end{enumerate}
+\end{rem*}
 
-\section{Das Tangentialb\"undel}
+\chapter{Das Tangentialb\"undel}
 
 \begin{Definition}
-Das {\em Tangentialb\"undel} $TM$ einer Mannigfaltigkeit $M$ ist definiert als die disjunkte
+Das \emph{ Tangentialb\"undel} $TM$ einer Mannigfaltigkeit $M$ ist definiert als die disjunkte
 Vereinigung aller Tangentialr\"aume:
 $$
-TM \;:=\; \bigcup_{p\in M} \, T_pM \ .
+TM \;:=\; \bigcup_{p\in M} \, T_pM \ .\fish
 $$
 \end{Definition}
 
@@ -1071,7 +939,7 @@ $$
 \begin{Satz}
 Sei $M$ eine $n$-dimensionale differenzierbare Mannigfaltigkeit. Dann tr\"agt $TM$ die Struktur einer
 $2n$-dimensionalen differenzierbaren Mannigfaltigkeit. Die Fu\ss punktabbildung $\pi: TM \rightarrow M$
-ist surjektiv und differenzierbar.
+ist surjektiv und differenzierbar.\fish
 \end{Satz}
 \proof
 Man definiert die kanonische Projektion als die Fu\ss punktabbildung:
@@ -1131,14 +999,14 @@ Sind $V,W$ offene Mengen in $\R^n$ mit $v\in V, w\in W$ und $V\cap W = \emptyset
 $\Phi^{-1}(x(U)\times V)$ und $\Phi^{-1}(x(U)\times W)$ disjunkte offene Umgebungen von $a,b$.
 
 
-\subsection{Vektorb\"undel}
+\section{Vektorb\"undel}
 
 Das Tangentialb\"undel $TM$ ist ein Beispiel f\"ur ein reelles Vektorb\"undel. Diese sind
 folgendermassen definiert.
 
 \begin{Definition}
 Seien $E$ und $B$ differenzierbare Mannigfaltigkeiten, $\pi:E\rightarrow B$ eine
-differenzierbare Abbildung. Ein {\em Vektorb\"undel} vom Rang $n$ ist ein Tripel
+differenzierbare Abbildung. Ein \emph{ Vektorb\"undel} vom Rang $n$ ist ein Tripel
 $(E,\pi,B)$ mit:
 \begin{enumerate}
 \item
@@ -1154,73 +1022,80 @@ mit:
 $h_i(\pi^{-1}(x)) = \{x\} \times \R^n $
 \item
 $ h_i \circ h_j^{-1} : (U_i \cap U_j) \times \R^n \rightarrow (U_i \cap U_j) \times \R^n, \quad (x,v) \mapsto (x,g_{ij}(x)v)$
-\newline f\"ur differenzierbare Abbildungen $\; g_{ij}: U_i\cap U_j \rightarrow GL(n,\R)$.
+\newline f\"ur differenzierbare Abbildungen $\; g_{ij}: U_i\cap U_j \rightarrow GL(n,\R)$.\fish
 \end{itemize}
 \end{enumerate}
 \end{Definition}
 
 \medskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
 \item
-Das Urbild $E_x=\pi^{-1}(x)$ hei\ss t {\it Faser} \"uber $x\in B$. Die Fasern $E_x$ sind f\"ur alle $x$
+Das Urbild $E_x=\pi^{-1}(x)$ hei\ss t {\itshape Faser} \"uber $x\in B$. Die Fasern $E_x$ sind f\"ur alle $x$
 Vektorr\"aume isomorph zu $\R^n$.
 \item
-Die Mannigfaltigkeit $E$ nennt man {\it Totalraum}, $B$ die {\it Basis} und $h_i$ die {\it
+Die Mannigfaltigkeit $E$ nennt man {\itshape Totalraum}, $B$ die {\itshape Basis} und $h_i$ die {\itshape
 lokalen Trivialisierungen} des Vektorb\"undels $\pi:E\rightarrow B$.
 \end{enumerate}
-
+\end{rem*}
 
 \medskip
 
 
-{\bf Beispiele:} (1) Das {\it Tangentialb\"undel} $\pi:TM\rightarrow M$ einer $n$-dimensionalen Mannigfaltigkeit
-$M$ ist ein Vektorb\"undel vom Rang $n$. (2) Das {\it triviale B\"undel} \"uber $B$ ist definiert als
+\begin{ex}
+Das {\itshape Tangentialb\"undel} $\pi:TM\rightarrow M$ einer $n$-dimensionalen Mannigfaltigkeit
+$M$ ist ein Vektorb\"undel vom Rang $n$.\boxc
+\end{ex}
+\begin{ex}
+Das {\itshape triviale B\"undel} \"uber $B$ ist definiert als
  $\;\pi: E=B\times \R^n\rightarrow B$,
-wobei $\pi$ die Projektion auf den ersten Faktor ist.
-
+wobei $\pi$ die Projektion auf den ersten Faktor ist.\boxc
+\end{ex}
 
 \medskip
 
 
 \begin{Definition}
-Eine differenzierbare Abbildung $s:B\rightarrow E$ hei\ss t {\em Schnitt} des Vektorb\"undels, falls
+Eine differenzierbare Abbildung $s:B\rightarrow E$ hei\ss t \emph{ Schnitt} des Vektorb\"undels, falls
 $$
 \pi \circ s = \id_B \ ,
 $$
-d.h. falls $s(x)\in E_x$ f\"ur alle $x\in B$. Den Raum der Schnitte in $E$ bezeichnet man mit $\Gamma(E)$.
+d.h. falls $s(x)\in E_x$ f\"ur alle $x\in B$. Den Raum der Schnitte in $E$ bezeichnet man mit $\Gamma(E)$.\fish
 \end{Definition}
 
 
-\section{Vektorfelder}
+\chapter{Vektorfelder}
 
 \begin{Definition}
-Ein {\em Vektorfeld} ist ein Schnitt des Tangentialb\"undels, d.h. eine differenzierbare
+Ein \emph{ Vektorfeld} ist ein Schnitt des Tangentialb\"undels, d.h. eine differenzierbare
 Abbildung $X:M\rightarrow TM$ mit $\pi\circ X = \id_M$, also $X_p=X(p) \in T_pM$ f\"ur
-alle $p\in M$.
+alle $p\in M$.\fish
 \end{Definition}
 
 \medskip
 
-{\bf Beispiel:} Sei $M=S^n$ dann schreibt sich der Tangentialraum in einem Punkt
+\begin{ex} Sei $M=S^n$ dann schreibt sich der Tangentialraum in einem Punkt
 $p\in S^n$ als $T_pS^n = p^\perp =  \{v \in \R^{n+1} | \, \la v, p \ra = 0\}$.
 Ein Vektorfeld auf $S^n$ ist also eine glatte Abbildung $v:S^n\rightarrow \R^{n+1}$
 mit $\la v(p), p \ra = 0$ f\"ur alle $p\in S^n$. Interessant ist die Frage, ob
 es Vektorfelder ohne Nullstellen gibt, also ohne $p$ mit $v(p)=0$. Auf der $S^{2n+1}$
 l\"a\ss t sich leicht ein Beispiel daf\"ur angeben:
 $$
-v(x_0, \ldots, x_{2n+1}) := (-x_1,x_0, \ldots, -x_{2n+1}, x_{2n}) \ .
+v(x_0, \ldots, x_{2n+1}) := (-x_1,x_0, \ldots, -x_{2n+1}, x_{2n}) \ .\boxc
 $$
-Der Satz vom Igel in allgemeiner Fassung besagt nun:
+\end{ex}
 
+Der Satz vom Igel in allgemeiner Fassung besagt nun:
 \medskip
 
-{\bf Satz:} Jedes Vektorfeld auf $S^{2n}$ hat eine Nullstelle.
+\begin{prop}
+Jedes Vektorfeld auf $S^{2n}$ hat eine Nullstelle.\fish
+\end{prop}
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
 \item
 Sei $n+1= (2r+1)2^{c+4d}$ mit $0\le c \le 3$. Dann gibt es auf der $S^n$
@@ -1239,6 +1114,7 @@ parallelisierbar bzw. das Tangentialb\"undel trivial ist.
 Den unendlich-dimensionalen Vektorraum der Vektorfelder auf $M$ bezeichnet man mit
 $\chi(M)$ bzw. $\Gamma(TM)$.
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
@@ -1248,25 +1124,26 @@ der glatten Funktionen auf $M$. Die Identifikation wird wieder durch eine Lie-Ab
 gegeben.
 
 \begin{Definition}
-Eine {\em Derivation} $\delta$ auf $\mathcal C^\infty(M)$ ist eine lineare Abbildung
+Eine \emph{ Derivation} $\delta$ auf $\mathcal C^\infty(M)$ ist eine lineare Abbildung
 $\delta : \mathcal C^\infty(M)\rightarrow \mathcal C^\infty(M)$ mit der Produktregel:
 $$
 \delta (f\cdot g) = \delta(f) \cdot g + f \cdot \delta(g) \ .
 $$
-Der Raum der Derivationen auf $M$ wird mit $\mathcal D(M)$ bezeichnet.
+Der Raum der Derivationen auf $M$ wird mit $\mathcal D(M)$ bezeichnet.\fish
 \end{Definition}
 
 \bigskip
 
-{\bf Beispiel:} Jedes Vektorfeld $X\in \chi(M)$ definiert durch die Lie-Ableitung
+\begin{ex} Jedes Vektorfeld $X\in \chi(M)$ definiert durch die Lie-Ableitung
 $L_X:\mathcal C^\infty(M)\rightarrow \mathcal C^\infty(M)$ eine Derivation auf $M$.
-Dabei ist $L_X(f)(p) := L_{X_p}[f] = df_p(X_p)$.
+Dabei ist $L_X(f)(p) := L_{X_p}[f] = df_p(X_p)$.\boxc
+\end{ex}
 
 \bigskip
 
 \begin{Satz}
 Die Abbildung $X\mapsto L_X$ von $\Gamma (TM)$ nach  $\mathcal D(M)$ ist
-ein Isomorphismus unendlich-dimensionaler Vektorr\"aume.
+ein Isomorphismus unendlich-dimensionaler Vektorr\"aume.\fish
 \end{Satz}
 \proof
 Klar ist, dass $X\mapsto L_X$ eine lineare Abbildung ist, und dass die Lie-Ableitung
@@ -1289,7 +1166,7 @@ $f$, deren Lie-Ableitung nach $X$ nicht verschwindet:
 $$
 L_X(f \cdot \phi)(p) = d(f \cdot \phi)_p(X_p)= df_p(X_p) \neq 0 \ .
 $$
-Die Existenz der sogenannten {\it Abschneidefunktion} $\phi$ bleibt noch zu zeigen.
+Die Existenz der sogenannten {\itshape Abschneidefunktion} $\phi$ bleibt noch zu zeigen.
 
 \medskip
 
@@ -1319,7 +1196,7 @@ Sei $R>0$, dann existiert eine glatte Funktioin $\phi : \R^n\rightarrow \R$ mit
 $$
 \left. \phi\right|_{B_0(\frac13R)} \equiv 1
 \qquad \mbox{und}  \qquad
-\left. \phi\right|_{\R^n \setminus B_0(\frac23R)} \equiv 0 \ .
+\left. \phi\right|_{\R^n \setminus B_0(\frac23R)} \equiv 0 \ .\fish
 $$
 \end{Lemma}
 %\proof
@@ -1327,7 +1204,7 @@ $$
 %f\"ur $x\in \R^n$. Sei
 %\qed
 
-\subsection{Die Lie-Algebra der Vektorfeldern}
+\section{Die Lie-Algebra der Vektorfeldern}
 
 
 
@@ -1340,7 +1217,7 @@ Insbesondere hat man damit gezeigt:
 
 \begin{Lemma}
 Seien $\delta_1, \delta_2$ zwei Derivationen auf $\mathcal C^\infty$. Dann ist
-$\delta_1 \, \delta_2 - \delta_2 \, \delta_1$ wieder eine Derivation.
+$\delta_1 \, \delta_2 - \delta_2 \, \delta_1$ wieder eine Derivation.\fish
 \end{Lemma}
 
 \begin{Definition}
@@ -1348,8 +1225,8 @@ Seien $X,Y$ Vektorfelder auf $M$. Dann ist $[X,Y]$ das eindeutig bestimmte Vekto
 $$
 L_{[X,Y]} = L_X\circ L_Y  -  L_Y\circ L_X  \ .
 $$
-Man nennt $[X,Y]$ die {\em Lie-Klammer} bzw. den {\em Kommutator } der Vektorfelder
-$X,Y$. Die {\em Lie-Ableitung} von $Y$ nach $X$ ist definiert als $L_XY:=[X,Y]$.
+Man nennt $[X,Y]$ die \emph{ Lie-Klammer} bzw. den \emph{ Kommutator } der Vektorfelder
+$X,Y$. Die \emph{ Lie-Ableitung} von $Y$ nach $X$ ist definiert als $L_XY:=[X,Y]$.\fish
 \end{Definition}
 
 \bigskip
@@ -1360,7 +1237,7 @@ $X = \sum a_i \frac{\partial}{\partial x_i}$ und $Y = \sum b_i \frac{\partial}{\
 Dann gilt
 $$
 [X,Y] = \sum^n_{i,j=1} \left( a_j \frac{\partial b_i}{\partial x_j} - b_j \frac{\partial a_i}{\partial x_j}
-\right) \frac{\partial}{\partial x_i} \ .
+\right) \frac{\partial}{\partial x_i} \ .\fish
 $$
 \end{Lemma}
 \proof
@@ -1385,17 +1262,18 @@ $[a X + b Y, Z] = a [X, Z] +  b [Y, Z] \ ,\qquad $ (Linearit\"at)
 \item\label{c}
 $[X,[Y,Z]]  + [Y,[Z,X]]  + [Z,[X,Y]] = 0 \ ,\qquad $  (Jacobi-Identit\"at)
 \item
-$[fX,Y] = f[X,Y] - Y(f) X,\quad [X,f Y] = f[X,Y] + X(f)Y \ .$
+$[fX,Y] = f[X,Y] - Y(f) X,\quad [X,f Y] = f[X,Y] + X(f)Y \ .$\fish
 \end{enumerate}
 \end{Satz}
 
 \bigskip
 
-{\bf Bemerkung:}
-Eine reelle {\it Lie-Algebra} ist ein reeller Vektorraum $V$ mit einer Abbildung
+\begin{rem*}
+Eine reelle {\itshape Lie-Algebra} ist ein reeller Vektorraum $V$ mit einer Abbildung
 $[\cdot, \cdot] : V\times V \rightarrow V$, die die Eigenschaften
 $\ref{a}, \ref{b}, \ref{c}$ erf\"ullt. Die Lie-Klammer $[\cdot, \cdot]$
 ist also eine bilineare schiefsymmetrische Abbildung, die die Jacobi-Identit\"at erf\"ullt.
+\end{rem*}
 
 \medskip
 
@@ -1403,7 +1281,7 @@ Der Raum $\chi(M)$ der Vektorfelder \"uber einer Mannigfaltigkeit $M$ zusammen m
 unendlichdimensionale reelle Lie-Algebra.
 
 
-\subsection{Das Bild von Vektorfeldern unter Diffeomorphismen}
+\section{Das Bild von Vektorfeldern unter Diffeomorphismen}
 
 \begin{Definition}
 Sei $f:M\rightarrow N$ ein Diffeomorphismus, dann ist das Bild des Vektorfeldes $X\in \chi(M)$
@@ -1412,7 +1290,7 @@ $$
 (f_* X)_q := df_{f^{-1}(q)} (X_{f^{-1}(q)}) \ .
 $$
 Zwei Vektorfelder $X,Y$ nennt man $f$-verkn\"upft, falls es einen Diffeomorphismus
-$f$ gibt mit $Y = f_* X$.
+$f$ gibt mit $Y = f_* X$.\fish
 \end{Definition}
 
 
@@ -1426,14 +1304,14 @@ L_{f_*X} (\phi ) = L_X(\phi \circ f) \circ f^{-1}
 $
 \item
 $
-f_* [X,Y] = [f_*X, f_*Y]
+f_* [X,Y] = [f_*X, f_*Y].\fish
 $
 \end{enumerate}
 \end{Satz}
 
 \bigskip
 
-\subsection{Vektorfelder und Differentialgleichungen}
+\section{Vektorfelder und Differentialgleichungen}
 
 \bigskip
 
@@ -1464,8 +1342,8 @@ Funktionen $c_i, i=1,\ldots, n$ mit den Anfangsbedingungen $c_i(0)=a_i(p)$.
 \bigskip
 
 \begin{Definition}
-Eine Kurve $c: (-\varepsilon, \varepsilon)\rightarrow M$ hei\ss t {\em Integralkurve} des Vektorfeldes
-$X\in \chi(M)$ durch $p$, falls $c(0)=p$ und $\dot c (t) = X_{c(t)}$ f\"ur alle $t\in (-\varepsilon, \varepsilon)$.
+Eine Kurve $c: (-\varepsilon, \varepsilon)\rightarrow M$ hei\ss t \emph{ Integralkurve} des Vektorfeldes
+$X\in \chi(M)$ durch $p$, falls $c(0)=p$ und $\dot c (t) = X_{c(t)}$ f\"ur alle $t\in (-\varepsilon, \varepsilon)$.\fish
 \end{Definition}
 
 \bigskip
@@ -1481,7 +1359,7 @@ F\"ur alle $p\in M$ existiert ein Intervall $I_p\subset \R$ um $0$
  c_p(0)= p \qquad \mbox{und} \qquad \dot c_p(t) = X_{c(t)}
  $$
  f\"ur alle $t\in I_p$, d.h. die Integralkurven von $X$ sind (lokal) eindeutig bestimmt und
- existieren lokal.
+ existieren lokal.\fish
  \end{Satz}
 
  \medskip
@@ -1492,7 +1370,7 @@ F\"ur alle $p\in M$ existiert ein Intervall $I_p\subset \R$ um $0$
  $$
  I \times U \rightarrow M, \qquad (t,q)\mapsto c_q(t)
  $$
- ist differenzierbar.
+ ist differenzierbar.\fish
  \end{Satz}
 
  \bigskip
@@ -1505,10 +1383,10 @@ F\"ur alle $p\in M$ existiert ein Intervall $I_p\subset \R$ um $0$
  \bigskip
 
  \begin{Definition}
- Die Abbildung $(t,q)\mapsto c_q(t)$ hei\ss t der {\em lokale Flu\ss{}} des Vektorfeldes $X$.
- Die Integralkurven von $X$ nennt man auch {\em Flu\ss linien} von $X$. Der Flu\ss{} definiert
+ Die Abbildung $(t,q)\mapsto c_q(t)$ hei\ss t der \emph{ lokale Flu\ss{}} des Vektorfeldes $X$.
+ Die Integralkurven von $X$ nennt man auch \emph{ Flu\ss linien} von $X$. Der Flu\ss{} definiert
  auch f\"ur alle hinreichend kleinen Parameter $t$ eine lokale Abbildung $\phi_t : U \subset M
- \rightarrow M$ durch  $\phi_t(q)= c_q(t)$.
+ \rightarrow M$ durch  $\phi_t(q)= c_q(t)$.\fish
  \end{Definition}
 
 \bigskip
@@ -1520,8 +1398,8 @@ $$
 $$
 f\"ur alle Parameter $t,s$, f\"ur die $\phi_t, \phi_s$ und $\phi_{t+s}$
 definiert sind.
-Man sagt: $\{\phi_t\}$ ist eine {\it 1-parametrige Gruppe} (lokaler)
-Diffeomorphismen.
+Man sagt: $\{\phi_t\}$ ist eine {\itshape 1-parametrige Gruppe} (lokaler)
+Diffeomorphismen.\fish
 \end{Satz}
 \proof
 Aus der Definition der Flu\ss -Abbildung $\phi_t$ folgt:
@@ -1535,7 +1413,7 @@ differenzierbar, d.h. $\phi_t$ ist ein (lokaler) Diffeomorphismus.
 
 \bigskip
 
-{\bf Beispiel:}
+\begin{ex}
 Sei $M= \R$ und $X$ das Vektorfeld $X_x = x^2 \frac{d}{dx}$ f\"ur $x\in \R$. Die Integralkurve
 von $X$ durch $x$ ist gegeben durch
 $
@@ -1551,13 +1429,14 @@ t \in (-\infty, \frac1x) \qquad \mbox{falls}\quad x >0, \qquad
 t \in (\frac1x, \infty) \qquad \mbox{falls}\quad x <0 \ .
 $$
 Der Flu\ss{} ist also definiert auf $I_x=(-\frac1{|x|},\frac1{|x|})$ und es
-folgt, dass $I_x$ immer kleiner wird f\"ur $x\mapsto \pm\infty$.
+folgt, dass $I_x$ immer kleiner wird f\"ur $x\mapsto \pm\infty$.\boxc
+\end{ex}
 
 \bigskip
 
 \begin{Definition}
 Ein Vektorfeld $X\in \chi(M)$ hat kompakten Tr\"ager, falls der Abschlu\ss{} der
-Menge $\{p\in M \,|\, X_p\neq 0 \}$ kompakt ist.
+Menge $\{p\in M \,|\, X_p\neq 0 \}$ kompakt ist.\fish
 \end{Definition}
 
 \bigskip
@@ -1565,12 +1444,13 @@ Menge $\{p\in M \,|\, X_p\neq 0 \}$ kompakt ist.
 \begin{Satz}
 Ist $X$ ein Vektorfeld mit kompaktem Tr\"ager, so ist sein Flu\ss{} $\phi_t$
 f\"ur alle $t\in \R$ definiert und jedes $\phi_t:M\rightarrow M$ ist ein
-globaler Diffeomorphismus.
+globaler Diffeomorphismus.\fish
 \end{Satz}
 
-{\bf Bemerkung:} Die Voraussetzung des Satzes ist zum Beispiel f\"ur kompakte
+\begin{rem*} Die Voraussetzung des Satzes ist zum Beispiel f\"ur kompakte
 Mannigfaltigkeiten erf\"ullt. Ist der lokale Flu\ss{} von $X$ f\"ur alle $t$
 definiert, so nennt man $X$ vollst\"andig.
+\end{rem*}
 
 \bigskip
 
@@ -1602,7 +1482,7 @@ Mit dieser Definition wird $\{\varphi_t\}$ ein global definierter Flu\ss{} des V
 
 \bigskip
 
-\subsection{Lie-Ableitung von Vektorfeldern}
+\section{Lie-Ableitung von Vektorfeldern}
 
 Die Lie-Ableitung von Funktionen und Vektorfeldern kann man auch mit Hilfe des lokalen
 Flu\ss es beschreiben. Sei $X$ ein glattes Vektorfeld auf $M$ mit dem lokalem Flu\ss{}
@@ -1633,7 +1513,7 @@ Seien $X,Y$ beliebige glatte Vektorfelder auf $M$. Dann gilt in $p\in M$:
 $$
 L_XY_p = [X,Y]_p \; = \; \lim_{t\rightarrow 0}\tfrac1t( (\varphi_t^*Y)_p - Y_p)
 \; = \;
-\lim_{t\rightarrow 0}\tfrac1t( Y_p - (\varphi_{t\,*} Y)_p )\ .
+\lim_{t\rightarrow 0}\tfrac1t( Y_p - (\varphi_{t\,*} Y)_p )\ .\fish
 $$
 \end{Satz}
 \proof
@@ -1684,7 +1564,7 @@ X_p(Y(f)) - Y_p(X(f))\\[1ex]
 $$
 \qed
 
-\subsection{Erg\"anzungen zu Vektorfeldern}
+\section{Erg\"anzungen zu Vektorfeldern}
 
 \bigskip
 
@@ -1693,7 +1573,7 @@ Sei $X$ ein Vektorfeld auf $M$ mit $X_p\neq 0$ f\"ur ein $p\in M$.
 Dann existiert eine Karte $(U,y)$ um $p$ mit
 $$
 X = \left. \frac{\partial}{\partial y_1}\right.
-\qquad \mbox{auf}\quad U \ .
+\qquad \mbox{auf}\quad U \ .\fish
 $$
 \end{Satz}
 \proof
@@ -1779,7 +1659,7 @@ damit nochmal $L_XX=0$.
 
 \begin{Lemma}
 Sei $\psi$ ein Diffeomorphismus und $X$ ein Vektorfeld auf $M$ mit dem lokalem Flu\ss{}
-$\varphi_t$. Dann hat das Vektorfeld $\psi_*X$ den Flu\ss{} $\psi\circ \varphi_t \circ \psi^{-1}$.
+$\varphi_t$. Dann hat das Vektorfeld $\psi_*X$ den Flu\ss{} $\psi\circ \varphi_t \circ \psi^{-1}$.\fish
 \end{Lemma}
 \proof
 Sei $f$ ein beliebiger Funktionskeim um $q\in M$. Dann ergibt sich die Aussage des Lemmas
@@ -1829,7 +1709,7 @@ $$
 [X, Y] = 0 \qquad \mbox{genau dann, wenn} \qquad \varphi_t \circ \psi_s = \psi_s\circ \varphi_t \ ,
 $$
 wobei die rechte Gleichung f\"ur alle $s$ und $t$ erf\"ullt sein soll, f\"ur die die entsprechenden
-Fl\"usse definiert sind.
+Fl\"usse definiert sind.\fish
 \end{Lemma}
 \proof
 Sei zun\"achst vorausgesetzt, dass die Fl\"usse kommutieren dann folgt nach Folgerung~\ref{folgerung}
@@ -1873,7 +1753,7 @@ Seien $X_1,\ldots, X_k$ Vektorfelder auf einer Umgebung $V$ von $p\in M$, die in
 $U$ linear unabh\"angig sind und es gelte $[X_a, X_b]=0$ f\"ur $1\le a,b \le k$. Dann existiert
 eine Karte $(U,x)$ um $p$ mit:
 $$
-X_a = \frac{\partial}{\partial x_a} \qquad \mbox{auf} \quad U \quad \mbox{f\"ur} \quad a = 1,\ldots, k \ .
+X_a = \frac{\partial}{\partial x_a} \qquad \mbox{auf} \quad U \quad \mbox{f\"ur} \quad a = 1,\ldots, k \ .\fish
 $$
 \end{Satz}
 \proof
@@ -1912,7 +1792,7 @@ $$
 
 
 
-\section{Integral-Mannigfaltigkeiten}
+\chapter{Integral-Mannigfaltigkeiten}
 
 Ziel dieses Abschnitts ist eine Verallgemeinerung des Begriffs der Integralkurven, sowie eine
 geometrische Interpretation von gewissen Systemen partieller Differentialgleichungen. Die
@@ -1921,7 +1801,7 @@ Darstellung folgt dem entsprechenden Abschnitt im Buch von M. Spivak.
 \bigskip
 
 \begin{Definition}
-Eine $k$-dimensionale {\em Distribution} auf $M$ ist eine Zuordnung $p\mapsto \Delta_p$ mit
+Eine $k$-dimensionale \emph{ Distribution} auf $M$ ist eine Zuordnung $p\mapsto \Delta_p$ mit
 \begin{enumerate}
 \item
 $\Delta_p \subset T_p M$ ist ein $k$-dimensionaler Unterraum
@@ -1934,42 +1814,44 @@ $$
 \end{enumerate}
 
 Sei $X$ ein Vektorfeld auf $M$. Man sagt, dass $X$ ein Vektorfeld in $\Delta$ ist, falls
-$X_p \in \Delta_p$ f\"ur alle $p\in M$ gilt.
+$X_p \in \Delta_p$ f\"ur alle $p\in M$ gilt.\fish
 \end{Definition}
 
-{\bf Bemerkung:} \"Aquivalent kann man Distributionen auch als Unterb\"undel  $\Delta \subset TM$
+\begin{rem*} \"Aquivalent kann man Distributionen auch als Unterb\"undel  $\Delta \subset TM$
 definieren. Vektorfelder in $\Delta$ sind dann genau die Schnitte von $\Delta$.
+\end{rem*}
 
 \medskip
 
 Sei $E\rightarrow M$ ein Vektorb\"undel \"uber $M$. Eine Teilmenge $F\subset E$ hei\ss t
-{\it Unterb\"undel} von $E$, falls $F\rightarrow M$ ein Vektorb\"undel ist und
+{\itshape Unterb\"undel} von $E$, falls $F\rightarrow M$ ein Vektorb\"undel ist und
 $F_p$ f\"ur alle $p \in M$ ein Unterraum von $E_p$ ist. Es folgt, dass $F$ eine Untermannigfaltigkeit
 von $E$ ist.
 
 \bigskip
 
 \begin{Definition}
-Eine {\em Integral-Mannigfaltigkeit} einer Distribution $\Delta$ ist eine Untermannigfaltigkeit
+Eine \emph{ Integral-Mannigfaltigkeit} einer Distribution $\Delta$ ist eine Untermannigfaltigkeit
 $i: N \rightarrow M$ mit:
 $$
-di (T_pN) \;=\; \Delta_p \qquad \mbox{f\"ur alle} \quad p \in N \ .
+di (T_pN) \;=\; \Delta_p \qquad \mbox{f\"ur alle} \quad p \in N \ .\fish
 $$
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Der Begriff der Untermannigfaltigkeit ist hier in dem schw\"acheren Sinne zu benutzen, d.h. $N$ ist
 eine Untermannigfaltigkeit, falls $N$ eine Mannigfaltigkeit ist und eine injektive Immersion
 $i:N \rightarrow M$ existiert.
 Im Allgemeinen existieren keine Integral-Mannigfaltigkeiten (noch nicht
 einmal lokal). Als Beispiel betrachtet man folgende $2$-dimensionale Distribution auf $\R^3$.
+\end{rem*}
 
 \bigskip
 
 
-{\bf Beispiel:} In $p=(a,b,c)$ sei die Distribution $\Delta$ gegeben als:
+\begin{ex} In $p=(a,b,c)$ sei die Distribution $\Delta$ gegeben als:
 $$
 \Delta_p := \mathrm{span} \{
 \left. \tfrac{\partial }{\partial x}\right|_p + \, b \left. \tfrac{\partial }{\partial z}\right|_p,\;
@@ -1981,7 +1863,8 @@ $$
 
 Es soll nun gezeigt werden, dass zu $\Delta$ keine Integral-Mannigfaltigkeit existiert. Der Beweis
 l\"a\ss t sich direkt geometrisch erbringen oder auch, indem man die folgende allgemeinere Situation
-betrachtet.
+betrachtet.\boxc
+\end{ex}
 
 \bigskip
 
@@ -2059,7 +1942,7 @@ Tats\"achlich gilt auch die Umkehrung:
 
 \begin{Satz}\label{bedingung1}
 Eine L\"osung von $(\ref{einstern})$ existiert genau dann, wenn
- $\tfrac{\partial f}{\partial y} = \tfrac{\partial g}{\partial x}$ erf\"ullt ist.
+ $\tfrac{\partial f}{\partial y} = \tfrac{\partial g}{\partial x}$ erf\"ullt ist.\fish
 \end{Satz}
 \proof
 Sei $\omega := f dx + g dy$ definiert als $1$-Form auf $\R^3$, dann erh\"alt man f\"ur das Differential von $\omega$
@@ -2177,7 +2060,7 @@ Bedingung (\ref{strich}) erf\"ullt ist.
 
 \bigskip
 
-\subsection{Der Satz von Frobenius in der Analysis}
+\section{Der Satz von Frobenius in der Analysis}
 
 
 \begin{Satz}
@@ -2197,12 +2080,12 @@ $$
 =
 \tfrac{\partial f_i}{\partial t_j} + \sum^n_{k=1} \tfrac{\partial f_i}{\partial x_k} \cdot f^k_j
 $$
-auf einer Umgebung von $(0,x) \in U \times V$ f\"ur alle $1\le i,j \le m$ erf\"ullt ist.
+auf einer Umgebung von $(0,x) \in U \times V$ f\"ur alle $1\le i,j \le m$ erf\"ullt ist.\fish
 \end{Satz}
 
 \bigskip
 
-{\bf Notation:}
+\begin{rem*}[Notation.]
 \begin{enumerate}
 \item
 $x=(x_1,\ldots, x_n)$ bezeichnet Punkte im $\R^n$ und $t=(t_1,\ldots, t_m)$ bezeichnet Punkte in $\R^m$
@@ -2213,13 +2096,14 @@ $\tfrac{\partial f}{\partial x_i} $ bezeichnet die $(m+i)$te Spalte der Jacobi-M
 \item
 $f_j = (f^1_j,\ldots,f^n_j)$
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
 Im Beispiel war $m=2, n=1$ und $f_1=f, f_2=g$.
 
 
-\subsection{Integrable Distributionen}
+\section{Integrable Distributionen}
 
 Sei $N \subset M$ eine Untermannigfaltigkeit und seien $X, Y$ zwei Vektorfelder auf $M$. Durch Einschr\"ankung
 auf $N$ erh\"alt man zwei Vektorfelder auf $N$. Es soll zun\"achst gezeigt werden, dass der Kommutator dieser
@@ -2230,20 +2114,21 @@ da der Kommutator auf $M$ mehr Ableitungen enth\"alt.
 
 \begin{Definition}
 Sei $f:N\rightarrow M$ eine differenzierbare Abbildung.  Zwei Vektorfelder $X\in \chi(N)$ und $Y\in \chi(M)$
-nennt man {\em $f$-verkn\"upft}, falls
+nennt man \emph{ $f$-verkn\"upft}, falls
 $$
 Y_{f(p)} = df (X_p)
 $$
-f\"ur alle $p\in M$ erf\"ullt ist.
+f\"ur alle $p\in M$ erf\"ullt ist.\fish
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkung:} Zwei Vektorfelder $X \in \chi(N),  Y\in \chi(M)$ sind genau dann $f$-verkn\"upft, wenn
+\begin{rem*} Zwei Vektorfelder $X \in \chi(N),  Y\in \chi(M)$ sind genau dann $f$-verkn\"upft, wenn
 $$
 Y(\phi) \circ f = X(\phi \circ f)
 $$
 f\"ur alle Funktionen (bzw. Funktionskeime) $\phi$ auf $M$ gilt.
+\end{rem*}
 
 \bigskip
 
@@ -2253,7 +2138,7 @@ $$
 Y_{f(p)} \in \Im (df_p) \ .
 $$
 Dann existiert ein eindeutig bestimmtes Vektorfeld $X$ auf $N$, so dass $X$ und $Y$
-$f$-verkn\"upft sind.
+$f$-verkn\"upft sind.\fish
 \end{Lemma}
 \proof
 Man definiert $X_p$ durch die Gleichung $Y_{f(p)}=df (X_p)$. Der Vektor $X_p$ definiert nach
@@ -2277,17 +2162,18 @@ und $X$ damit ein glattes Vektorfeld.
 
 \bigskip
 
-{\bf Beispiel:}
+\begin{ex}
 Sei $N$ eine Untermannigfaltigkeit von $M$ und $i:N\rightarrow M$ die Inklusionsabbildung, weiter sei $Y \in \chi(M)$ ein
 Vektorfeld mit $Y_p \in di (T_pN)$ f\"ur alle $p \in N$. Das wie oben beschriebene, eindeutig bestimmte Vektorfeld
-$X\in \chi(N)$ mit $di(X)=Y$, ist dann genau die Einschr\"ankung von $Y$ auf $N$.
+$X\in \chi(N)$ mit $di(X)=Y$, ist dann genau die Einschr\"ankung von $Y$ auf $N$.\boxc
+\end{ex}
 
 \bigskip
 
 \begin{Lemma}\label{kommutator1}
 Sei $f: N\rightarrow M$ eine differenzierbare  Abbildung und seien  $X_i \in \chi(N)$ bzw. $Y_i \in \chi(M), i=1,2$
 zwei Paare von $f$-verkn\"upften Vektorfeldern. Dann sind auch die Kommutatoren $[X_1, X_2]$ und $[Y_1,Y_2]$
-$f$-verkn\"upft.
+$f$-verkn\"upft.\fish
 \end{Lemma}
 \proof
 Sei $g$ eine Funktion (bzw. Funktionskeim) auf $M$. Dann gilt nach Voraussetzung f\"ur $i=1,2$:
@@ -2307,7 +2193,7 @@ $$
 
 \bigskip
 
-{\bf Anwendung:}
+\begin{ex*}[Anwendung]
 Sei $N$ eine Integral-Mannigfaltigkeit einer Distribution $\Delta$ und seien $X,Y$
 zwei Vektorfelder von $\Delta$. Wie oben beschrieben existieren eindeutig bestimmte
 Vektorfelder $\bar X, \bar Y \in \chi(N)$ mit $X_p= di(\bar X_p), Y_p = di(\bar Y_p)$,
@@ -2327,14 +2213,15 @@ Integral-Mannigfaltigkeit ist, folgt daraus $di ([\bar X, \bar Y])\in \Delta_p$.
 Also, wie oben gezeigt, auch $[X, Y]_p \in \Delta_p$. Damit ist gezeigt:
 existiert eine Integral-Mannigfaltigkeit f\"ur die Distribution $\Delta$,
 dann liegt mit zwei Vektorfeldern $X, Y$ in $\Delta$ auch deren Kommutator
-in $\Delta$.
+in $\Delta$.\boxc
+\end{ex*}
 
 \bigskip
 
 \begin{Definition}
-Eine Distribution $\Delta$ hei\ss t {\em integrabel} (oder auch involutiv), falls
+Eine Distribution $\Delta$ hei\ss t \emph{ integrabel} (oder auch involutiv), falls
 f\"ur je zwei Vektorfelder $X,Y$ in $\Delta$ auch $[X, Y]$ ein Vektorfeld in $\Delta$
-ist.
+ist.\fish
 \end{Definition}
 
 \bigskip
@@ -2345,7 +2232,7 @@ Seien $X_1, \ldots, X_k$ Vektorfelder definiert in einer Umgebung $U$ von $p$
  Dann ist $\Delta$ integrabel genau dann, wenn Funktionen
  $c_{ij}^r \in \mathcal C^\infty(U)$ existeren mit
  $$
- [X_i, X_j] = \sum_r c_{ij}^r X_r \ .
+ [X_i, X_j] = \sum_r c_{ij}^r X_r \ .\fish
  $$
 \end{Satz}
 \proof
@@ -2363,7 +2250,7 @@ Kommutator $[X, Y]$ liegt wieder in der Distribution $\Delta$.
 
 \bigskip
 
-\subsection{Satz von Frobenius f\"ur Distributionen}
+\section{Satz von Frobenius f\"ur Distributionen}
 
 \begin{Satz}
 Sei $\Delta$ eine $k$-dimensionale integrable Distribution auf $M$. F\"ur jeden Punkt $p\in M$ existieren
@@ -2376,7 +2263,7 @@ $$
 N_a := \{q\in U \,|\, x_{k+1}(q)= a_{k+1}, \ldots, x_n(q)=a_n\}
 $$
 eine Integral-Mannigfaltigkeit von $\Delta$ auf $U$ ist und jede Integral-Mannigfaltigkeit auf $U$ sich in
-dieser Form beschreiben l\"a\ss t.
+dieser Form beschreiben l\"a\ss t.\fish
 \end{Satz}
 \proof
 Da es um eine lokale Aussage geht, kann man o.B.d.A. annehmen, dass $M=\R^n, p=0$ und
@@ -2420,7 +2307,7 @@ d.h. wie behauptet ist $N_a$ eine Integral-Mannigfaltigkeit der Distribution $\D
 
 \bigskip
 
-{\bf Anwendung:}
+\begin{ex*}[Anwendung]
 Seien $f^i_j$ f\"ur $i=1,\ldots, n, \, j=1,\ldots,k, \, k<n$ differenzierbare Funktionen auf $\R^n$, so
 dass in jedem Punkt die Matrix $(f^i_j)$ den Rang $k$ hat. Man betrachtet folgendes System partieller
 Differentialgleichungen auf $\R^n$
@@ -2462,15 +2349,16 @@ $$
 Somit sind die Niveaufl\"achen der L\"osungen genau die Integral-Mannigfaltigkeiten der
 Distribution. Die L\"osungen der Gleichung~\ref{beispiel} sind also Funktionen auf den
 Niveaufl\"achen. Verschiedene L\"osungen entsprechen verschiedenen Integral-Mannigfaltigkeiten.
-Dies enspricht dem Fixieren verschiedener Integrationskonstanten.
+Dies enspricht dem Fixieren verschiedener Integrationskonstanten.\boxc
+\end{ex*}
 
 \bigskip
 
-\subsection{Bl\"atterungen}
+\section{Bl\"atterungen}
 
 \begin{Definition}
 Eine $k$-dimensionale Untermannigfaltigkeit $N$ einer Mannigfaltigkeit $M$
-hei\ss t {\em Bl\"atterung} von $M$, falls jeder Punkt von $M$ in einer Zusammenhangskomponente von $N$
+hei\ss t \emph{ Bl\"atterung} von $M$, falls jeder Punkt von $M$ in einer Zusammenhangskomponente von $N$
 liegt und es um jeden Punkt $p\in M$ Karten $(U,x)$ gibt mit:
 \begin{enumerate}
 \item
@@ -2484,26 +2372,27 @@ f\"ur gewisse $a_i \in \R$ mit $|a_i| <\varepsilon$.
 \end{enumerate}
 Im Allgemeinen ist die Bl\"atterungs-Mannigfaltigkeit
  $N$ nicht zusammenh\"angend. Die Zusammenhangskomponenten von $N$ nennt man
-auch {\em Bl\"atter} der Bl\"atterung. Man sagt $M$ ist gebl\"attert durch $N$.
+auch \emph{ Bl\"atter} der Bl\"atterung. Man sagt $M$ ist gebl\"attert durch $N$.\fish
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Unterschiedliche Komponenten von $N\cap U$ k\"onnen zum gleichen Blatt einer Bl\"atterung geh\"oren.
+\end{rem*}
 
 \bigskip
 
 \begin{Satz}\label{blaetter}
 Sei $\Delta$ eine $k$-dimensionale integrable Bl\"atterung auf $M$. Dann ist $M$ gebl\"attert durch
 eine Integral-Mannigfaltigkeit von $\Delta$. Jede Zusammenhangskomponente nennt man maximale
-Integralmannigfaltigkeit von $\Delta$.
+Integralmannigfaltigkeit von $\Delta$.\fish
 \end{Satz}
 \proof siehe Spivak \qed
 
 \bigskip
 
-{\bf Bemerkung:} Aus diesem Satz folgt also, dass durch jeden Punkt $p\in M$ eine eindeutig
+\begin{rem*} Aus diesem Satz folgt also, dass durch jeden Punkt $p\in M$ eine eindeutig
 bestimmte maximale Integral-Mannigfaltigkeit geht. Diese sei mit $N(p)$ bezeichnet und
 es gilt
 $$
@@ -2513,56 +2402,60 @@ Aus dieser Beschreibung folgt auch, dass eine Abildung $f:M\rightarrow M$ mit
 der Eigenschaft
 $df(\Delta_p) = \Delta_{f(p)}$ f\"ur alle $p\in M$, die maximalen Integral-Mannigfaltigkeiten permutiert, d.h.
 es gilt $f(N(p)) = N(f(p))$.
+\end{rem*}
 
 \bigskip
 
 \begin{Satz}
 Sei $N\subset M$ ein Blatt einer Bl\"atterung auf $M$ und sei $f: B \rightarrow M$ eine glatte
-Abbildung mit $f(B) \subset N$. Dann ist auch die  Abbildung $f:B \rightarrow N$ glatt.
+Abbildung mit $f(B) \subset N$. Dann ist auch die  Abbildung $f:B \rightarrow N$ glatt.\fish
 \end{Satz}
 \proof siehe Spivak \qed
 
 
-\section{Lie-Gruppen}
+\chapter{Lie-Gruppen}
 
 \begin{Definition}
-Ein Gruppe $G$ hei\ss t {\em Lie-Gruppe}, falls $G$ eine Mannigfaltigkeit ist und die Abbildung
-$G\times G \rightarrow G, (g,h)\mapsto gh^{-1}$ differenzierbar ist.
+Ein Gruppe $G$ hei\ss t \emph{ Lie-Gruppe}, falls $G$ eine Mannigfaltigkeit ist und die Abbildung
+$G\times G \rightarrow G, (g,h)\mapsto gh^{-1}$ differenzierbar ist.\fish
 \end{Definition}
 
-{\bf Bemerkung:} Die zweite Bedingung ist dazu \"aquivalent, dass die Abbildung $g\mapsto g^{-1}$
+\begin{rem*} Die zweite Bedingung ist dazu \"aquivalent, dass die Abbildung $g\mapsto g^{-1}$
 und die Gruppenoperationen $(g,h)\mapsto gh$ differenzierbar sind.
+\end{rem*}
 
 \bigskip
 
-{\bf Beispiele:} Die klassischen Matrizengruppen sind Lie-Gruppen, z.B. $GL(n,\R), O(n)$ oder
-$U(n)$. Auch $\R^n$ mit der Vektoraddition ist eine Lie-Gruppe.
+\begin{ex}Die klassischen Matrizengruppen sind Lie-Gruppen, z.B. $GL(n,\R), O(n)$ oder
+$U(n)$. Auch $\R^n$ mit der Vektoraddition ist eine Lie-Gruppe.\boxc
+\end{ex}
 
 \bigskip
 
 \begin{Definition}
-Die {\em Links-} bzw. {\em Rechtstranslation} auf $G$ sind f\"ur jedes fixiertes $g\in G$
+Die \emph{ Links-} bzw. \emph{ Rechtstranslation} auf $G$ sind f\"ur jedes fixiertes $g\in G$
 definiert durch:
 $$
-l_g(h) = g\cdot h,\qquad r_g(h) = h\cdot g \ .
+l_g(h) = g\cdot h,\qquad r_g(h) = h\cdot g \ .\fish
 $$
 \end{Definition}
 
 
-{\bf Bemerkung:} Die Abbildungen $l_g, r_g : G\rightarrow G$ sind Diffeomorphismen. Tats\"achlich
+\begin{rem*} Die Abbildungen $l_g, r_g : G\rightarrow G$ sind Diffeomorphismen. Tats\"achlich
 gilt $l_g^{-1} = l_{g^{-1}}$ und analog f\"ur $r_g$.
+\end{rem*}
 
 \begin{Definition}
-Ein Vektorfeld $X\in \chi(G)$ hei\ss t {\em links-invariant}, falls f\"ur alle $g\in G$:
+Ein Vektorfeld $X\in \chi(G)$ hei\ss t \emph{ links-invariant}, falls f\"ur alle $g\in G$:
 $$
 l_{g*} X = X \ ,
 $$
-d.h. $X$ ist $l_g$-verkn\"upft zu sich selbst.
+d.h. $X$ ist $l_g$-verkn\"upft zu sich selbst.\fish
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkung:}~\begin{enumerate}
+\begin{rem*}~\begin{enumerate}
 \item
 Ein Vektorfeld $X$ ist links-invariant genau dann, wenn $dl_g (X_h) = X_{gh}$
 f\"ur alle $g, h \in G$. Denn nach der Definition
@@ -2591,6 +2484,7 @@ Analog zu links-invarianten kann man auch rechts-invariante Vektorfelder definie
 \item
 Sind $G,H$ Lie-Gruppen, so auch $G\times H$.
 \end{enumerate}
+\end{rem*}
 
 Es war schon gezeigt worden, dass der Raum $\chi(M)$ der Vektorfelder auf einer Mannigfaltigkeit $M$
 eine Lie-Algebra ist. Neben dieser unendlich-dimensionalen Lie-Algebra gibt es auch endlich-dimensionale
@@ -2611,7 +2505,7 @@ $\dim G = \dim \g$.
 Der Kommutator zweier links-invarianter Vektorfelder ist links-invariant, d.h. $\g$ ist eine
 Lie-Algebra. F\"ur $X, Y \in T_eG$ gilt:
 $$
-[X, Y] := [\tilde X, \tilde Y]_e = \widetilde{[X,Y]}_e \ .
+[X, Y] := [\tilde X, \tilde Y]_e = \widetilde{[X,Y]}_e \ .\fish
 $$
 \end{enumerate}
 \end{Satz}
@@ -2630,19 +2524,20 @@ Gleichung, denn nach Definition ist $\; dl_g (Z) = \tilde Z_g$ f\"ur ein $Z\in \
 \qed
 
 \begin{Definition}
-Die {\em Lie-Algebra} $\g$ einer Lie-Gruppe $G$ ist definiert als der Raum der links-invarianten
+Die \emph{ Lie-Algebra} $\g$ einer Lie-Gruppe $G$ ist definiert als der Raum der links-invarianten
 Vektorfelder bzw. der Tangentialraum an $G$ in $e$, mit dem Kommutator von Vektorfeldern als
-Lie-Klammer. Man schreibt auch $\g = \mathrm{Lie}(G)$.
+Lie-Klammer. Man schreibt auch $\g = \mathrm{Lie}(G)$.\fish
 \end{Definition}
 
-{\bf Beispiel:}
+\begin{ex}
 Sei $G= \GL(n,\R)$, dann ist $\g = \gl (n,\R)= M(n,\R)$. Die Lie-Klammer
 auf $\g$ stimmt mit dem \"ublichen Kommutator von Matrizen \"uberein:
-$[A, B] = A\cdot B - B\cdot A$.
+$[A, B] = A\cdot B - B\cdot A$.\boxc
+\end{ex}
 
 \bigskip
 
-\subsection{Die Lie-Algebra - Lie-Gruppe Korrespondenz}
+\section{Die Lie-Algebra - Lie-Gruppe Korrespondenz}
 
 Sei $H\subset G$ eine Lie-Untergruppe, d.h. eine Untergruppe von $G$, die
 auch eine Untermannigfaltigkeit von $G$ ist. Sei $i:H \rightarrow G$ die
@@ -2675,7 +2570,7 @@ Es zeigt sich nun, dass auch die Umkehrung gilt.
 Sei $G$ eine Lie-Gruppe und $\h \subset \g$ eine Lie-Unteralgebra. Dann existiert
 eine eindeutig bestimmte zusammenh\"angende Lie-Untergruppe $H\subset G$ mit Lie-Algebra
 $\Lie(H)=\h$. D.h. man hat eine bijektive Beziehung zwischen zusammenh\"angenden
-Lie-Untergruppen von $G$ und Lie-Unteralgebren von $\g$.
+Lie-Untergruppen von $G$ und Lie-Unteralgebren von $\g$.\fish
 \end{Satz}
 \proof
 Man definiert durch $\Delta_a = \{ \tilde X_a = dl_a(X) \,|\, X \in \h \} \subset T_aG$ eine Distribution
@@ -2714,7 +2609,7 @@ und dass $H$ definiert ist als Blatt einer Bl\"atterung auf $G$ (siehe Spivak).
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 \begin{enumerate}
 \item
 Nach dem Theorem von Ado ist jede Lie-Algebra isomorph zu einer Lie-Unteralgebra
@@ -2723,15 +2618,15 @@ Lie-Algebra isomorph zur Lie-Algebra einer Lie-Untergruppe von $\GL(n,\R)$.
 F\"ur Lie-Algebren mit trivialem Zentrum folgt die Aussage trivialerweise
 aus der Existenz der adjungierten Darstellung (siehe unten).
 \item
-Nach dem {\it Cartan-Kriterium} ist eine abgeschlossene Untergruppe $H\subset G$
+Nach dem {\itshape Cartan-Kriterium} ist eine abgeschlossene Untergruppe $H\subset G$
 automatisch eine Lie-Untergruppe von $G$, ist also eine Unter-Mannigfaltigkeit
 von $G$.
 \end{enumerate}
-
+\end{rem*}
 
 \bigskip
 
-\subsection{Homomorphismen}
+\section{Homomorphismen}
 
 
 \begin{Lemma}
@@ -2740,7 +2635,7 @@ Lie-Algebren-Homomorphismus, d.h. es gilt
 $$
 d\varphi ([X, Y]) = [d\varphi (X), d\varphi (Y)]
 $$
-f\"ur alle $X, Y \in \g = T_eG$.
+f\"ur alle $X, Y \in \g = T_eG$.\fish
 \end{Lemma}
 \proof
 Nach Definition der Lie-Klammer auf den Lie-Algebren von $G$ bzw. $H$ hat man f\"ur
@@ -2771,13 +2666,14 @@ ein Lie-Algebren-Homomorphismus.
 
 \bigskip
 
-{\bf Beispiel:}
+\begin{ex}
 Sei $G=H=\R$ dann existieren \"uberabz\"ahlbar viele Homomorphismen $\varphi : \R \rightarrow \R$,
 da $\R$ ein unendlich-dimensionaler Vektorraum \"uber $\Q$ ist und jede $\Q$-lineare Abbildung
 ist ein Homomorphismus. Sei $\varphi$ ein differenzierbarer Homomorphismus (tats\"achlich ist
 stetig ausreichend) dann folgt $\varphi(t) = c t$ f\"ur ein geeignetes $c$. Denn leitet man
 $\varphi(s+t)=\varphi(s) + \varphi(t)$ nach $s$ in $s=0$ ab, dann folgt $\dot \varphi(t) = \dot \varphi(0)$,
-also $\varphi(t) = ct$ mit $c= \dot \varphi(0)$.
+also $\varphi(t) = ct$ mit $c= \dot \varphi(0)$.\boxc
+\end{ex}
 
 \medskip
 
@@ -2785,10 +2681,11 @@ Homomorphismen $\phi: \R \rightarrow S^1 = \R / \Z$ sind alle von der Form $\phi
 
 \bigskip
 
-{\bf Bemerkung:} Es existiert kein nicht-trivialer Lie-Gruppen-Homomorphismus $\varphi : S^1 \rightarrow \R$.
+\begin{rem*} Es existiert kein nicht-trivialer Lie-Gruppen-Homomorphismus $\varphi : S^1 \rightarrow \R$.
 Denn $\varphi(S^1)$ w\"are eine kompakte Untergruppe in $\R$, was nicht m\"oglich ist: Sei $G\subset \R$
 eine kompakte Untergruppe, dann ist $G$ beschr\"ankt, aber mit jedem $g\in G$ liegt auch $n g \in G$ f\"ur
 alle $n \in \N$, was aber der Beschr\"anktheit widerspricht.
+\end{rem*}
 
 \medskip
 
@@ -2814,7 +2711,7 @@ d\varphi(X) = \Phi(X)
 $
 \item
 Sind $\varphi, \psi : G\rightarrow H$ zwei Lie-Gruppen-Homomorphismen mit $d\varphi = d\psi = \Phi$
-und ist $G$ zusammenh\"angend, dann folgt $\varphi = \psi$.
+und ist $G$ zusammenh\"angend, dann folgt $\varphi = \psi$.\fish
 \end{enumerate}
 \end{Satz}
 \proof (nach Spivak)
@@ -2878,11 +2775,12 @@ eindeutig durch $\Phi$ bestimmt. Somit stimmen die Graphen von $\varphi$ und $\p
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Der Gruppen-Homomorphismus aus Satz~\ref{hom} ist auf ganz $G$ definiert, falls
 $G$ einfach-zusammenh\"angend ist. Unter dieser Voraussetzung hat man also ein
 bijektive Beziehung zwischen Lie-Gruppen-Homomorphismen $G\rightarrow H$
 und Lie-Algebren-Homomorphismen $\g \rightarrow \h$.
+\end{rem*}
 
 \bigskip
 
@@ -2907,7 +2805,7 @@ aus dieser Umgebung schreiben. Damit ist die ganze Gruppe $G$ abelsch.
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 \begin{enumerate}
 \item
 Alle zusammenh\"angenden Lie-Gruppen mit der gleichen Lie-Algebra werden von der gleichen
@@ -2916,11 +2814,11 @@ einfach-zusammenh\"angenden Lie-Gruppe \"uberlagert.
 Die Lie-Algebra einer Lie-Gruppe $G$ ist gleich der Lie-Algebra der Zusammenhangskomponente
 der Eins in $G$. Zum Beispiel ist $\Lie(O(n)) = \Lie(SO(n))$.
 \end{enumerate}
-
+\end{rem*}
 
 \bigskip
 
-\subsection{Die Exponential-Abbildung}
+\section{Die Exponential-Abbildung}
 
 \bigskip
 
@@ -2936,7 +2834,7 @@ $$
 c_X(0) = e, \quad c_X(s+t) = c_X(s) \cdot c_X(t) \qquad \mbox{f\"ur alle }\quad s, t \in \R
 $$
 \item
-F\"ur alle $s, t \in \R$ gilt: $c_{sX}(t) = c_X(s t)$.
+F\"ur alle $s, t \in \R$ gilt: $c_{sX}(t) = c_X(s t)$.\fish
 \end{enumerate}
 \end{Satz}
 \proof
@@ -2967,12 +2865,12 @@ Sei $G$ eine Lie-Gruppe mit Lie-Algebra $\g$. Die Abbildung
 $$
 \exp : \g \rightarrow G, \quad \exp(X) : = c_X(1) \ ,
 $$
-hei\ss t {\em Exponentialabbildung} der Lie-Gruppe $G$. Hierbei ist
-$c_X$ wieder die maximale Integralkurve von $X$ mit $c_X(0)=e$.
+hei\ss t \emph{ Exponentialabbildung} der Lie-Gruppe $G$. Hierbei ist
+$c_X$ wieder die maximale Integralkurve von $X$ mit $c_X(0)=e$.\fish
 \end{Definition}
 
 
-{\bf Bemerkung:}
+\begin{rem*}
 \begin{enumerate}
 \item
 Es gilt f\"ur alle $t$ die Gleichung $\exp(tX) = c_{tX}(1) = c_X(t) =  \varphi_t(e)$.
@@ -2995,10 +2893,11 @@ Denn sei $X$ links-invariant, dann gilt $X= l_{g\ast}X$ und das bedeutet f\"ur
 die Fl\"usse $\varphi_t = l_g \circ \varphi_t \circ l_{g}^{-1}$. Angewandt
 auf $g$ folgt die Behauptung.
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
-{\bf Beispiel:} Die Exponential-Abbildung f\"ur $G= \GL(n,\R)$
+\begin{ex} Die Exponential-Abbildung f\"ur $G= \GL(n,\R)$
 
 Man definiert f\"ur $A \in \gl(n,\R)$:
 $$
@@ -3015,8 +2914,9 @@ Gilt $A \, B = B \, A $ so auch $e^{A+B} =e^A \cdot e^B$.
 \item
 $\det(e^A) = e^{\tr (A)}$
 \item
-$B \, e^A \, B^{-1} = e^{B A B^{-1}}$
+$B \, e^A \, B^{-1} = e^{B A B^{-1}}$\boxc
 \end{enumerate}
+\end{ex}
 
 \bigskip
 
@@ -3032,12 +2932,8 @@ f\"ur alle $X\in \g = \Lie(G)$, d.h. man hat das folgende kommutative Diagramm
 \mathfrak{g} @> d\varphi>> \mathfrak{h}\\
 @V\exp VV @VV {\exp}V \\
 G @>\varphi>> H
-\end{CD}
+\end{CD}\fish
 \end{equation*}
-
-
-
-
 
 \end{Satz}
 \proof
@@ -3066,7 +2962,7 @@ $\exp(0) = e$
 $\exp (-X)= \exp(X)^{-1}$  f\"ur alle $X\in \g$
 \item
 $
-\exp((t+s)X) = \exp(sX) \exp(tX)
+\exp((t+s)X) = \exp(sX) \exp(tX).\fish
 $
 \end{enumerate}
 \end{Satz}
@@ -3093,20 +2989,22 @@ $$
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Mit Hilfe der Exponential-Abbildung lassen sich spezielle Koordinaten definieren. Sei
 $V(0) \subset \g$ eine bzgl. $0$ sternf\"ormige Umgebung, auf der $\exp$ ein
 Diffeomorphismus ist. Dann definiert man
 $$
 W(e) := \exp (V(0)), \quad W(g) := l_g(W(e)), \quad x_g:= \exp^{-1}\circ l_{g^{-1}}:W(g) \rightarrow V(0)\subset \g \cong \R^n
 $$
-Offensichtlich ist dann $(W(g), x_g)$ eine Karte um $g$. Man nennt $W(g)$ eine {\it Normalenumgebung} von $g$ und $x_g$ die
-{\it Normalkoordinaten} um $g$.
+Offensichtlich ist dann $(W(g), x_g)$ eine Karte um $g$. Man nennt $W(g)$ eine {\itshape Normalenumgebung} von $g$ und $x_g$ die
+{\itshape Normalkoordinaten} um $g$.
+\end{rem*}
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Im Allgemeinen ist die Exponential-Abbildung nicht surjektiv.
+\end{rem*}
 
 \medskip
 
@@ -3192,7 +3090,7 @@ $$
 \Phi : V_1 \oplus \ldots \oplus V_r \rightarrow G, \quad v_1 + \ldots + v_r \mapsto
 \exp(v_1)\cdot \ldots \cdot \exp(v_r)
 $$
-ein lokaler Diffeomorphismus um $0 \in \g$.
+ein lokaler Diffeomorphismus um $0 \in \g$.\fish
 \end{Satz}
 \proof
 Man zeigt wieder, dass $d\Phi_0 = \Id_{\g}$ gilt, womit $\Phi$ nach dem Umkehrsatz ein lokaler
@@ -3258,8 +3156,9 @@ dann einen Diffeomorphismus zwischen zwei fixierten differenzierbaren Strukturen
 
 \bigskip
 
-{\bf Bemerkung:} Das 5. der Hilbert-Probleme war die Frage, ob jede lokal-euklidische Gruppe eine
+\begin{rem*} Das 5. der Hilbert-Probleme war die Frage, ob jede lokal-euklidische Gruppe eine
 Lie-Gruppe ist. Die positive Antwort wurde 1952 von Montgomery und Zippen erbracht
+\end{rem*}
 
 \bigskip
 
@@ -3275,7 +3174,7 @@ Sei $i: H \rightarrow G$ eine Lie-Untergruppe und sei $X\in \g$. Dann gilt
 $ X \in di(\h)\;$ dann folgt $\;\exp tX \in i(H)\subset G\;$ f\"ur alle $\;t\in
 \R$.
 \item
-Gilt $\;\exp tX \in i(H)$ f\"ur alle $t$ in einem Intervall $I$, dann folgt $X \in di(\h)$.
+Gilt $\;\exp tX \in i(H)$ f\"ur alle $t$ in einem Intervall $I$, dann folgt $X \in di(\h)$.\fish
 \end{enumerate}
 \end{Lemma}
 \proof
@@ -3298,7 +3197,7 @@ $X \in di (\h)$.
 Sei $\varphi : G \rightarrow K$ ein Homomorphismus von Lie-Gruppen. Dann ist $\ker \varphi$ eine
 abgeschlossene Untergruppe von $G$ und es gilt:
 $$
-\Lie(\ker \varphi) = \ker (d\varphi) \ .
+\Lie(\ker \varphi) = \ker (d\varphi) \ .\fish
 $$
 \end{Lemma}
 \proof
@@ -3323,12 +3222,12 @@ $X\in \ker (d\varphi)$, was zu zeigen war.
 
 
 
-\subsection{Die adjungierte Darstellung}
+\section{Die adjungierte Darstellung}
 
 \bigskip
 
 \begin{Definition}
-Sei $G$ eine Lie-Gruppe mit Lie-Algebra $\g$. Eine {\em Darstellung von $G$} auf einem Vektorraum
+Sei $G$ eine Lie-Gruppe mit Lie-Algebra $\g$. Eine \emph{ Darstellung von $G$} auf einem Vektorraum
 $V$ ist ein Gruppen-Homomorphismus
 $$
 \rho : G \rightarrow \GL(V) = \Aut(V)
@@ -3337,7 +3236,7 @@ d.h. es gilt $\rho (g_1 \cdot g_2) = \rho(g_1)\cdot \rho(g_2)$ f\"ur alle $g_1, 
 
 \medskip
 
-Eine {\em Darstellung von $\g$} auf $V$ ist ein Lie-Algebren-Homomorphismus
+Eine \emph{ Darstellung von $\g$} auf $V$ ist ein Lie-Algebren-Homomorphismus
 $$
 \varphi : \g \rightarrow \gl(V) = \End(V)
 $$
@@ -3345,18 +3244,18 @@ d.h. es gilt $\varphi([X,Y]) = \varphi(X) \circ \varphi(Y) - \varphi(Y) \circ \v
 
 \medskip
 
-Eine Darstellung hei\ss t {\em treu}, falls $\rho$ bzw. $\varphi$ injektive Abbildungen sind.
+Eine Darstellung hei\ss t \emph{ treu}, falls $\rho$ bzw. $\varphi$ injektive Abbildungen sind.\fish
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
 \item
 Sei $\rho : G \rightarrow \GL(V)$ eine Darstellung von $G$, dann ist $\varphi = d\rho :
 \g  \rightarrow \gl(V)$ eine Darstellung von $\g$.
 \item
-Eine Darstellung $\rho : G \rightarrow \GL(V)$ hei\ss t {\it orthogonal} bzw. {\it unit\"ar},
+Eine Darstellung $\rho : G \rightarrow \GL(V)$ hei\ss t {\itshape orthogonal} bzw. {\itshape unit\"ar},
 falls $(V, \la \cdot, \cdot \ra)$ ein euklidischer bzw. unit\"arer Vektorraum ist und
 $$
 \la \rho(g)v, \rho(g)w\ra = \la v, w\ra
@@ -3373,6 +3272,7 @@ $$
 Dann ist $(\cdot, \cdot)$ ein $G$-invariantes Skalarprodukt, falls $\omega_g$ eine rechts-invariante
 Volumenform und $\la \cdot, \cdot \ra$ ein beliebiges Skalarprodukt ist.
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
@@ -3387,7 +3287,7 @@ f\"ur alle $g\in G$ und $v, w \in V$. Dann gilt
 \la d\rho(X)v, w\ra +  \la v, d\rho(X)w \ra = 0
 \end{equation}
 f\"ur alle $X\in \g$ und $v, w \in V$. Ist $G$ zusammenh\"angend, dann sind
-(\ref{Ginv}) und (\ref{ginv}) \"aquivalent.
+(\ref{Ginv}) und (\ref{ginv}) \"aquivalent.\fish
 \end{Satz}
 \proof
 Sei $X\in \g$ und $v, w \in V$, dann folgt aus Gleichung~\ref{Ginv}
@@ -3420,14 +3320,14 @@ somit $F(t) = F(0) = \la v, w \ra $, was genau die zu beweisende Gleichung~\ref{
 
 \bigskip
 
-Sei $g\in G$,  als {\it Konjugation} mit $g\in G$ bezeichnet man den Gruppen-Homomorphismus
+Sei $g\in G$,  als {\itshape Konjugation} mit $g\in G$ bezeichnet man den Gruppen-Homomorphismus
 $\alpha_g : G \rightarrow G, h \mapsto g\cdot h \cdot g^{-1}$, d.h. $\alpha_g = l_g \circ r_{g^{-1}}$.
 Tats\"achlich gilt
 $$
 \alpha_{gh}(a) = gh \cdot a \cdot (gh)^{-1} = g h \cdot a \cdot h^{-1} g^{-1} = \alpha_g \circ \alpha_h (a) \ .
 $$
-Die Konjugation ist ein {\it Automorphismus} von $G$, d.h. ein Gruppen-Isomorphismus auf $G$. Man
-sagt $\alpha_g$ ist ein {\it innerer} Automorphismus. Das Differential $\Ad(g)=d\alpha_g : \g \rightarrow \g$
+Die Konjugation ist ein {\itshape Automorphismus} von $G$, d.h. ein Gruppen-Isomorphismus auf $G$. Man
+sagt $\alpha_g$ ist ein {\itshape innerer} Automorphismus. Das Differential $\Ad(g)=d\alpha_g : \g \rightarrow \g$
 ist dann ein Automorphismus von $\g$, d.h. ein Lie-Algebren-Isomorphismus auf $\g$:
 $$
 \Ad(g) [X, Y] = [\Ad(g)X, \Ad(g)Y], \qquad \Ad(g)^{-1} = \Ad(g^{-1})
@@ -3448,12 +3348,12 @@ ist. Damit hat man den folgenden Satz bewiesen:
 
 \begin{Satz}\label{Ad}
 Die Abbildung $\Ad : G \rightarrow \GL(\g), g \mapsto \Ad(g)=d\alpha_g$ ist eine Darstellung von $G$, d.h.
-ein Lie-Gruppen-Homomorphismus. Man nennt $\Ad$ die {\em adjungierte Darstellung} von $G$.
+ein Lie-Gruppen-Homomorphismus. Man nennt $\Ad$ die \emph{ adjungierte Darstellung} von $G$.\fish
 \end{Satz}
 
 \begin{Satz}\label{ad}
 F\"ur das Differential $\ad = d \Ad : \g \rightarrow \gl(\g) $ gilt : $\ad(X)Y = [X,Y]$ f\"ur alle
-$X,Y\in \g$. Man nennt $\ad$ die {\em adjungierte Darstellung} von $\g$.
+$X,Y\in \g$. Man nennt $\ad$ die \emph{ adjungierte Darstellung} von $\g$.\fish
 \end{Satz}
 \proof
 Sei $X$ ein links-invariantes Vektorfeld, dann sind seine Integralkurven durch $g\in G$  gegeben als
@@ -3478,7 +3378,7 @@ $$
 
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
 \item
 F\"ur Matrizengruppen $G\subset \GL(n,\R)$ gilt:
@@ -3520,7 +3420,7 @@ Die Jacobi-Identit\"at \"ubersetzt sich in folgende Gleichung
 $$
 \ad(Z)[X,Y] = [\ad(Z)X, Y] + [X,\ad(Z)Y] \ .
 $$
-Man sagt $\ad(Z)$ ist eine {\it Derivation} von $\g$, d.h.
+Man sagt $\ad(Z)$ ist eine {\itshape Derivation} von $\g$, d.h.
 $$
 \ad(Z) \in \Der(\g) = \{\psi : \g \rightarrow \g \; \mbox{linear und } \; \psi([X,Y]) = [\psi(X), Y] + [X,\psi(Y)]  \}
 $$
@@ -3539,10 +3439,11 @@ G @>\Ad >> \Aut (\g) \subset \mathrm{GL}(\g)
 
 
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
-Das {\it Zentrum} $Z(G) \subset G $ von $G$ bzw. $Z(\g) \subset \g$ ist definiert als
+Das {\itshape Zentrum} $Z(G) \subset G $ von $G$ bzw. $Z(\g) \subset \g$ ist definiert als
 $$
 Z(G) = \{ g \in G \,|\, gh = hg \; \mbox{f\"ur alle} \,  h \in G\}
 \quad
@@ -3551,17 +3452,18 @@ $$
 
 \bigskip
 
-{\bf Beispiel:}
+\begin{ex}
 $
-Z(O(n)) = \Z_2,\quad Z(SU(n))= \Z_n, \quad Z(\GL(n,\R)) = \{ c E \,|\, c \neq 0\}
+Z(O(n)) = \Z_2,\quad Z(SU(n))= \Z_n, \quad Z(\GL(n,\R)) = \{ c E \,|\, c \neq 0\}\boxc
 $
+\end{ex}
 
 \bigskip
 
 \begin{Satz}
 Das Zentrum $Z(G)\subset G$ ist eine abgeschlossene Lie-Untergruppe und es gilt
 $Z(G) \subset \ker \Ad$. F\"ur zusammenh\"angende Gruppen $G$ gilt
-$Z(G) = \ker \Ad$ und au\ss erdem $\Lie \, Z(G) = Z(\g)$.
+$Z(G) = \ker \Ad$ und au\ss erdem $\Lie \, Z(G) = Z(\g)$.\fish
 \end{Satz}
 \proof
 Offensichtlich gilt $g\in Z(G)$ genau dann, wenn $\alpha_g = \Id_G$. Somit
@@ -3621,13 +3523,14 @@ $$
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Ist $\g$ eine Lie-Algebra mit $Z(\g)= \{0\}$, dann besitzt $\g$ eine treue Darstellung
 $$
 \ad : \g \rightarrow \End(\g) \ ,
 $$
 d.h. $\g$ ist isomorph zu einer Lie-Algebra einer Lie-Gruppe. Das beweist das Theorem
 von Ado im Spezialfall von Lie-Algebren mit trivialem Zentrum.
+\end{rem*}
 
 \bigskip
 
@@ -3639,7 +3542,7 @@ und Idealen in Lie-Gruppen bzw. Lie-Algebren.
 \begin{Satz}
 Sei $H \subset G$ eine zusammenh\"angende Lie-Untergruppe einer zusammenh\"angenden Lie-Gruppe
 $G$. Dann ist $H$ genau dann ein Normalteiler in $G$, wenn $\h= \Lie(H)$ ein Ideal in
-$\g = \Lie(G)$ ist.
+$\g = \Lie(G)$ ist.\fish
 \end{Satz}
 \proof
 Sei zuerst $\h\subset \g$ ein Ideal von $\g$, d.h. $[\h, \g] \subset \h$. Sei $Y\in \h, X\in \g$ und
@@ -3679,7 +3582,7 @@ gezeigt ist, dass $\h \subset \g$ ein Ideal ist.
 \bigskip
 
 
-\subsection{Die Killing-Form}
+\section{Die Killing-Form}
 
 \bigskip
 
@@ -3688,8 +3591,8 @@ Sei $\g$ eine Lie-Algebra. Die Bilinearform
 $$
 B_\g : \g \times \g \rightarrow \R, \quad (X,Y) \mapsto \Tr(\ad(X) \circ  \ad(Y))
 $$
-hei\ss t {\em Killing-Form} von $\g$. Falls $\g$ die Lie-Algebra einer Lie-Gruppe
-$G$ ist, dann nennt man $B_\g$ auch Killing-Form von $G$.
+hei\ss t \emph{ Killing-Form} von $\g$. Falls $\g$ die Lie-Algebra einer Lie-Gruppe
+$G$ ist, dann nennt man $B_\g$ auch Killing-Form von $G$.\fish
 \end{Definition}
 
 \bigskip
@@ -3707,7 +3610,7 @@ $$
 & B_\g(\ad(X)Y, Z) + B_\g(Y, \ad(X)Z) \;=\; 0
 \end{array}
 $$
-f\"ur alle $g\in G$ und alle $X,Y,Z\in \g$.
+f\"ur alle $g\in G$ und alle $X,Y,Z\in \g$.\fish
 \end{Satz}
 \proof
 Sei $\sigma$ ein Automorphismus von $\g$, d.h. $\sigma ([X,Y])= [\sigma(X), \sigma(Y)]$,
@@ -3731,7 +3634,7 @@ bzw. Satz~\ref{skalar}.
 
 \bigskip
 
-{\bf Beispiele:}
+\begin{ex}
 \begin{enumerate}
 \item
 Ist $\g$ abelsch, dann gilt $B_\g \equiv 0$.
@@ -3753,22 +3656,23 @@ $$
 Die Lie-Algebra $\so(n) = \{ X \in \gl(n,\R) \, |\, X + X^T = 0\}$ ist kein Ideal in $\gl(n,\R)$.
 F\"ur die Killing-Form von $\so(n)$ findet man:
 $$
-B_{\so(n)} (X, Y) = (n-2)\, \Tr(X\,Y ) \ .
+B_{\so(n)} (X, Y) = (n-2)\, \Tr(X\,Y ) \ .\boxc
 $$
 \end{enumerate}
-
+\end{ex}
 
 \bigskip
 
-{\bf Bemerkung:} Lie-Algebren mit nicht-ausgearteter Killing-Form, z.B. $\sl(n,R)$ oder $\so(n)$
-nennt man {\it halb-einfach}. \"Aquivalent dazu ist, dass halb-einfache Algebren direkte Summe
+\begin{rem*} Lie-Algebren mit nicht-ausgearteter Killing-Form, z.B. $\sl(n,R)$ oder $\so(n)$
+nennt man {\itshape halb-einfach}. \"Aquivalent dazu ist, dass halb-einfache Algebren direkte Summe
 von einfachen Lie-Algebren sind, also Algebren, die nur triviale Ideale besitzen. Halbeinfache
 Lie-Algebren sind vollst\"andig klassifiziert.
+\end{rem*}
 
 \bigskip
 
 \begin{Satz}
-Sei $G$ eine kompakte Lie-Gruppe. Dann ist ihre Killing-Form negativ semi-definit.
+Sei $G$ eine kompakte Lie-Gruppe. Dann ist ihre Killing-Form negativ semi-definit.\fish
 \end{Satz}
 \proof
 Da $G$ eine kompakte Lie-Gruppe ist, existiert, wie schon bemerkt, auf der Lie-Algebra
@@ -3787,10 +3691,10 @@ $$
 
 \qed
 
-\section{Transformationsgruppen und homogene Mannigfaltigkeiten}
+\chapter{Transformationsgruppen und homogene Mannigfaltigkeiten}
 
 \begin{Definition}
-Eine Lie-Gruppe $G$ {\em wirkt} (oder auch {\em operiert})) von links
+Eine Lie-Gruppe $G$ \emph{ wirkt} (oder auch \emph{ operiert})) von links
 auf einer Mannigfaltigkeit $M$, falls eine glatte Abbildung
 $$
 \Phi : G \times M \rightarrow M, \qquad (g,p) \mapsto g\cdot p := \Phi(g,p)
@@ -3800,15 +3704,16 @@ existiert, die die folgenden Eigenschaften hat:
 \item
 F\"ur alle $p \in M$ und $g, h \in G$ gilt: \qquad $(g\cdot h)\cdot p = g \cdot (h \cdot p)$
 \item
-F\"ur alle $p \in M$ gilt: \qquad $ e \cdot p = p$
+F\"ur alle $p \in M$ gilt: \qquad $ e \cdot p = p$.\fish
 \end{enumerate}
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkung:} Es folgt sofort, dass die Links-Translation $l_g: M \rightarrow M, p\mapsto g\cdot p$
+\begin{rem*} Es folgt sofort, dass die Links-Translation $l_g: M \rightarrow M, p\mapsto g\cdot p$
 ein Diffeomorphismus ist: $l_g^{-1}= l_{g^{-1}}$. Manchmal ist dies auch Teil der Definition einer
 Gruppenwirkung von $G$ auf $M$.
+\end{rem*}
 
 \bigskip
 
@@ -3816,25 +3721,25 @@ Gruppenwirkung von $G$ auf $M$.
 Sei $G$ eine Lie-Gruppe, die von links auf einer Mannigfaltigkeit $M$ wirkt. Dann definiert man:
 \begin{enumerate}
 \item
-Die {\em Bahn} (auch {\em Orbit}) von $G$ durch $p\in M$:   \qquad $\mathcal O_p := \{g\cdot p \,|\, g\in G\}$.
+Die \emph{ Bahn} (auch \emph{ Orbit}) von $G$ durch $p\in M$:   \qquad $\mathcal O_p := \{g\cdot p \,|\, g\in G\}$.
 \item
-Die {\em Standgruppe} (auch Isotropiegruppe oder Stabilisator) von $p\in M$:
+Die \emph{ Standgruppe} (auch Isotropiegruppe oder Stabilisator) von $p\in M$:
 \quad $G_p := \{ g \in G \,|\, g\cdot p = p\}$.
 \item
-$G$ wirkt {\em transitiv} auf $M$, wenn f\"ur alle Punkte $p, q \in M$ ein Gruppenelement $g\in G$ existiert
+$G$ wirkt \emph{ transitiv} auf $M$, wenn f\"ur alle Punkte $p, q \in M$ ein Gruppenelement $g\in G$ existiert
 mit $q = g \cdot p$. \"Aquivalent dazu ist, dass $M$ aus einer Bahn besteht: $M = \mathcal O_p$ f\"ur ein und
 damit f\"ur alle $p\in M$.
 \item
-$G$ wirkt {\em frei} auf $M$, wenn f\"ur alle $g\in G, g\neq e$ die Links-Translation $l_g$ fixpunktfrei ist.
+$G$ wirkt \emph{ frei} auf $M$, wenn f\"ur alle $g\in G, g\neq e$ die Links-Translation $l_g$ fixpunktfrei ist.
 \item
-$G$ wirkt {\em effektiv} auf $M$, wenn $l_g= \Id_M$ nur f\"ur $g=e$ erf\"ullt ist.
+$G$ wirkt \emph{ effektiv} auf $M$, wenn $l_g= \Id_M$ nur f\"ur $g=e$ erf\"ullt ist.\fish
 \end{enumerate}
 \end{Definition}
 
 
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
 \item
 Eine Lie-Gruppe $G$ wirkt durch Gruppen-Multiplikation auf sich. Diese Wirkung ist transitiv.
@@ -3846,17 +3751,18 @@ $
 wobei $\Diff(M)$ die Gruppe der Diffeomorphismen von $M$ bezeichnet. Eine effektive Wirkung entspricht dann einer
 treuen Darstellung.
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
 \begin{Definition}
-Eine Mannigfaltigkeit $M$, auf der eine Lie-Gruppe $G$ transitiv wirkt nennt man {\em homogen}. Man sagt auch
-$M$ ist ein homogener Raum.
+Eine Mannigfaltigkeit $M$, auf der eine Lie-Gruppe $G$ transitiv wirkt nennt man \emph{ homogen}. Man sagt auch
+$M$ ist ein homogener Raum.\fish
 \end{Definition}
 
 \bigskip
 
-{\bf Beispiele:}
+\begin{ex}
 \begin{enumerate}
 \item
 Jede $G$-Darstellung auf einem Vektorraum $V$ definiert eine Wirkung von $G$ auf $V$.
@@ -3865,9 +3771,9 @@ $\GL(n,\R)$ wirkt auf $\R^n$: $(A,v)\mapsto A\cdot v$. Diese Wirkung ist transit
 $\R^n \setminus \{0\}$.
 \item
 $\O(n)$ wirkt transitiv auf $S^{n-1} \subset \R^n$ mit der Standgruppe $\O(n)_{e_1}\cong \O(n-1)$,
-dabei ist $e_1$ der erste Vektor der kanonischen Basis von $\R^n$.
+dabei ist $e_1$ der erste Vektor der kanonischen Basis von $\R^n$.\boxc
 \end{enumerate}
-
+\end{ex}
 
 \bigskip
 
@@ -3878,7 +3784,7 @@ eine abgeschlossene Untergruppe. Auf $G$ definiert man die \"Aquivalenzrelation:
 $$
 [g] = \{ gh \,|\, h \in H \} = gH \subset G \ .
 $$
-Der {\it Faktorraum} $G/H$ ist dann der Raum der Nebenklassen: $G/H = \cup_{g\in G}[g] = G/_\sim$. Die
+Der {\itshape Faktorraum} $G/H$ ist dann der Raum der Nebenklassen: $G/H = \cup_{g\in G}[g] = G/_\sim$. Die
 Topologie auf $G/H$ wird so definiert, dass genau die Mengen offen sind, deren Urbild unter $\pi$
 offen in $G$ sind. Die nat\"urliche Projektion
 $$
@@ -3903,10 +3809,10 @@ glatte Abbildung $s_{[a]}: W([a])\rightarrow G$ mit
 $$
 \pi \circ s_{[a]} = \Id_{W([a])} \ .
 $$
-Man sagt die Abbildungen $s_{[a]}$  sind lokale Schnitte der Faserung $\pi: G\rightarrow G/H$.
+Man sagt die Abbildungen $s_{[a]}$  sind lokale Schnitte der Faserung $\pi: G\rightarrow G/H$.\fish
 \end{enumerate}
 \end{Satz}
-{\bf zum Beweis:} Hier sollen nur einige Anmerkungen zum Beweis gemacht werden. Einen
+{\bfseries zum Beweis:} Hier sollen nur einige Anmerkungen zum Beweis gemacht werden. Einen
 vollst\"andigen Beweis findet man bei H. Baum oder F. Warner.
 
 \medskip
@@ -3981,7 +3887,7 @@ $$
 
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
 \item
 Die nat\"urliche Projektion $\pi : G \rightarrow G/H$ ist eine Submersion.
@@ -4007,6 +3913,7 @@ G/H @> \tau_g >> G/H
 \end{CD}
 \end{equation*}
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
@@ -4027,7 +3934,7 @@ $$
 \Psi(g \cdot [a]) = g \cdot \Psi([a]) \ .
 $$
 Insbesondere ist die Bahn $\mathcal O_p$ diffeomorph zu $G/G_p$ und jeder $G$-homogene Raum $M$
-schreibt sich als $M=G/H$ f\"ur eine abgeschlossene Lie-Untergruppe $H \subset G$.
+schreibt sich als $M=G/H$ f\"ur eine abgeschlossene Lie-Untergruppe $H \subset G$.\fish
 \end{Satz}
 \proof
 Zun\"achst zeigt man, dass $\Psi$ wohldefiniert ist. Denn aus $[a] = [b]$ folgt $a^{-1} b \in G_p$
@@ -4062,7 +3969,7 @@ somit ein Isomorphismus.
 
 \bigskip
 
-\subsection{Beispiele homogener Mannigfaltigkeiten}
+\section{Beispiele homogener Mannigfaltigkeiten}
 
 \bigskip
 
@@ -4088,7 +3995,7 @@ $$
 S^{2n+1} = \SU(n+1)/\SU(n) = \U(n+1)/\U(n) \ .
 $$
 \item
-Auf der Einheitssph\"are $S^{4n+3}\subset \H^{n+1}$ wirkt $\Sp(n+1)$ transitiv. Die
+Auf der Einheitssph\"are $S^{4n+3}\subset \Hc^{n+1}$ wirkt $\Sp(n+1)$ transitiv. Die
 Standgruppe von $e_1$ (und von jedem anderen Punkt) ist isomorph zu
 $\Sp(n)$. Damit hat die Sph\"are $S^{4n+3}$ eine weitere M\"oglichkeit
 als homogener Raum geschrieben zu werden:
@@ -4133,7 +4040,7 @@ Folgende $S^1$- bzw. $S^3$-Faserungen werden als Hopf-Faserungen bezeichnet:
 $$
 \begin{array}{lll}
 S^{2n+1} & =  \U(n+1)/\U(n)  & \longrightarrow \quad \C P^n = \U(n+1)/\U(1) \times  \U(n) \ , \\[1.5ex]
-S^{4n+3} & =  \Sp(n+1)/\Sp(n) & \longrightarrow \quad \H P^n = \Sp(n+1)/\Sp(1) \times  \Sp(n) \ .
+S^{4n+3} & =  \Sp(n+1)/\Sp(n) & \longrightarrow \quad \Hc P^n = \Sp(n+1)/\Sp(1) \times  \Sp(n) \ .
 \end{array}
 $$
 \end{enumerate}
@@ -4162,29 +4069,29 @@ mit $r_1 + \ldots + r_k = n$. Damit hat man bewiesen
 Sei $A \in \u(n)$ mit den Eigenwerten $\lambda_1,\ldots, \lambda_k$ mit den geometrischen
 Vielfachheiten $r_1,\ldots, r_k$. Dann gilt f\"ur den Orbit durch $A$:
 $$
-\mathcal O_A = \U(n)/\U(r_1) \times \ldots \times \U(r_k) \ .
+\mathcal O_A = \U(n)/\U(r_1) \times \ldots \times \U(r_k) \ .\fish
 $$
 \end{Satz}
 
 \bigskip
 
-\section{Differentialformen}
+\chapter{Differentialformen}
 
 Sei $V$ ein $n$-dimensionaler reeller Vektorraum und sei $V^* = \Hom(V, \R)$
 der Dualraum von $V$, d.h. der Raum der linearen Abbildungen $V\rightarrow \R$.
 Sp\"ater wird $V$ ersetzt durch $T_pM$.
 
 \begin{Definition}
-Eine {\em $k$-Form} auf $\;V$ ist eine multilineare, alternierende Abbildung
+Eine \emph{ $k$-Form} auf $\;V$ ist eine multilineare, alternierende Abbildung
 $$
 \omega : V \times \ldots_{\mbox{k mal}}\ldots \times V \longrightarrow \R \ .
 $$
-Die Zahl $k$ nennt man die Grad der $k$-Form $\omega$.
+Die Zahl $k$ nennt man die Grad der $k$-Form $\omega$.\fish
 \end{Definition}
 
 \bigskip
 
-Dabei ist $\omega$ {\it alternierend} genau dann, wenn eine der folgenden vier \"aquivalenten
+Dabei ist $\omega$ {\itshape alternierend} genau dann, wenn eine der folgenden vier \"aquivalenten
 Bedingungen erf\"ullt ist:
 \begin{enumerate}
 \item
@@ -4200,7 +4107,7 @@ $\omega (X_1, \ldots, X_k ) = 0 \qquad \mbox{falls} \quad X_1, \ldots, X_k \quad
 
 \bigskip
 
-{\bf Bemerkung:} Die Menge der $k$-Formen auf $V$ bildet einen reellen Vektorraum, der bezeichnet wird
+\begin{rem*} Die Menge der $k$-Formen auf $V$ bildet einen reellen Vektorraum, der bezeichnet wird
 mit
 $$
 \Lambda^k V^* \ .
@@ -4216,24 +4123,25 @@ $$
 (\lambda \omega)(X_1, \ldots, X_k) & = \quad \lambda \cdot \omega(X_1, \ldots, X_k) \ .
 \end{array}
 $$
+\end{rem*}
 
 \bigskip
 
-{\bf Beispiele:}
+\begin{ex}
 
 \begin{enumerate}
 \item
-{\it 1-Formen:}
+{\itshape 1-Formen:}
 $\Lambda^1 V^* = V^* = \Hom(V, \R)$.
 Insbesondere gilt $\dim \Lambda^1 V^* = n$, falls $V$ ein $n$-dimensionaler Vektorraum ist.
 \item
-{\it 2-Formen:}
+{\itshape 2-Formen:}
 $\Lambda^2 V^* =$ Menge der schief-symmetrischen bilinearen Abbildungen $\omega : V \times V \rightarrow \R$,
 d.h. es gilt $\omega(X, Y) = -\omega (Y,X)$ f\"ur alle Vektoren $X,Y\in V$.
 
 \begin{Lemma}
 $
-\qquad \Lambda^2 V^* \cong \so(V) \cong \{ A \in M(n,\R) \,|\, A^T = -A\}
+\qquad \Lambda^2 V^* \cong \so(V) \cong \{ A \in M(n,\R) \,|\, A^T = -A\}.\fish
 $
 \end{Lemma}
 Beweis:
@@ -4254,15 +4162,16 @@ als Spaltenvektoren betrachtet. Dann gilt:
 $$
 \omega (v_1, \ldots, v_n) = \det (v_1, \ldots, v_n)\, \omega(e_1, \ldots, e_n)
 $$
-Damit folgt $\Lambda^n V^* = \R \cdot \det \cong \R$.
+Damit folgt $\Lambda^n V^* = \R \cdot \det \cong \R$.\boxc
 \end{enumerate}
+\end{ex}
 
 \bigskip
 
 \begin{Definition}
-Die {\em \"au\ss ere Algebra} von $V$ ist definiert als $\; \Lambda(V^*) := \oplus^n_{k=0} \, \Lambda^k V^*$, d.h. als
+Die \emph{ \"au\ss ere Algebra} von $V$ ist definiert als $\; \Lambda(V^*) := \oplus^n_{k=0} \, \Lambda^k V^*$, d.h. als
 die Menge der Formen von beliebigem Grad auf $V$. Die Vektorraumstruktur kommt von den einzelnen Summanden
-$\Lambda^k V^*$, die Produktstruktur ist definiert durch das {\em Dachprodukt}:
+$\Lambda^k V^*$, die Produktstruktur ist definiert durch das \emph{ Dachprodukt}:
 $$
 \wedge : \Lambda^k V^* \times \Lambda^l V^* \longrightarrow \Lambda^{k+l} V^*, \quad
 (\alpha, \beta) \mapsto \alpha \wedge \beta
@@ -4272,18 +4181,18 @@ $$
 (\alpha \wedge \beta)(X_1, \ldots, X_{k+l})
 =
 \frac{1}{k!\,l!}\,\sum_{\;\sigma \in S_{k+l}} \sgn(\sigma)\, \alpha(X_{\sigma(1)}, \ldots, X_{\sigma(k)})
-\cdot \beta(X_{\sigma(k+1)}, \ldots, X_{\sigma(k+l)})
+\cdot \beta(X_{\sigma(k+1)}, \ldots, X_{\sigma(k+l)}).\fish
 $$
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Der Raum der $(0,k)$-Tensoren auf $V$ ist definiert als der Vektorraum der $k$-fach multilinearen Abbildungen:
 $$
 T^{(0,k)} V^* := \{\lambda : V \times  \ldots_{\mbox{\;k mal\;}} \ldots\times  V \rightarrow \R \quad \mbox{multilinear}\} \ .
 $$
-Das {\it Tensorprodukt} auf der Tensoralgebra $T(V^*) = \oplus_k T^{(0,k)}(V^*)$ ist definiert durch
+Das {\itshape Tensorprodukt} auf der Tensoralgebra $T(V^*) = \oplus_k T^{(0,k)}(V^*)$ ist definiert durch
 $$
 (\lambda \otimes \mu)(X_1, \ldots, X_{k+l}) = \lambda(X_1, \ldots, X_k) \cdot \mu (X_{k+1}, \ldots, X_{k+l}) \ .
 $$
@@ -4304,10 +4213,11 @@ auch schreiben:
 $$
 \alpha \wedge \beta = \frac{1}{k!\,l!}\, \mathrm{Alt}(\alpha \otimes \beta) \ .
 $$
+\end{rem*}
 
 \bigskip
 
-{\bf Beispiele:}
+\begin{ex}
 \begin{enumerate}
 \item
 Seien $\alpha$ und $\beta$ zwei 1-Formen auf $V$ dann gilt:
@@ -4328,8 +4238,9 @@ Allgemeiner sei $\alpha$ eine 1-Form und $\beta$ eine k-Form, dann gilt
 $$
 (\alpha \wedge \beta)(X_0, \ldots, X_k) = \sum_{i=0}^k \, (-1)^i \,\alpha(X_i)\,\beta(X_0,\ldots, \widehat X_i, \ldots, X_k) \ .
 $$
-Dabei bedeutet $\widehat X_i$, dass der entsprechende Eintrag weggelassen wird.
+Dabei bedeutet $\widehat X_i$, dass der entsprechende Eintrag weggelassen wird.\boxc
 \end{enumerate}
+\end{ex}
 
 \bigskip
 
@@ -4353,14 +4264,14 @@ $
 \item\;
 $
 (\alpha \wedge \beta ) \wedge \gamma = \alpha \wedge (\beta \wedge \gamma)
-\qquad \mbox{f\"ur alle} \quad \alpha, \beta, \gamma \in \Lambda(V^*)
+\qquad \mbox{f\"ur alle} \quad \alpha, \beta, \gamma \in \Lambda(V^*).\fish
 $
 \end{enumerate}
 \end{Lemma}
 
 \bigskip
 
-\subsection{Das Verhalten unter Abbildungen}
+\section{Das Verhalten unter Abbildungen}
 
 \bigskip
 
@@ -4370,7 +4281,7 @@ f^* = \Lambda^k(f) : \Lambda^k W^* \longrightarrow \Lambda^k  V^*,\quad
 (f^*\omega)(v_1, \ldots, v_k) := \omega(f v_1, \ldots, f v_k) \ .
 $$
 f\"ur Vektoren $v_1, \ldots, v_k \in V$ und $\omega \in \Lambda^k W^*$. Man nennt die von
-$f$ induzierte Abbildung $f^*$ das {\it Zur\"uckziehen} von Formen. Die Zuordnung
+$f$ induzierte Abbildung $f^*$ das {\itshape Zur\"uckziehen} von Formen. Die Zuordnung
 $V\mapsto \Lambda^k V^*, f\mapsto f^*$ definiert also einen kontravarianten Funktor
 auf der Kategorie der Vektorr\"aume.
 
@@ -4386,14 +4297,14 @@ $
 \item
 $
 \det(f) = f^* : \Lambda^n V^* \longrightarrow \Lambda^n V^*,
-\qquad \mbox{falls}\quad \dim V = n
+\qquad \mbox{falls}\quad \dim V = n.\fish
 $
 \end{enumerate}
 \end{Lemma}
 
 \bigskip
 
-\subsection{Eine Basis im Raum der Formen}
+\section{Eine Basis im Raum der Formen}
 
 \bigskip
 
@@ -4428,12 +4339,12 @@ $$
 \right) \ .
 $$
 Insbesondere gilt $\omega_1 \wedge \ldots \wedge \omega_k= 0$ falls die Linearformen
-$\omega_1, \ldots, \omega_k$ in $V^*$ linear abh\"angig sind.
+$\omega_1, \ldots, \omega_k$ in $V^*$ linear abh\"angig sind.\fish
 \end{Lemma}
 
 \bigskip
 
-{\bf Beispiel:}
+\begin{ex}
 Seien $\omega_1, \omega_2$ zwei 1-Formen auf $V$ und $X,Y\in V$. Dann gilt
 $$
 (\omega_1 \wedge \omega_2)(X,Y) =
@@ -4446,12 +4357,13 @@ $$
 \right)
 =
 \omega_1(X)\,\omega_2(Y) - \omega_1(Y)\,\omega_2(X)
-\ .
+\ .\boxc
 $$
+\end{ex}
 
 \bigskip
 
-\subsection{Differentialformen auf Mannigfaltigkeiten}
+\section{Differentialformen auf Mannigfaltigkeiten}
 
 \bigskip
 
@@ -4466,12 +4378,12 @@ wobei $\;T^*_p M = (T_pM)^*$. Die kanonische Projektion ist definiert als
 $$
 \pi : \Lambda^k (T^*M) \rightarrow M, \quad \pi(\omega) = p \qquad \mbox{falls}\quad \omega \in \Lambda^k T^*_pM \ ,
 $$
-d.h. die Faser \"uber $p \in M$ ist der Raum der $k$-Formen auf $\,T_pM$, also $\pi^{-1}(p) = \Lambda^k T^*_pM$.
+d.h. die Faser \"uber $p \in M$ ist der Raum der $k$-Formen auf $\,T_pM$, also $\pi^{-1}(p) = \Lambda^k T^*_pM$.\fish
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 Die Menge $\Lambda^k (T^*M)$ tr\"agt die Struktur einer differenzierbaren Mannigfaltigkeit (analog zu $TM$):
 Sei $(U,x)$ eine Karte um $p\in M$. Dann definiert man
 $$
@@ -4480,6 +4392,7 @@ $$
 Mit den Karten $(\pi^{-1}(U), \Phi)$ wird $\Lambda^k (T^*M)$ eine differenzierbare Mannigfaltigkeit der
 Dimension $n + {n \choose k}$. Mit der kanonischen Projektion $\pi : \Lambda^k T^*M\rightarrow M$ erh\"alt man
 ein reelles Vektorb\"undel vom Rang ${n \choose k}$ \"uber $M$.
+\end{rem*}
 
 \bigskip
 
@@ -4490,21 +4403,22 @@ $$
 $$
 d.h. $\omega$ ist ein Schnitt im Vektorb\"undel $\Lambda^k T^*M$. Den unendlich-dimensionalen
 Vektorraum der $k$-Formen auf $M$ bezeichnet man mit $\Omega^k(M) = \Gamma(\Lambda^k T^*M)$.
-Insbesondere gilt f\"ur den Raum der 0-Formen: $\;\Omega^0(M) = \mathcal C^\infty(M)$.
+Insbesondere gilt f\"ur den Raum der 0-Formen: $\;\Omega^0(M) = \mathcal C^\infty(M)$.\fish
 \end{Definition}
 
 \bigskip
 
-{\bf Beispiel:} Jede Funktion $f \in \mathcal C^\infty(M)$ definiert eine 1-Form $df \in \Omega^1(M)$.
-
+\begin{ex} Jede Funktion $f \in \mathcal C^\infty(M)$ definiert eine 1-Form $df \in \Omega^1(M)$.\boxc
+\end{ex}
 \bigskip
 
-%{\bf Bemerkung:}
+%\begin{rem*}
 %Das Dachprodukt \"ubertr\"agt sich punktweise auf den Raum der Differentialformen. F\"ur zwei Differentialformen
 %$\alpha, \beta$ auf $M$ definiert man das Dachprodukt in $p\in M$ durch
 %$$
 %(\alpha \wedge \beta)(p) := \alpha(p) \wedge \beta(p)  \ .
 %$$
+%\end{rem*}
 
 
 \bigskip
@@ -4543,7 +4457,7 @@ alternierende Abbildung
 $$
 \omega : \chi(M) \times \ldots_{\mbox{k-mal}} \ldots \times \chi(M) \rightarrow \mathcal C^\infty(M)
 $$
-definiert eine $k$-Form $\hat\omega$ auf $M$.
+definiert eine $k$-Form $\hat\omega$ auf $M$.\fish
 \end{Lemma}
 \proof
 Seien $X_1, \ldots, X_k \in T_pM$ mit Fortsetzungen $\tilde X_1, \ldots, \tilde X_k$ zu lokal um $p$
@@ -4583,7 +4497,7 @@ $$
 
 \bigskip
 
-\subsection{Differentialformen in lokalen Koordinaten}
+\section{Differentialformen in lokalen Koordinaten}
 
 Sei $(U,x)$ eine Karte um $p \in M$. Dann sind f\"ur jeden Punkt $p\in M$ die Vektoren
 $
@@ -4608,7 +4522,7 @@ $$
 
 \bigskip
 
-\subsection{Das Zur\"uckziehen von Differentialformen}
+\section{Das Zur\"uckziehen von Differentialformen}
 
 Sei $f: M \rightarrow N$ eine differenzierbare  Abbildung und sei $\omega \in \Omega^k(N)$. Dann erh\"alt man
 mittels Zur\"uckziehen eine $k$-Form $f^*\omega$ auf $M$, die definiert ist durch
@@ -4627,14 +4541,14 @@ Abbildungen, dann gilt
 \item
 $ \qquad (g \circ f)^* = f^* \circ g^*$
 \item
-$ \qquad f^*(\alpha \wedge \beta) = (f^*\alpha) \wedge (f^*\beta) $
+$ \qquad f^*(\alpha \wedge \beta) = (f^*\alpha) \wedge (f^*\beta) $.\fish
 \end{enumerate}
 \end{Lemma}
 
 
 \bigskip
 
-\subsection{Das Differential}
+\section{Das Differential}
 
 Jede Funktion $f \in \mathcal C^\infty(M)$, also jede 0-Form auf $M$, definiert eine 1-Form $df$,
 die sich in lokalen  Koordinaten schreibt als
@@ -4651,7 +4565,7 @@ $$
 \bigskip
 
 \begin{Satz}
-Auf jeder differenzierbaren Mannigfaltigkeit $M$ existiert genau eine Abbildung, das {\em Differential}
+Auf jeder differenzierbaren Mannigfaltigkeit $M$ existiert genau eine Abbildung, das \emph{ Differential}
 $d: \Omega^*(M) \rightarrow \Omega^*(M)$ mit den folgenden Eigenschaften:
 \begin{enumerate}
 \item
@@ -4669,7 +4583,7 @@ Die Abbildung $d$ ist eine Anti-Derivation, d.h.
 $$
 d(\alpha \wedge \beta) = d\alpha \wedge \beta +(-1)^k \alpha \wedge d\beta
 $$
-f\"ur $\alpha\in \Omega^k(M), \beta \in \Omega^*(M)$
+f\"ur $\alpha\in \Omega^k(M), \beta \in \Omega^*(M)$.\fish
 \end{enumerate}
 \end{Satz}
 \proof
@@ -4813,7 +4727,7 @@ symmetrisch in $i$ und $k$ ist, w\"ahrend $dx_k \wedge dx_i$ schiefsymmetrisch i
 
 \bigskip
 
-\subsection{Beispiel: Die Maxwell Gleichungen}
+\section{Beispiel: Die Maxwell Gleichungen}
 
 \bigskip
 
@@ -4889,31 +4803,32 @@ $$
 
 
 
-\subsection{Symplektische Mannigfaltigkeiten}
+\section{Symplektische Mannigfaltigkeiten}
 
 \bigskip
 
 \begin{Definition}
-Eine {\em symplektische Mannigfaltigkeit} ist eine differenzierbare Mannigfaltigkeit $M$
+Eine \emph{ symplektische Mannigfaltigkeit} ist eine differenzierbare Mannigfaltigkeit $M$
 zusammen mit einer 2-Form $\omega \in \Omega^2(M)$, die geschlossenen
-und nicht ausgeartet ist.
+und nicht ausgeartet ist.\fish
 \end{Definition}
 
 \medskip
 
-{\bf Bemerkung:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
 \item
-Eine Differentialform $\omega$ hei\ss t {\it geschlossen}, falls $d\omega = 0$ gilt.
-Sie hei\ss t {\it exakt}, falls eine Form $\eta $ existiert mit $\omega = d\eta$. Exakte
+Eine Differentialform $\omega$ hei\ss t {\itshape geschlossen}, falls $d\omega = 0$ gilt.
+Sie hei\ss t {\itshape exakt}, falls eine Form $\eta $ existiert mit $\omega = d\eta$. Exakte
 Formen sind geschlossen, ob die Umkehrung gilt h\"angt von der Topologie der Mannigfaltigkeit ab.
 \item
-Eine Form $\omega \in \Omega^2(M)$ hei\ss t {\it nicht ausgeartet} genau dann, wenn $\omega_p \in
+Eine Form $\omega \in \Omega^2(M)$ hei\ss t {\itshape nicht ausgeartet} genau dann, wenn $\omega_p \in
 \Lambda^2T_p^*M$ f\"ur alle $p \in M$ nicht ausgeartet ist.
 \item
 Existiert auf $M$ eine nicht ausgeartete 2-Form, dann mu\ss{} die Dimension von $M$
 gerade sein.
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
@@ -4931,13 +4846,13 @@ $\omega$ definiert einen Isomorphismus $I: V \rightarrow V^*$, durch
 $I(X)(Y) = \omega(Y,X)$.
 \item
 Die schief-symmetrische Matrix $A = (A_{ij})$ mit $ A_{ij} = \omega(e_i,e_j)$,
-f\"ur eine Basis $\{e_i \}$ von $V$, ist invertierbar.
+f\"ur eine Basis $\{e_i \}$ von $V$, ist invertierbar.\fish
 \end{enumerate}
 \end{Lemma}
 
 \bigskip
 
-{\bf Beispiele:}
+\begin{ex}
 \begin{enumerate}
 \item
 Auf dem $\R^{2n}$ betrachtet man die Koordinaten $(q_1, \ldots, q_n, p_1, \ldots, p_n)$. Die kanonische
@@ -4955,8 +4870,9 @@ $$
 $$
 f\"ur $Z\in T_p M = T_p(T^*X)$. Die symplektische Form ist dann definiert als $\omega = d\theta$.
 Offensichtlich ist $\omega$ geschlossen, dass $\omega$ nicht ausgeartet ist ergibt sich aus dem
-folgendem Lemma.
+folgendem Lemma.\boxc
 \end{enumerate}
+\end{ex}
 
 \bigskip
 
@@ -4966,13 +4882,13 @@ lokale Koordinaten auf $M= T^*X$. Dann gilt in diesen Koordinaten:
 \begin{equation*}
 \theta \;=\; \sum_{i=1}^n\, p_i \, dq_i
 \qquad \qquad \mbox{und}\qquad \qquad
-\omega \;=\; \sum_{i=1}^n\, dp_i \wedge dq_i \ .
+\omega \;=\; \sum_{i=1}^n\, dp_i \wedge dq_i \ .\fish
 \end{equation*}
 \end{Lemma}
 
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
 \item
 Das Theorem von Darboux sagt, dass es f\"ur jede symplektisch Mannigfaltigkeit $(M, \omega)$
@@ -4982,17 +4898,18 @@ ist.
 Weitere Beispiele symplektischer Mannigfaltigkeiten sind die Bahnen der adjungierten Darstellung von $G$ auf
 $\g = \Lie(G)$. Dies sind homogene symplektische Mannigfaltigkeiten.
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
 \begin{Definition}
-Das {\em Hamilton-Vektorfeld} $X_H$ zu einer Funktion $H \in \mathcal C^\infty(M)$
+Das \emph{ Hamilton-Vektorfeld} $X_H$ zu einer Funktion $H \in \mathcal C^\infty(M)$
 ist definiert durch die Gleichung
 $$
 \omega(Y, X_H) = dH(Y) = Y(H) \ ,
 $$
 die f\"ur beliebige Vektorfelder $Y \in \chi(M)$ erf\"ullt sein soll. Unter dem Isomorphismus
-$I:TM\rightarrow T^*M$ gilt $I(X_H) = dH$.
+$I:TM\rightarrow T^*M$ gilt $I(X_H) = dH$.\fish
 \end{Definition}
 
 \bigskip
@@ -5012,7 +4929,7 @@ genau dann eine Integralkurve von $X_H$, wenn
 $$
 \dot p_j = - \frac{\partial H}{\partial q_j }, \qquad
 \dot q_j = \frac{\partial H}{\partial p_j }
-\qquad \mbox{f\"ur} \qquad j = 1, \ldots, n \qquad \mbox{erf\"ullt ist}\ .
+\qquad \mbox{f\"ur} \qquad j = 1, \ldots, n \qquad \mbox{erf\"ullt ist}\ .\fish
 $$
 \end{Satz}
 \proof
@@ -5045,9 +4962,10 @@ gilt, wenn die beiden angegebenen Differentialgleichungen erf\"ullt sind.
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Die kanonischen Bewegungsgleichungen der Hamiltonschen Mechanik sind genau die Gleichungen der
 Integralkurven des Hamilton-Vektorfeldes $X_H$ (Satz von Hamilton).
+\end{rem*}
 
 \bigskip
 
@@ -5058,9 +4976,9 @@ einer Lie-Algebra. Diese soll im Folgenden beschrieben werden.
 
 \begin{Definition}
 F\"ur Funktionen $f,g \in \mathcal C^\infty(M)$ auf einer symplektischen Mannigfaltigkeit
-$(M, \omega)$ definiert man die {\em Poisson-Klammer} $\{f, g\}$ durch
+$(M, \omega)$ definiert man die \emph{ Poisson-Klammer} $\{f, g\}$ durch
 $$
-\{f, g\} = - \omega(X_f, Y_g) \ .
+\{f, g\} = - \omega(X_f, Y_g) \ .\fish
 $$
 \end{Definition}
 
@@ -5095,7 +5013,7 @@ $$
 \frac{\partial f}{\partial q_i}\,  \frac{\partial g}{\partial p_i}\,
 \,-\,
 \frac{\partial f}{\partial p_i}\,  \frac{\partial g}{\partial q_i}\,
-\right)
+\right).\fish
 $$
 \end{enumerate}
 \end{Satz}
@@ -5113,7 +5031,7 @@ $$
 \varphi^*_t \,\omega \;=\; \omega \ ,
 $$
 d.h. $\varphi_t$ ist f\"ur alle $t$ ein symplektischer Diffeomorphismus. Das Tripel
-$(M, \omega, H)$ nennt man {\em Hamilton-System}.
+$(M, \omega, H)$ nennt man \emph{ Hamilton-System}.\fish
 \end{Satz}
 \proof
 Etwas sp\"ater wird die Lie-Ableitung einer Differentialform $\omega$ nach einem Vektorfeld $X$ definiert. Man hat
@@ -5136,11 +5054,11 @@ aber wegen $d^2=0$ immer erf\"ullt ist.
 \bigskip
 
 \begin{Definition}
-Eine Funktion $f\in \mathcal C^\infty(M)$ hei\ss t {\em Erhaltungsgr\"o\ss e} des
+Eine Funktion $f\in \mathcal C^\infty(M)$ hei\ss t \emph{ Erhaltungsgr\"o\ss e} des
 Hamilton\-systems $(M, \omega, H)$, falls $f$ konstant ist auf den Integralkurven
-von $X_H$. Erhaltungs\-gr\"ossen nennt man auch {\em erste Integrale}. Der Raum der
+von $X_H$. Erhaltungs\-gr\"ossen nennt man auch \emph{ erste Integrale}. Der Raum der
 Erhaltungsgr\"o\ss en eines Hamiltonsystems $(M, \omega, H)$  wird mit
-$\mathcal E(H)$ bezeichnet.
+$\mathcal E(H)$ bezeichnet.\fish
 \end{Definition}
 
 \bigskip
@@ -5155,7 +5073,7 @@ Sei $(M, \omega, H)$ ein Hamiltonsystem. Dann gilt f\"ur den Raum der Erhaltungs
 \item
  $f, g \in \mathcal E(H)$ dann gilt auch $\{f, g\} \in \mathcal E(H)$
         d.h. der Raum der Erhaltungsgr\"o\ss en ist eine Lie-Algebra, genauer eine Unteralgebra
-       von $(\mathcal C^\infty(M), \{\cdot, \cdot\})$
+       von $(\mathcal C^\infty(M), \{\cdot, \cdot\})$.\fish
 \end{enumerate}
 \end{Satz}
 \proof
@@ -5188,7 +5106,7 @@ Sei $(M, \omega, H)$ ein Hamiltonsystem mit $\omega = d\theta$, f\"ur eine geeig
 und sei $X\in \chi(M)$ ein vollst\"andiges Vektorfeld, dessen Flu\ss{} $\varphi_t$ das Hamiltonsystem
 erh\"alt, d.h. es gelte $\varphi_t^*\theta = \theta$ und $\varphi_t^* H = H$. Dann gilt
 $$
-\theta(X) \in \mathcal E(H) \ .
+\theta(X) \in \mathcal E(H) \ .\fish
 $$
 \end{Satz}
 \proof
@@ -5201,23 +5119,7 @@ $$
 d.h. $\theta(X) \in \mathcal E (H)$.
 \qed
 
-\subsection{Tensorfelder auf Mannigfaltigkeiten}
-
-\newcommand{\setd}[1]{\{#1\}}
-\newcommand{\CC}{\mathcal{C}}
-\newcommand{\ph}{\varphi}
-\newcommand{\df}{\mathrm{d}f}
-\newcommand{\dx}{\mathrm{d}x}
-\newcommand{\dy}{\mathrm{d}y}
-\newcommand{\dr}{\mathrm{d}r}
-\newcommand{\dt}{\mathrm{d}t}
-\newcommand{\diffd}{\mathrm{d}}
-\newcommand{\dph}{\mathrm{d}\ph}
-\newcommand{\domega}{\mathrm{d}\omega}
-\newcommand{\scp}[1]{\left\langle#1\right\rangle}
-\newcommand{\setdef}[2]{\left\{#1\;|\; #2\right\}}
-\newcommand{\norm}[1]{\left\|#1\right\|}
-
+\section{Tensorfelder auf Mannigfaltigkeiten}
 
 \begin{Definition}
 \begin{enumerate}
@@ -5244,14 +5146,14 @@ d.h. $\theta(X) \in \mathcal E (H)$.
   \begin{align*}
   \underbrace{\Omega^1(M)\times\ldots\times \Omega^1(M)}_{r\text{-mal}} \times
   \underbrace{\chi(M)\times \ldots \times \chi(M)}_{s\text{-mal}}\to \mathcal
-  C^\infty(M).
+  C^\infty(M).\fish
   \end{align*}
 \end{enumerate}
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 
 \begin{enumerate}
   \item Als \emph{tensorielles Verhalten} bezeichnet man folgende Eigenschaft:
@@ -5267,8 +5169,9 @@ d.h. $\theta(X) \in \mathcal E (H)$.
   \dx_j\left(\frac{\partial}{\partial x_i}\right) = \delta_{ij}$ und
   $R_{j_1\ldots j_s}^{i_1\ldots i_r}\in \mathcal C^\infty(M)$.
 \end{enumerate}
+\end{rem*}
 
-\subsection{Lie-Ableitung von Differentialformen}
+\section{Lie-Ableitung von Differentialformen}
 
 Sei $X$ ein Vektorfeld mit lokalem Flus $\ph_t$, d.h. $\ph_t: U\subset M\to M$
 definiert durch
@@ -5278,14 +5181,14 @@ definiert durch
 
 Die Lie-Ableitung einer Funktion $f\in\mathcal C^\infty(M)$ ist gegeben durch
 \begin{align*}
-L_X(f)_p = \df(X_p) = \frac{\diffd}{\dt}\bigg|_{t=0} \ph_t^*f(p),
+L_X(f)_p = \df(X_p) = \frac{\ddd}{\dt}\bigg|_{t=0} \ph_t^*f(p),
 \end{align*}
 wobei $\ph_t^*f(p) = f\circ\ph_t(p)$.
 \medskip
 
 Die Lie-Ableitung eines Vektorfeldes $Y\in\chi(M)$ ist gegeben durch
 \begin{align*}
-L_X Y_p = [X,Y]_p = \frac{\diffd}{\dt}\bigg|_{t=0} (\ph_t^* Y)_{p},
+L_X Y_p = [X,Y]_p = \frac{\ddd}{\dt}\bigg|_{t=0} (\ph_t^* Y)_{p},
 \end{align*}
 wobei $\ph_t^* Y_p = \dph_{-t}(Y_{\ph_t(p)})$.
 
@@ -5295,10 +5198,10 @@ wobei $\ph_t^* Y_p = \dph_{-t}(Y_{\ph_t(p)})$.
 Die \emph{Lie-Ableitung} einer Differentialform $\omega\in\Omega^k(M)$ nach
 einem Vektorfeld $X\in\chi(M)$ ist definiert durch
 \begin{align*}
-L_X\omega = \frac{\diffd}{\dt}\bigg|_{t=0} \ph_t^*\omega,
+L_X\omega = \frac{\ddd}{\dt}\bigg|_{t=0} \ph_t^*\omega,
 \end{align*}
 wobei $\ph_t^*\omega (X_1,\ldots,X_k) 
-=\omega_{\ph_t(\cdot)}(\dph_{t}X_1,\ldots,\dph_t X_k)$.
+=\omega_{\ph_t(\cdot)}(\dph_{t}X_1,\ldots,\dph_t X_k)$.\fish
 \end{Definition}
 
 \bigskip
@@ -5316,49 +5219,49 @@ wobei $\ph_t^*\omega (X_1,\ldots,X_k)
 \end{align*}
 \item $L_X(\alpha\wedge\beta) = (L_X\alpha) \wedge \beta + \alpha\wedge
 (L_X\beta)$.
-\item $L_X(\domega) = \diffd L_X\omega$.
+\item $L_X(\dom) = \ddd L_X\omega$.\fish
 \end{enumerate}
 \end{Lemma}
 
 \proof
 Zu 1. 
 \begin{align*}
-L_X\omega(Y) &= \frac{\diffd}{\dt}\bigg|_{t=0} \ph_t^*(\omega(Y)) =
- \frac{\diffd}{\dt}\bigg|_{t=0}
+L_X\omega(Y) &= \frac{\ddd}{\dt}\bigg|_{t=0} \ph_t^*(\omega(Y)) =
+ \frac{\ddd}{\dt}\bigg|_{t=0}
  \omega(Y)\circ\ph_t\\
  %\omega_{\ph_t(\cdot)}(Y_{\ph_t(\cdot)})\\
- &= \frac{\diffd}{\dt}\bigg|_{t=0}
+ &= \frac{\ddd}{\dt}\bigg|_{t=0}
  \omega(\dph_t\circ\dph_{-t} Y)\circ\ph_t\\
  %\omega_{\ph_t(\cdot)}(\dph_{t}\circ\dph_{-t}Y_{\ph_t(\cdot)})\\
- &= \frac{\diffd}{\dt}\bigg|_{t=0}
+ &= \frac{\ddd}{\dt}\bigg|_{t=0}
  %\omega_{\ph_t(\cdot)}(\dph_{t}(\ph_t^* Y))\\
  \omega(\dph_{t}(\ph_t^* Y))\circ\ph_t\\
- &= \frac{\diffd}{\dt}\bigg|_{t=0}
+ &= \frac{\ddd}{\dt}\bigg|_{t=0}
  (\ph_t^*\omega)(\ph_t^* Y)\\
- &= \frac{\diffd}{\dt}\bigg|_{t=0}
+ &= \frac{\ddd}{\dt}\bigg|_{t=0}
  \ph_t^*\omega(Y) + 
- \omega\left(\frac{\diffd}{\dt}\bigg|_{t=0}\ph_t^* Y\right)\\
+ \omega\left(\frac{\ddd}{\dt}\bigg|_{t=0}\ph_t^* Y\right)\\
  &= (L_X\omega)Y + \omega(L_X Y).
 \end{align*}
 Zu 3.
 \begin{align*}
-L_X(\alpha\wedge \beta) &= \frac{\diffd}{\dt}\bigg|_{t=0}
+L_X(\alpha\wedge \beta) &= \frac{\ddd}{\dt}\bigg|_{t=0}
 \ph_t^*(\alpha\wedge\beta)
- = \frac{\diffd}{\dt}\bigg|_{t=0}
+ = \frac{\ddd}{\dt}\bigg|_{t=0}
 \ph_t^*(\alpha)\wedge\ph_t^*(\beta)\\
-&= \left(\frac{\diffd}{\dt}\bigg|_{t=0}
+&= \left(\frac{\ddd}{\dt}\bigg|_{t=0}
 \ph_t^*(\alpha)\right)\wedge \beta +
 \alpha\wedge\left( 
-\frac{\diffd}{\dt}\bigg|_{t=0}
+\frac{\ddd}{\dt}\bigg|_{t=0}
 \ph_t^*(\beta)\right)\\
 &= (L_X\alpha) \wedge\beta + \alpha\wedge(L_X\beta).
 \end{align*}
 Zu 4.
 \begin{align*}
-L_X \domega = \frac{\diffd}{\dt}\bigg|_{t=0} \ph_t^* \domega =
-\frac{\diffd}{\dt}\bigg|_{t=0} \diffd(\ph_t^* \omega) =
-\diffd\left(\frac{\diffd}{\dt}\bigg|_{t=0} \ph_t^* \omega\right) =
-\diffd L_X\omega.
+L_X \dom = \frac{\ddd}{\dt}\bigg|_{t=0} \ph_t^* \dom =
+\frac{\ddd}{\dt}\bigg|_{t=0} \ddd(\ph_t^* \omega) =
+\ddd\left(\frac{\ddd}{\dt}\bigg|_{t=0} \ph_t^* \omega\right) =
+\ddd L_X\omega.
 \end{align*}
 \qed
 
@@ -5372,12 +5275,12 @@ Sei $\omega\in\Omega^k(M)$, $X\in\chi(M)$, dann ist die \emph{Kontraktion}
 \end{align*}
 Man schreibt auch $i_X\omega = X\lrcorner\ \omega$,
 \begin{align*}
-i_X: \Omega^k(M)\to \Omega^{k-1}(M).
+i_X: \Omega^k(M)\to \Omega^{k-1}(M).\fish
 \end{align*}
 \end{Definition}
 
 
-{\bf Bemerkung:}
+\begin{rem*}
 Sei $V$ ein Vektorraum und $v\in V$, dann ist
 \begin{align*}
 i_v : \Lambda^kV^*\to \Lambda^{k-1}V^*
@@ -5391,6 +5294,7 @@ Das Skalarprodukt auf $\Lambda^kV^*$ ist dadurch festgelegt, dass
 e^{i_1}\wedge \ldots \wedge e^{i_k}
 \end{align*}
 eine ONB f\"ur $\Lambda^kV^*$ ist f\"ur eine ONB $\setd{e_i}$ von $V$.
+\end{rem*}
 
 \bigskip
 
@@ -5400,7 +5304,7 @@ eine ONB f\"ur $\Lambda^kV^*$ ist f\"ur eine ONB $\setd{e_i}$ von $V$.
   \item $i_X(\alpha\wedge\beta) = (i_X\alpha)\wedge \beta + (-1)^k \alpha\wedge
   i_X\beta$ \qquad f\"ur $\alpha \in \Omega^k(M)$ und $\beta\in\Omega^*(M)$.
   \item $i_X(\df) = \df(X)$, falls $f\in\mathcal C^\infty(M)$.
-  \item $i_X^2 = 0$.
+  \item $i_X^2 = 0$.\fish
 \end{enumerate}
 \end{Lemma}
 
@@ -5409,7 +5313,7 @@ eine ONB f\"ur $\Lambda^kV^*$ ist f\"ur eine ONB $\setd{e_i}$ von $V$.
 \begin{Satz}
 Sei $\omega\in\Omega^*(M)$ und $X\in\chi(M)$. Dann gilt
 \begin{align*}
-L_X\omega = i_X\domega + \diffd i_X\omega.\tag{*}
+L_X\omega = i_X\dom + \ddd i_X\omega.\fish\tag{*}
 \end{align*}
 \end{Satz}
 
@@ -5417,17 +5321,17 @@ L_X\omega = i_X\domega + \diffd i_X\omega.\tag{*}
 \textit{(*) gilt auf 0-Formen}: Sei also $f\in \mathcal C^\infty(M)$, dann ist
 $L_X f =\df(X)$ und $i_X f = 0$. Somit gilt
 \begin{align*}
-i_X\df + \diffd i_X f = i_X \df = \df(X) = L_Xf.
+i_X\df + \ddd i_X f = i_X \df = \df(X) = L_Xf.
 \end{align*}
 \textit{(*) gilt auf 1-Formen}: Sei also $\omega\in\Omega^1(M)$, dann ist
 \begin{align*}
-(i_X\domega + \diffd i_X\omega)(Y) &= 
-\domega(X,Y) + (\diffd \omega(X))(Y)\\
+(i_X\dom + \ddd i_X\omega)(Y) &= 
+\dom(X,Y) + (\ddd \omega(X))(Y)\\
 &= L_X(\omega(Y)) - L_Y(\omega(X)) -\omega([X,Y]) + L_Y(\omega(X))\\
 &= L_X(\omega(Y)) - \omega([X,Y]) = (L_X\omega)(Y).
 \end{align*}
 
-Sei nun $P_X = i_X\domega + \diffd i_X\omega$. Wir zeigen, dass $P_X$ eine
+Sei nun $P_X = i_X\dom + \ddd i_X\omega$. Wir zeigen, dass $P_X$ eine
 Derivation ist, d.h.
 \begin{align*}
 P_X(\alpha\wedge \beta) = P_X(\alpha)\wedge \beta + \alpha\wedge P_X(\beta).
@@ -5438,17 +5342,17 @@ Da $P_X = L_X$ auf $0$- und 1-Formen, folgt somit die Behauptung.
 
 Sei also $\alpha\in\Omega^k(M)$, $\beta\in\Omega^*(M)$. Dann gilt
 \begin{align*}
-P_X(\alpha\wedge\beta) &= i_X\diffd(\alpha\wedge\beta) + \diffd
+P_X(\alpha\wedge\beta) &= i_X\ddd(\alpha\wedge\beta) + \ddd
 i_X(\alpha\wedge\beta) \\ &=  
-i_X((\diffd\alpha)\wedge\beta + (-1)^k \alpha\wedge(\diffd\beta))
-+ \diffd( (i_X\alpha)\wedge\beta + (-1)^k\alpha\wedge i_X\beta )\\
-&= (i_X\diffd\alpha)\wedge \beta + 
-(-1)^{k-1} \diffd\alpha\wedge i_X\beta
-+ (-1)^ki_X\alpha\wedge\diffd\beta + (-1)^{2k}\alpha\wedge i_X\diffd\beta\\
-&+ (\diffd i_X\alpha)\wedge \beta + (-1)^{k-1} (i_X\alpha) \wedge \diffd\beta
-+ (-1)^k\diffd\alpha\wedge i_X\beta + (-1)^{2k} \alpha\wedge \diffd i_X\beta\\
-&= ((i_X\diffd\alpha)+ (\diffd i_X\alpha))\wedge \beta + 
-\alpha\wedge (i_X\diffd\beta +  \diffd i_X\beta)\\
+i_X((\ddd\alpha)\wedge\beta + (-1)^k \alpha\wedge(\ddd\beta))
++ \ddd( (i_X\alpha)\wedge\beta + (-1)^k\alpha\wedge i_X\beta )\\
+&= (i_X\ddd\alpha)\wedge \beta + 
+(-1)^{k-1} \ddd\alpha\wedge i_X\beta
++ (-1)^ki_X\alpha\wedge\ddd\beta + (-1)^{2k}\alpha\wedge i_X\ddd\beta\\
+&+ (\ddd i_X\alpha)\wedge \beta + (-1)^{k-1} (i_X\alpha) \wedge \ddd\beta
++ (-1)^k\ddd\alpha\wedge i_X\beta + (-1)^{2k} \alpha\wedge \ddd i_X\beta\\
+&= ((i_X\ddd\alpha)+ (\ddd i_X\alpha))\wedge \beta + 
+\alpha\wedge (i_X\ddd\beta +  \ddd i_X\beta)\\
 &= P_X(\alpha)\wedge\beta + \alpha\wedge P_X(\beta).
 \end{align*}
 \qed
@@ -5457,15 +5361,15 @@ i_X((\diffd\alpha)\wedge\beta + (-1)^k \alpha\wedge(\diffd\beta))
 
 F\"ur eine $k$-Form $\omega$ haben wir somit nach obigem Satz
 \begin{align*}
-\domega(X,X_1,\ldots,X_k) = (L_X\omega)(X_1,\ldots,X_k) -
-\diffd(i_X\omega)(X_1,\ldots,X_k).
+\dom(X,X_1,\ldots,X_k) = (L_X\omega)(X_1,\ldots,X_k) -
+\ddd(i_X\omega)(X_1,\ldots,X_k).
 \end{align*}
 Iteration dieses Arguments liefert die
 
 \begin{Folgerung}
 Sei $\omega\in\Omega^{k}(M)$ und $X_0,\ldots,X_k\in\chi(M)$. Dann gilt
 \begin{align*}
-\domega(X_0,\ldots,X_k) &= \sum_{i=0}^k (-1)^i
+\dom(X_0,\ldots,X_k) &= \sum_{i=0}^k (-1)^i
 L_{X_i}(\omega(X_0,\ldots,\hat{X}_i,\ldots,X_k))\\
 &+ \sum_{i<j} (-1)^{i+j}
 \omega([X_i,X_j],\ldots,\hat{X}_i,\ldots,\hat{X}_j,\ldots,X_k),
@@ -5475,56 +5379,60 @@ wobei $\hat{X}_i$ bedeutet, dass der entsprechende Eintrag ausgelassen wird.
 
 \bigskip
 
-{\bf Bemerkung:}
-Diese Formel h\"atte auch zur Definition von $\diffd$ benutzt werden k\"onnen.
+\begin{rem*}
+Diese Formel h\"atte auch zur Definition von $\ddd$ benutzt werden k\"onnen.
 Sie gibt einen koordinatenfreien Ausdruck f\"ur das Differential, ist
 allerdings sehr umst\"andlich f\"ur Beweise.
+\end{rem*}
 
 \bigskip
 
-{\bf Beispiele:}
+\begin{ex}
 \begin{enumerate}
   \item Sei $\omega\in \Omega^1(M)$, so ist
 \begin{align*}
-\domega(X,Y) = L_X(\omega(Y))-L_Y(\omega(X))-\omega([X,Y]).
+\dom(X,Y) = L_X(\omega(Y))-L_Y(\omega(X))-\omega([X,Y]).
 \end{align*}
 \item Sei $\omega\in \Omega^2(M)$, so ist
 \begin{align*}
-\domega(X,Y,Z) &= L_X(\omega(X,Y)) - L_Y(\omega(X,Z)) + L_Z(\omega(Y,Z)) \\ &-
-\omega([X,Y],Z) + \omega([X,Z],Y) - \omega([Y,Z],X).
+\dom(X,Y,Z) &= L_X(\omega(X,Y)) - L_Y(\omega(X,Z)) + L_Z(\omega(Y,Z)) \\ &-
+\omega([X,Y],Z) + \omega([X,Z],Y) - \omega([Y,Z],X).\boxc
 \end{align*}
 \end{enumerate}
+\end{ex}
 
-\subsection{Die de Rahm - Kohomologie}
+\section{Die de Rahm - Kohomologie}
 
-{\bf Bemerkung:}
-$\diffd^2 = 0$ entspricht der Aussage, dass die gemischten partiellen
+\begin{rem*}
+$\ddd^2 = 0$ entspricht der Aussage, dass die gemischten partiellen
 Ableitungen gleich sind (Satz von Schwarz); eine andere Interpretation f\"uhrt
 auf die de Rham Kohomologie.
+\end{rem*}
 
 \bigskip
 
 \begin{Definition}
 \begin{enumerate}
-  \item $\alpha\in\Omega^*(M)$ hei\ss{}t \emph{geschlossen}, falls $\diffd\alpha =
+  \item $\alpha\in\Omega^*(M)$ hei\ss{}t \emph{geschlossen}, falls $\ddd\alpha =
   0$.
-  \item $\alpha\in \Omega^*(M)$ hei\ss{}t \emph{exakt}, falls $\alpha =\diffd\beta$
-  f\"ur ein $\beta\in\Omega^*(M)$.
+  \item $\alpha\in \Omega^*(M)$ hei\ss{}t \emph{exakt}, falls $\alpha =\ddd\beta$
+  f\"ur ein $\beta\in\Omega^*(M)$.\fish
 \end{enumerate}
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkung:} Es gilt $\im (\diffd: \Omega^{k-1}\to \Omega^k) \subset \ker
-(\diffd : \Omega^{k}\to \Omega^{k+1})$ und somit ist jede exakte Form geschlossen.
-D.h. $\domega = 0$ ist eine notwendige Bedingung f\"ur die L\"osbarkeit der Gleichung
+\begin{rem*} Es gilt $\im (\ddd: \Omega^{k-1}\to \Omega^k) \subset \ker
+(\ddd : \Omega^{k}\to \Omega^{k+1})$ und somit ist jede exakte Form geschlossen.
+D.h. $\dom = 0$ ist eine notwendige Bedingung f\"ur die L\"osbarkeit der Gleichung
 \begin{align*}
-\omega = \diffd\eta,\qquad \eta\in\Omega^*(M).
+\omega = \ddd\eta,\qquad \eta\in\Omega^*(M).
 \end{align*}
+\end{rem*}
 
 \bigskip
 
-{\bf Beispiel:} Sei $\omega\in\Omega^1(\R^n)$, d.h. $\omega = \sum_{i} \omega_i
+\begin{ex} Sei $\omega\in\Omega^1(\R^n)$, d.h. $\omega = \sum_{i} \omega_i
 \dx_i$ mit $\omega_i\in\mathcal C^\infty(M)$. Gesucht ist nun eine Funktion
 $f\in\mathcal C^\infty(\R^n)$ mit
 \begin{align*}
@@ -5535,38 +5443,40 @@ Nun ist $\omega = \df$ \"aquivalent zu
 \omega_i = \frac{\partial f}{\partial x_i},\qquad i=1,\ldots,n.\tag{*}
 \end{align*}
 Eine notwendige Bedingung daf\"ur ist 
-$\domega = \diffd^2f = 0$,
+$\dom = \ddd^2f = 0$,
 \begin{align*}
-\domega = \sum_{i\neq j}\frac{\partial^2 f}{\partial x_i\partial
+\dom = \sum_{i\neq j}\frac{\partial^2 f}{\partial x_i\partial
 x_j}\dx_i\wedge\dx_j = 0\qquad\Leftrightarrow\qquad
 \frac{\partial\omega_i}{\partial x_j} =
-\frac{\partial \omega_j}{\partial x_i}\tag{**}
+\frac{\partial \omega_j}{\partial x_i}\boxc\tag{**}
 \end{align*}
+\end{ex}
 
 \bigskip
 
-{\bf Bemerkung:} Aus dem Satz von Frobenius aus der Analysis folgt, (*)
+\begin{rem*} Aus dem Satz von Frobenius aus der Analysis folgt, (*)
 $\Leftrightarrow$ (**), d.h. auf $\R^n$ ist jede geschlossene 1-Form bereits
 exakt.
+\end{rem*}
 
 \bigskip
 
-{\bf Beispiele:}
+\begin{ex}
 \begin{enumerate}
 \item Sei $\omega\in\Omega^1(\R^2)$ mit $\omega = f\dx + g\dy$ geschlossen.
 Es gilt also
 \begin{align*}
-\domega = 0 \Leftrightarrow \frac{\partial f}{\partial y} = \frac{\partial
+\dom = 0 \Leftrightarrow \frac{\partial f}{\partial y} = \frac{\partial
 g}{\partial x}.
 \end{align*}
-Gesucht ist nun $\alpha\in\CC^\infty(\R^2)$ mit $\omega = \diffd\alpha$. Setzen
+Gesucht ist nun $\alpha\in\CC^\infty(\R^2)$ mit $\omega = \ddd\alpha$. Setzen
 wir
 \begin{align*}
 \alpha(x,y) = \int_{x_0}^x f(t,y_0)\dt + \int_{y_0}^y g(x,t)\dt,
 \end{align*}
 dann gilt
 \begin{align*}
-\diffd\alpha &= \frac{\partial \alpha}{\partial x} \dx + \frac{\partial
+\ddd\alpha &= \frac{\partial \alpha}{\partial x} \dx + \frac{\partial
 \alpha}{\partial y}\dy 
 = \left(f(x,y_0) + \int_{y_0}^y \partial_x g(x,t)\dt\right) \dx
 + g(x,y)\dy\\
@@ -5583,31 +5493,32 @@ nach dem Hauptsatz der Integral- und Differentialrechnung.
 dann ist $\omega$ geschlossen. Um dies einzusehen f\"uhren wir Polarkoordinaten
 ein
 \begin{align*}
-\dx &= \diffd(r\cos\ph) = \cos\ph \diffd r - r\sin\ph\dph,\\
-\dy &= \diffd(r\sin\ph) = \sin\ph \diffd r + r\cos\ph\dph.
+\dx &= \ddd(r\cos\ph) = \cos\ph \ddd r - r\sin\ph\dph,\\
+\dy &= \ddd(r\sin\ph) = \sin\ph \ddd r + r\cos\ph\dph.
 \end{align*}
 Dann ist $\omega = \dph$ und offensichtlich geschlossen. $\omega$ ist jedoch
 nicht exakt, denn
 \begin{align*}
 \int_\gamma \omega = 2\pi,\qquad \text{f\"ur }\gamma \text{ die Kreislinie}.
 \end{align*}
-Und das Integral \"uber exakte Formen entlang geschlossener Kurven verschwindet.
+Und das Integral \"uber exakte Formen entlang geschlossener Kurven verschwindet.\boxc
 \end{enumerate}
+\end{ex}
 
 \bigskip
 
 \begin{Definition}
 Die \emph{de Rahm-Kohomologie} ist definiert durch
 \begin{align*}
-H_{dR}^k(M) &= \ker(\diffd: \Omega^k\to \Omega^{k+1})/\im(\diffd:
+H_{dR}^k(M) &= \ker(\ddd: \Omega^k\to \Omega^{k+1})/\im(\ddd:
 \Omega^{k-1}\to \Omega^k)\\
-&=\text{Menge der \"Aquivalenzklassen geschlossener Formen}.
+&=\text{Menge der \"Aquivalenzklassen geschlossener Formen}.\fish
 \end{align*}
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
   \item Alle $H_{dR}^k(M)$ sind Vektorr\"aume.
   \item $H_{dR}^k(M) = \setd{0}$, falls $k> \dim M$.
@@ -5633,6 +5544,7 @@ H_{dR}^k(M) &= \ker(\diffd: \Omega^k\to \Omega^{k+1})/\im(\diffd:
   \item $H_{dR}^1(T^2) = \R^2$, $H_{dR}^1(S^1) = \setd{0}$ und folglich ist
   $T^2\neq S^2$.
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
@@ -5648,7 +5560,7 @@ existiert mit
   \item $H(p,0) = p_0$,\qquad $\forall p\in M$. 
 \end{enumerate}
 D.h. es gibt eine differenzierbare Homotopie zwischen der Identit\"at auf $M$ und
-der konstanten Abbildung $p\mapsto p_0$.
+der konstanten Abbildung $p\mapsto p_0$.\fish
 \end{Definition}
 
 \bigskip
@@ -5656,23 +5568,21 @@ der konstanten Abbildung $p\mapsto p_0$.
 \begin{Lemma}[Lemma von Poincare]
 Sei $M$ eine kontrahierbare Mannigfaltigkeit. Dann gilt
 \begin{align*}
-H_{dR}^k(M) = \setd{0},\qquad k > 0.
+H_{dR}^k(M) = \setd{0},\qquad k > 0.\fish
 \end{align*}
 \end{Lemma}
 
 
 \bigskip
 
-{\bf Beispiele:}
+\begin{ex}
 \begin{enumerate}
   \item Sternf\"ormige Mengen sind kontrahierbar.
-  \item $\R^n$ ist kontrahierbar.
+  \item $\R^n$ ist kontrahierbar.\boxc
 \end{enumerate}
+\end{ex}
 
-\newcommand{\rot}{\mathrm{rot}}
-\renewcommand{\div}{\mathrm{div}}
-
-\subsection{Bemerkungen zu $\rot$, $\grad$ und $\div$}
+\section{Bemerkungen zu $\rot$, $\grad$ und $\div$}
 
 Sei $f: U\subset\R ^n\to \R$ eine differenzierbare Funktion.
 
@@ -5680,13 +5590,13 @@ Sei $f: U\subset\R ^n\to \R$ eine differenzierbare Funktion.
 Das \emph{Gradientenvektorfeld} von $f$ ist definiert als
 \begin{align*}
 \grad f = \sum_{i=1}^n \frac{\partial f}{\partial x_i}\frac{\partial}{\partial
-x_i}.
+x_i}.\fish
 \end{align*}
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
   \item Sei $\scp{\cdot,\cdot}$ das Standard-Skalarprodukt im $\R^n$. Dieses
   \"ubertr\"agt sich auf $T_p\R^n$ und es ist
@@ -5718,6 +5628,7 @@ F\"ur $k=1$ ist $*$ gegeben als
 \end{align*}
 \item $*^2 = \id$.
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
@@ -5726,8 +5637,8 @@ F\"ur alles Weitere beschr\"anken wir uns auf den $\R^3$.
 \begin{Lemma}
 \begin{enumerate}
   \item $(\grad f)^* = \df$.
-  \item $\diffd X^* = *((\rot X)^*)$.
-  \item $\diffd(*(X^*)) = *(\div X)$.
+  \item $\ddd X^* = *((\rot X)^*)$.
+  \item $\ddd(*(X^*)) = *(\div X)$.\fish
 \end{enumerate}
 \end{Lemma}
 \proof
@@ -5739,8 +5650,8 @@ $(\grad f)^*$.
 Zu 2.: Sei $X= \sum a_j \frac{\partial}{\partial x_j}$ mit $a_j\in \mathcal
 C^\infty(\R^3)$. Dann ist
 \begin{align*}
-\diffd X^* &= \diffd\left( \sum a_j \dx_j \right)
-= \sum \diffd a_j \wedge \dx_j  = 
+\ddd X^* &= \ddd\left( \sum a_j \dx_j \right)
+= \sum \ddd a_j \wedge \dx_j  = 
 \sum_{i,j} \frac{\partial a_j}{\partial x_i} \dx_i\wedge \dx_j\\
 &= \left(\frac{\partial a_3}{\partial x_2} - \frac{\partial a_2}{\partial x_3}
 \right)\dx_2\wedge \dx_3 +
@@ -5751,7 +5662,7 @@ C^\infty(\R^3)$. Dann ist
 \end{align*}
 Zu 3.: Man rechnet direkt nach
 \begin{align*}
-\diffd(*(X^*)) &= \diffd( a_1 \dx_2\wedge \dx_3 + a_2\dx_3\wedge\dx_1 + a_3
+\ddd(*(X^*)) &= \ddd( a_1 \dx_2\wedge \dx_3 + a_2\dx_3\wedge\dx_1 + a_3
 \dx_1\wedge \dx_2 )\\
 &= \frac{\partial a_1}{\partial x_1} \dx_1\wedge\dx_2\wedge \dx_3
 + \frac{\partial a_2}{\partial x_2} \dx_2\wedge\dx_3\wedge \dx_1
@@ -5777,18 +5688,19 @@ F\"ur alle Funktionen $f\in\mathcal C^\infty(\R^3)$ und $X\in\chi(\R^3)$ gilt
 \proof
 1: Es gen\"ugt zu zeigen, dass $*((\rot(\grad f))^*) = 0$, aber
 \begin{align*}
-*((\rot(\grad f))^*) = \diffd (\grad f)^* = \diffd^2 f = 0.
+*((\rot(\grad f))^*) = \ddd (\grad f)^* = \ddd^2 f = 0.
 \end{align*}
 2: Es gen\"ugt zu zeigen, dass $*(\div(\rot X)) = 0$, aber
 \begin{align*}
-*(\div(\rot X)) = \diffd(*((\rot X)^*)) = \diffd^2 X^* =0.
+*(\div(\rot X)) = \ddd(*((\rot X)^*)) = \ddd^2 X^* =0.
 \end{align*}
 \qed
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 $\div(\grad f )) = \Delta f$ ist der \emph{Laplace-Operator}.
+\end{rem*}
 
 \bigskip
 
@@ -5804,21 +5716,21 @@ Dann gelten
 \end{Folgerung}
 
 \proof
-1: Ist $\rot X = 0$, so folgt $\diffd X^* = 0$. Nach dem Lemma von Poincare
+1: Ist $\rot X = 0$, so folgt $\ddd X^* = 0$. Nach dem Lemma von Poincare
 existiert nun eine glatte Funktion $f: U\to \R$, so dass $X^*= \df$ und folglich
 $X = \grad f$.
 
 \medskip
 
-2: Ist $\div X = 0$, so ist $\diffd(*(X^*)) = 0$ und folglich existiert eine
+2: Ist $\div X = 0$, so ist $\ddd(*(X^*)) = 0$ und folglich existiert eine
 Form $\eta\in\Omega^1$
 \begin{align*}
 \eta = Y_1\dx_1 + Y_2\dx_2 + Y_3\dx_3,
 \end{align*} 
-so dass $*(X^*) = \diffd\eta = \diffd Y^* = *(\rot Y)^*$. Somit ist $X= \rot Y$.
+so dass $*(X^*) = \ddd\eta = \ddd Y^* = *(\rot Y)^*$. Somit ist $X= \rot Y$.
 \qed 
 
-\section{Riemannsche Metriken}
+\chapter{Riemannsche Metriken}
 
 
 Man definiert zun\"achst das Vektorb\"undel der symmetrischen Bilinearformen auf $TM$:
@@ -5833,10 +5745,10 @@ $
 
 \begin{Definition}
 Eine \em{Riemannsche Metrik} auf $M$ ist ein glatter Schnitt $g\in \Gamma(\Sym^2 TM)$, f\"ur
-den $g_p$ f\"ur alle $p\in M$ positiv definit ist.
+den $g_p$ f\"ur alle $p\in M$ positiv definit ist.\fish
 \end{Definition}
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
  \item
 Eine Metrik ist ein symmetrischer $(0,2)$-Tensor, d.h. eine symmetrische
@@ -5858,6 +5770,7 @@ $
 g_{ij} = g \left(\frac{\partial}{\partial x_i}, \frac{\partial }{ \partial
 x_j}\right) \ . $
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
@@ -5889,7 +5802,7 @@ Skalarprodukte definieren.
 \bigskip
 
 \begin{Satz}
- Auf jeder zusammenh\"angenden Mannigfaltigkeit existiert eine Riemannsche Metrik $g$.
+ Auf jeder zusammenh\"angenden Mannigfaltigkeit existiert eine Riemannsche Metrik $g$.\fish
 \end{Satz}
 \proof
 Sei $(U_k,f_k)$ ein Atlas von $M$ und $\setd{\ph_k}$ eine
@@ -5912,11 +5825,12 @@ g_p(X,X) &= \sum_k \ph_k(p) q(\df_k(X),\df_k(X))\\
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Auf $S^2$ existiert keine Lorentz-Metrik. Aus deren Existenz w\"urde
 auch die Existenz eines nullstellenfreien Vektorfeldes auf $S^2$ folgen. Ob eine
 Lorentz-Metrik existiert, h\"angt also von der Topologie auf $M$ ab, w\"ahrend
 eine Riemannsche-Metrik immer existiert.
+\end{rem*}
 
 \bigskip
 
@@ -5929,12 +5843,12 @@ g = f^*h,\qquad \text{d.h.}\qquad
 g_p(X,Y) = h_{f(p)}(\df(X),\df(Y)),
 \end{align*}
 d.h. $\df_p$ ist eine Isometrie der euklidischen Vektorr\"aume $(T_pM,g_p)$ und
-$(T_{f(p)}N,h_{f(p)})$.
+$(T_{f(p)}N,h_{f(p)})$.\fish
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
   \item $\Id_M$ ist eine Isometrie.
   \item Sind $f_1$ und $f_2$ Isometrien, dann auch $f_1\cdot f_2$ und
@@ -5946,13 +5860,14 @@ $(T_{f(p)}N,h_{f(p)})$.
   \ph_t^* g = g,\qquad \text{f\"ur alle }t \text{ f\"ur die }\ph_t\text{
   definiert ist},
   \end{align*}
-  nennt man {\it Killing Vektorfelder}. Ein Vektorfeld $X$ ist genau dann ein Killing Vektorfeld,
+  nennt man {\itshape Killing Vektorfelder}. Ein Vektorfeld $X$ ist genau dann ein Killing Vektorfeld,
   wenn $L_Xg = 0$ gilt.
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
-{\bf Beispiele:} 
+\begin{ex}
 \begin{enumerate}
   \item Auf $\R^n$ induziert das Standard-Skalarprodukt eine
 Riemannsche Metrik
@@ -6005,23 +5920,24 @@ H^n\cong \setdef{(x_1,\ldots,x_n)\in\R^n}{\sum x_i^2 < 1},
 $$
 dann ist die Riemannsche Metrik gegeben durch
 $$
-g = \frac{4}{(1-r^2)^2}\sum\dx_i^2,\qquad r^2 = \sum x_i^2.
+g = \frac{4}{(1-r^2)^2}\sum\dx_i^2,\qquad r^2 = \sum x_i^2.\boxc
 $$ 
 \end{enumerate}
+\end{ex}
 
 \bigskip
 
 \begin{Definition}
 Seien $(M,g)$ und $(N,h)$ Riemannsche Mannigfaltigkeiten, dann ist auch
 $M\times N$ eine Riemannsche Mannigfaltigkeit mit der Produktmetrik $g\times h
-= g+h$, wobei $T_{(p,q)} (M\times N) = T_pM \oplus T_qN$.
+= g+h$, wobei $T_{(p,q)} (M\times N) = T_pM \oplus T_qN$.\fish
 \end{Definition}
 
 \bigskip
 
 
 
-{\bf Beispiele:} 
+\begin{ex}
 
 \begin{enumerate}
   \item Sei $G$ eine Lie-Gruppe und $\scp{\cdot,\cdot}$ das
@@ -6038,9 +5954,11 @@ $M\times N$ eine Riemannsche Mannigfaltigkeit mit der Produktmetrik $g\times h
   negativ-definites bi-invariantes Skalarprodukt,
   \begin{align*}
   B(X,Y) &\;\,= -\tr(\ad(X)\circ\ad(Y))\\
-  &\overset{\text{``oft''}}{=} -\tr(XY).
+  &\overset{\text{``oft''}}{=} -\tr(XY).\boxc
   \end{align*}
 \end{enumerate}
+
+\end{ex}
 
 \bigskip
 
@@ -6052,17 +5970,18 @@ Die \emph{L\"ange} einer Kurve $\gamma: [a,b]\to M$ ist definiert durch
 $$
 L[\gamma] = \int_a^b \norm{\dot{\gamma}(t)}\dt,
 $$
-wobei $\norm{\dot{\gamma}(t)} = \sqrt{g(\dot{\gamma}(t),\dot{\gamma}(t))}$.
+wobei $\norm{\dot{\gamma}(t)} = \sqrt{g(\dot{\gamma}(t),\dot{\gamma}(t))}$.\fish
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkung:} Der \emph{Abstand} zweier Punkte $p,q\in M$ ist definiert als
+\begin{rem*} Der \emph{Abstand} zweier Punkte $p,q\in M$ ist definiert als
 $$
 d(p,q) = \inf_{\gamma} L[\gamma],
 $$
 wobei das Infimum \"uber alle st\"uckweise glatten Kurven $\gamma$ zu nehmen ist,
 die $p$ und $q$ verbinden.
+\end{rem*}
 
 \bigskip
 
@@ -6072,7 +5991,7 @@ Die Abbildung $d: M\times M\to \R$ ist eine Metrik, d.h.
   \item $d$ ist \emph{symmetrisch},
   \item $d$ erf\"ullt die \emph{Dreiecksungleichung},
   \item $d$ ist \emph{positiv definit}, d.h. $d(p,q) = 0$
-  genau dann, wenn $p=q$.
+  genau dann, wenn $p=q$.\fish
 \end{enumerate}
 \end{Lemma}
 
@@ -6118,22 +6037,23 @@ induzierten Norm $\norm{\cdot}'$ bezeichnet.
 
 \bigskip
 
-{\bf Bemerkung:} Sei $(M,g)$ eine Riemannsche Mannigfaltigkeit und $d$ die
+\begin{rem*} Sei $(M,g)$ eine Riemannsche Mannigfaltigkeit und $d$ die
 induzierte Metrik auf $M$. Dann definiert $d$ eine Topologie auf $M$ mit offenen
 Mengen
 $$
 \tilde{O}_M = \bigcup_{p,q\in M,\;k\in\N} B_{1/k}^d(p,q).
 $$
+\end{rem*}
 
 \begin{Satz}
-Die durch $d$ induzierte Topologie stimmt mit der urspr\"unglichen \"uberein.
+Die durch $d$ induzierte Topologie stimmt mit der urspr\"unglichen \"uberein.\fish
 \end{Satz}
 \bigskip
 
-\section{Zusammenh\"ange und kovariante Ableitungen}
+\chapter{Zusammenh\"ange und kovariante Ableitungen}
 
 
-\subsection{Kovariante Ableitungen auf dem Tangentialb\"undel}
+\section{Kovariante Ableitungen auf dem Tangentialb\"undel}
 
 \bigskip
 
@@ -6150,7 +6070,7 @@ $$
 \nabla_XY = \sum_j X(b_j)\,\frac{\partial}{\partial x_j} = \sum a_i \frac{\partial b_j}{\partial x_i}
  \frac{\partial}{\partial x_j} = X(Y)\ ,
 $$
-wobei $X(Y)$ als komponentenweise Ableitung von $Y$ nach $X$ zu verstehen ist. Man nennt $\nabla$ den {\it flachen
+wobei $X(Y)$ als komponentenweise Ableitung von $Y$ nach $X$ zu verstehen ist. Man nennt $\nabla$ den {\itshape flachen
 Zusammenhang } auf $\R^n$.
 
 \bigskip
@@ -6159,7 +6079,7 @@ Diese Definition ist aber  nicht koordinaten-unabh\"angig und kann somit nicht a
 werden. Hier nutzt man folgende
 
 \begin{Definition}
-Ein {\em Zusammenhang} (auch {\em kovariante Ableitung}) auf $M$ ist eine Abbildung
+Ein \emph{ Zusammenhang} (auch \emph{ kovariante Ableitung}) auf $M$ ist eine Abbildung
 $$
 \nabla : \chi(M) \times \chi (M) \rightarrow \chi(M), \quad (X, Y) \mapsto \nabla_XY
 $$
@@ -6168,40 +6088,42 @@ so dass f\"ur beliebige Vektorfelder $X, Y$ und alle Funktionen $f \in \mathcal 
 \item
 \quad $\nabla_{f\cdot X}Y = f\cdot \nabla_XY$
 \item
-\quad $\nabla_X(f \cdot Y) = X(f)\,Y + f \cdot \nabla_XY$
+\quad $\nabla_X(f \cdot Y) = X(f)\,Y + f \cdot \nabla_XY$.\fish
 \end{enumerate}
 \end{Definition}
 
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Aus 1. folgt, dass f\"ur ein festes $Y$ die Abbildung $X \mapsto \nabla_XY$ ein $(1,1)$-Tensor ist.
 Daraus folgt, dass man in jedem Punkt $p\in M$ eine wohldefinierte Abbildung
 $$
 T_pM \rightarrow T_pM, \qquad v \mapsto (\nabla_XY)(p)
 $$
 hat, wobei $X$ eine Fortsetzung von $v$ zu einem Vektorfeld auf $M$ ist.
+\end{rem*}
 
 \bigskip
 
 
-{\bf Beispiel:}
+\begin{ex}
 Sei $M\subset\R^n$ eine Untermannigfaltigkeit, dann ist f\"ur $X,Y\in\chi(M)$
 $$
 \nabla_X Y = \pr_M(\tilde{X}(\tilde{Y})),
 $$
-f\"ur beliebige Fortsetzungen $\tilde{X}$, $\tilde{Y}$ auf $\R^n$.
+f\"ur beliebige Fortsetzungen $\tilde{X}$, $\tilde{Y}$ auf $\R^n$.\boxc
+\end{ex}
 
 \bigskip
 
 \begin{Definition}
-Die {\em Torsion} $T$  eines Zusammenhangs $\nabla$ auf $TM$ ist definiert als
+Die \emph{ Torsion} $T$  eines Zusammenhangs $\nabla$ auf $TM$ ist definiert als
 die Abbildung $$
 T: \chi(M) \times \chi(M) \rightarrow \chi(M), \qquad (X, Y) \mapsto \nabla_XY - \nabla_YX - [X,Y] \ .
 $$
-Ein Zusammenhang hei\ss t {\em torsionsfrei} (oder auch symmetrisch), falls seine Torsion 
-verschwindet, d.h. $T \equiv 0$  gilt.
+Ein Zusammenhang hei\ss t \emph{ torsionsfrei} (oder auch symmetrisch), falls seine Torsion 
+verschwindet, d.h. $T \equiv 0$  gilt.\fish
 \end{Definition}
 
 
@@ -6213,7 +6135,7 @@ Die Torsion $T$ ist ein schiefsymmetrischer $(1,2)$-Tensor, d.h. $T(X,Y)$ ist
 $\mathcal C^\infty (M)$-linear in $X$ und $Y$ und es gilt f\"ur beliebige 
 Vektorfelder $X,Y$:
 $$
-T(X,Y) \;=\; - \, T(Y,X) \ .
+T(X,Y) \;=\; - \, T(Y,X) \ .\fish
 $$
 \end{Lemma}
 \proof
@@ -6228,7 +6150,7 @@ T(f X,Y) &= \nabla_{fX} Y - \nabla_Y (fX) - [fX,Y]\\
 
 \bigskip
 
-\subsection{Die lokale Beschreibung von Zusammenh\"angen}
+\section{Die lokale Beschreibung von Zusammenh\"angen}
 
 \bigskip
 
@@ -6236,19 +6158,19 @@ Sei $\nabla$ ein Zusammenhang auf $TM$. Dann kann man $\nabla$ in lokalen
 Karten $(U,x)$ um $p \in M$ beschreiben durch eine Familie von $n^3$ Funktionen.
 
 \begin{Definition}
-Die  {\em Christoffel-Symbole} bzgl. $(U,x)$ sind die lokalen Funktionen
+Die  \emph{ Christoffel-Symbole} bzgl. $(U,x)$ sind die lokalen Funktionen
 $\Gamma^k_{ij} \in \mathcal C^\infty(M), \; i,j,k = 1,\ldots, n$ definiert
 durch die Gleichungen
 $$
 \nabla_{ \tfrac{\partial }{\partial x_i} } \tfrac{\partial }{\partial x_j}
 \;=\;
-\sum_k \, \Gamma^k_{i j}\, \tfrac{\partial }{\partial x_k} \ .
+\sum_k \, \Gamma^k_{i j}\, \tfrac{\partial }{\partial x_k} \ .\fish
 $$
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Der Zusammenhang $\nabla$ ist durch seine Christoffel-Symbole festgelegt, d.h.
 seien $X, Y$ Vektorfelder auf $M$, die sich lokal auf $U$ schreiben als
 $
@@ -6281,12 +6203,13 @@ b_j\nabla_{\tfrac{\partial}{\partial x_i}}\frac{\partial}{\partial x_j}
 % b_j\nabla_{\tfrac{\partial}{\partial x_i}}\frac{\partial}{\partial x_j}
 % \right)
 \end{align*}
+\end{rem*}
 
 \bigskip
 
 \begin{Lemma}
 Der Zusammenhang $\nabla$ ist genau dann torsionsfrei, wenn die Christoffel-Symbole symmetrisch sind,
-d.h. wenn $\Gamma^k_{ij} = \Gamma^k_{ji}$ f\"ur alle Karten und alle Indizes $i,j, k$ gilt. 
+d.h. wenn $\Gamma^k_{ij} = \Gamma^k_{ji}$ f\"ur alle Karten und alle Indizes $i,j, k$ gilt. \fish
 \end{Lemma}
 \proof
 Da die Torsion $\mathcal C^\infty$-linear in beiden Eintr\"agen ist, gen\"ugt es zu
@@ -6321,19 +6244,20 @@ Dies folgt aber direkt aus der Definition der Christoffel-Symbole.
 
 \bigskip
 
-{\bf Beispiel:}  Die Christoffel-Symbole des flachen Zusammenhangs auf $\R^n$ sind alle Null und
-damit insbesondere torsionsfrei.
+\begin{ex}  Die Christoffel-Symbole des flachen Zusammenhangs auf $\R^n$ sind alle Null und
+damit insbesondere torsionsfrei.\boxc
+\end{ex}
 
 \bigskip
 
 \begin{Definition}
-Ein Vektorfeld $V$ auf $M$ hei\ss t {\em parallel}, falls $\nabla_XV= 0$ f\"ur beliebige
-Vektorfelder $X$ auf $M$ erf\"ullt ist. 
+Ein Vektorfeld $V$ auf $M$ hei\ss t \emph{ parallel}, falls $\nabla_XV= 0$ f\"ur beliebige
+Vektorfelder $X$ auf $M$ erf\"ullt ist. \fish
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkung:} Auf dem $\R^n$ sind alle Koordinatenvektorfelder $ \tfrac{\partial }{\partial x_i} $
+\begin{rem*} Auf dem $\R^n$ sind alle Koordinatenvektorfelder $ \tfrac{\partial }{\partial x_i} $
 parallel. Im Allgemeinen, auf beliebigen Mannigfaltigkeiten, sind die Koordinatenvektorfelder
 genau dann parallel, wenn
 $$
@@ -6346,33 +6270,35 @@ $$
 $$
 d.h. die Christoffel-Symbole $\Gamma^k_{ij}$ messen die Abweichung der Koordinatenvektorfelder
 $ \tfrac{\partial }{\partial x_i} $  parallel zu sein.
+\end{rem*}
 
 \bigskip
 
-\subsection{Der Levi-Civita-Zusammenhang}
+\section{Der Levi-Civita-Zusammenhang}
 
 \bigskip
 
 Sei $(M,g)$ eine Riemannsche Mannigfaltigkeit.
 
 \begin{Definition}
-Ein Zusammenhang $\nabla$ hei\ss t {\em metrisch} bzgl. $g$. falls
+Ein Zusammenhang $\nabla$ hei\ss t \emph{ metrisch} bzgl. $g$. falls
 $$
 X(g(Y, Z)) \;=\; g(\nabla_XY, Z) \;+\; g(Y, \nabla_XZ)
 $$ 
-f\"ur alle Vektorfelder $X, Y, Z \in \chi(M)$ erf\"ullt ist.
+f\"ur alle Vektorfelder $X, Y, Z \in \chi(M)$ erf\"ullt ist.\fish
 \end{Definition}
 
 \bigskip
 
-{\bf Beispiel:} Der flache Zusammenhang auf $\R^n$ ist metrisch bzgl.
-des Euklidischen Skalarproduktes.
+\begin{ex} Der flache Zusammenhang auf $\R^n$ ist metrisch bzgl.
+des Euklidischen Skalarproduktes.\boxc
+\end{ex}
 
 \bigskip
 
 \begin{Satz}[Fundamentallemma der Riemannschen Geometrie]
 Auf einer Riemannschen Mannigfaltigkeit $(M, g)$ existiert ein eindeutig bestimmter torsionsfreier und
-metrischer Zusammenhang.  Man nennt ihn den {\em Levi-Civita-Zusammenhang } von $(M,g)$.
+metrischer Zusammenhang.  Man nennt ihn den \emph{ Levi-Civita-Zusammenhang } von $(M,g)$.\fish
 \end{Satz}
 \proof
 F\"ur einen metrischen Zusammenhang $\nabla$ auf $(M,g)$ gilt,
@@ -6417,16 +6343,17 @@ $\nabla$ torsionsfrei ist.
 
 \bigskip
 
-{\bf Beispiel:} Der flache Zusammenhang auf $\R^n$ ist der Levi-Civita
+\begin{ex} Der flache Zusammenhang auf $\R^n$ ist der Levi-Civita
 Zusammenhang von $(\R^n,\scp{\cdot,\cdot})$.
 \begin{align*}
 &T(X,Y) = X(Y) - Y(X) - [X,Y] = 0,\\
-&X\scp{Y,Z} = X(Y Z^\top) = \scp{\nabla_X Y, Z} + \scp{Y,\nabla_X Z}.
+&X\scp{Y,Z} = X(Y Z^\top) = \scp{\nabla_X Y, Z} + \scp{Y,\nabla_X Z}.\boxc
 \end{align*}
+\end{ex}
 
 \bigskip
 
-\subsection{Die Christoffel-Symbole des Levi-Civita-Zusammenhangs}
+\section{Die Christoffel-Symbole des Levi-Civita-Zusammenhangs}
 
 \bigskip
 
@@ -6445,7 +6372,7 @@ $$
 $$ 
 wobei $g$ lokal durch die Matrix $(g_{ij})$ gegeben ist, mit 
 $g_{ij} = g( \tfrac{\partial }{\partial x_i} ,  \tfrac{\partial }{\partial x_j} )$
-und $(g^{lk})$ bezeichnet die zu $(g_{ij})$ inverse Matrix.
+und $(g^{lk})$ bezeichnet die zu $(g_{ij})$ inverse Matrix.\fish
 \end{Lemma}
 \proof
 Zun\"achst ist $[\tfrac{\partial }{\partial x_i},\tfrac{\partial}{\partial x_j}] = 0$ 
@@ -6467,7 +6394,7 @@ x_l},\frac{\partial}{\partial x_k} \right).
 
 \bigskip
 
-\subsection{Kovariante Ableitung auf Vektorb\"undeln}
+\section{Kovariante Ableitung auf Vektorb\"undeln}
 
 
 \bigskip
@@ -6476,7 +6403,7 @@ x_l},\frac{\partial}{\partial x_k} \right).
 Sei $\pi : E \rightarrow M$ ein Vektorb\"undel \"uber $M$.
 
 \begin{Definition}
-Eine {\em kovariante Ableitung} auf $E$ ist eine $\R$-bilineare
+Eine \emph{ kovariante Ableitung} auf $E$ ist eine $\R$-bilineare
 Abbildung
 $$
 \nabla : \chi(M) \times \Gamma(E) \rightarrow \Gamma(E),\quad
@@ -6488,27 +6415,29 @@ folgende Eigenschaften erf\"ullt sind:
  \item
   $\qquad \nabla_{fX} s = f \nabla_Xs$
  \item
-  $ \qquad \nabla_X (f \cdot s) = X(f) \cdot s + f \, \nabla_Xs $
+  $ \qquad \nabla_X (f \cdot s) = X(f) \cdot s + f \, \nabla_Xs $.\fish
 \end{enumerate}
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Kovariante Ableitungen auf $TM$ setzen sich fort zu kovarianten
 Ableitungen auf Tensor- und Formenb\"undeln. Mit Hilfe von
 Hauptfaserb\"undeln kann man daf\"ur eine universelle Beschreibung
 geben. Hier bleiben es erstmal ad-hoc Definitionen.
+\end{rem*}
 
 \bigskip
 
-{\bf Beispiel:} Sei $B$ ein $(0,r)$-Tensor, dann ist $\nabla_XB$
+\begin{ex} Sei $B$ ein $(0,r)$-Tensor, dann ist $\nabla_XB$
 ein $(0,r)$-Tensor, der definiert ist durch:
 $$
 (\nabla_X B)(X_1, \ldots, X_r) \;=\; X(B(X_1,\ldots, X_r))
 \;-\;
-\sum^r_{i=1} B(X_1, \ldots, \nabla_XX_i, \ldots, X_r) \ .
+\sum^r_{i=1} B(X_1, \ldots, \nabla_XX_i, \ldots, X_r) \ .\boxc
 $$
+\end{ex}
 
 \bigskip
 
@@ -6519,7 +6448,7 @@ Im Folgenden sollen drei Anwendungen f\"ur diese Formel gegeben werden.
 \begin{Lemma}
 Eine kovariante Ableitung auf $TM$ ist metrisch bzgl. einer Riemannschen
 Metrik genau dann, wenn $g$ parallel bzgl. $\nabla$ ist, d.h. $\nabla g = 0$
-gilt.
+gilt.\fish
 \end{Lemma}
 \proof
 Seien $X,Y,Z$ Vektorfelder auf $M$, dann gilt nach Definition von $\nabla g$:
@@ -6537,7 +6466,7 @@ f\"ur den Levi-Civita-Zusammenhang zu $g$ die Gleichung
 $$
 g(\nabla_YX, Z) \;+\; g(Y, \nabla_ZX) \;=\; 0
 $$
-f\"ur beliebige Vektorfelder $Y, Z$ erf\"ullt ist.
+f\"ur beliebige Vektorfelder $Y, Z$ erf\"ullt ist.\fish
 \end{Lemma}
 \proof
 Nach Definition ist $X \in \chi(M)$ genau dann ein Killing-Vektorfeld, wenn
@@ -6558,9 +6487,10 @@ woraus unmittelbar die Behauptung folgt.
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Killing-Vektorfelder $X$ sind also dadurch charakterisiert, dass $\nabla X$ ein schiefsymmetrischer
 Endomorphismus von $TM$ ist.
+\end{rem*}
 
 \bigskip
 
@@ -6571,7 +6501,7 @@ $$
 d\omega \;=\; \sum^n_{i=1} e^i \wedge \nabla_{e_i} \omega
 \ ,
 $$
-wobei $\{e_i\}$ eine lokale ONB von $TM$ ist, mit dualer Basis $\{e^i\}$  von $T^*M$.
+wobei $\{e_i\}$ eine lokale ONB von $TM$ ist, mit dualer Basis $\{e^i\}$  von $T^*M$.\fish
 \end{Lemma}
 \proof
 Sei zun\"achst $\omega$ eine 1-Form. Dann gilt f\"ur die linke Seite der zu beweisenden
@@ -6636,7 +6566,7 @@ $$
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Die kovariante Ableitung $\nabla \omega$ einer $k$-Form $\omega$ kann man auffassen
 als Schnitt im Vektorb\"undel $T^*M \otimes \Lambda^k T^*M$. Man hat
 $\nabla \omega = \sum e^i \otimes \nabla_{e_i} \omega$, f\"ur eine lokale ONB $\{e_i\}$.
@@ -6679,26 +6609,23 @@ Das Kodifferential $d^*$ ist der zu $d$ adjungierte Operator. Dh. bzgl. des
 $L^2$-Skalarproduktes $(\alpha, \beta)  = \int \la \alpha, \beta\ra dvol_g$ gilt
 $(d\alpha, \beta) = (\alpha, d^*\beta)$, wobei $\alpha \in \Omega^k(M)$ und
 $\beta \in \Omega^{k+1}(M)$.
-
+\end{rem*}
 
 % Etwas Analysis
-\newcommand{\ep}{\varepsilon}
-\newcommand{\abs}[1]{|#1|}
-\newcommand{\scal}{\mathrm{scal}}
 
-\section{Kr\"ummung Riemannscher Mannigfaltigkeiten} e
+\chapter{Kr\"ummung Riemannscher Mannigfaltigkeiten} e
 
 Sei $(M, g)$ eine Riemannsche Mannigfaltigkeit mit Levi-Civita Zusammenhang $\nabla$.
 
 \begin{Definition}
-Die {\em Riemannsche Kr\"ummung }  von $(M,g)$ ist die Abbildung
+Die \emph{ Riemannsche Kr\"ummung }  von $(M,g)$ ist die Abbildung
 $$
 R: \chi(M) \times \chi(M) \times \chi(M) \rightarrow \chi(M), \qquad
 (X,Y,Z) \mapsto R_{X, Y}Z
 $$
 die f\"ur Vektorfelder $X, Y, Z$ definiert ist durch
 $$
-R_{X Y}Z \;=\; \nabla_X \nabla_Y Z \;-\; \nabla_Y\nabla_XZ \;-\; \nabla_{[X,Y]} \ .
+R_{X Y}Z \;=\; \nabla_X \nabla_Y Z \;-\; \nabla_Y\nabla_XZ \;-\; \nabla_{[X,Y]} \ .\fish
 $$
 \end{Definition}
 
@@ -6706,7 +6633,7 @@ $$
 
 \begin{Lemma}
 Die Abbildung $R$ ist ein $(1,3)$-Tensor, d.h. $\mathcal C^\infty(M)$-linear
-in allen Eintr\"agen.
+in allen Eintr\"agen.\fish
 \end{Lemma}
 \proof
 Es ist zum Beispiel,
@@ -6723,7 +6650,7 @@ Analog zeigt man die $\CC^\infty(M)$-Linearit\"at in den \"ubrigen Eintr\"agen.
 
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
  \item
 Die Abbildung $R$ definiert auch einen $(0,4)$-Tensor:
@@ -6762,7 +6689,7 @@ R_{ijkl} \;= \;
 $$
 
 \end{enumerate}
-
+\end{rem*}
 
 \bigskip
 
@@ -6787,7 +6714,7 @@ R(X,Y,Z,U) \;+\; R(Y,Z,X,U) \;+\; R(Z,X,Y,U) \;=\; 0
 $
 \item  2. Bianchi-Identit\"at: \\[1ex]
 $ \qquad
-(\nabla_XR)(Y , Z ,U  ,V ) \;+\; (\nabla_YR)( Z, X , U , V) \;+\; (\nabla_ZR)(X ,Y  ,U  ,V ) \;=\; 0
+(\nabla_XR)(Y , Z ,U  ,V ) \;+\; (\nabla_YR)( Z, X , U , V) \;+\; (\nabla_ZR)(X ,Y  ,U  ,V ) \;=\; 0.\fish
 $
 \end{enumerate}
 \end{Satz}
@@ -6841,7 +6768,7 @@ Addieren dieser Terme ergibt,
 
 \bigskip
 
-{\bf Bemerkung:} Die ersten drei Eigenschaften sind algebraischer Natur. Punktweise sind sie
+\begin{rem*} Die ersten drei Eigenschaften sind algebraischer Natur. Punktweise sind sie
 \"aquivalent dazu, dass die Riemannsche Kr\"ummung in
 $
 \Sym^2(\Lambda^2 T^*_pM) \cap \ker b
@@ -6849,6 +6776,7 @@ $
 liegt, also eine symmetrische Bilinearform auf $\Lambda^2T^*_pM$ ist, die im Kern der
 Bianchi-Abbildung $b: \Lambda^2T^*_pM \otimes \Lambda^2T^*_pM \rightarrow \Lambda^4T^*_pM$
 liegt, die definiert ist durch $b(\alpha \otimes \beta ) = \alpha \wedge \beta$.
+\end{rem*}
 
 \bigskip
 
@@ -6869,7 +6797,7 @@ Dies erm\"oglicht eine sinnvolle Definition von
 \bigskip
 
 \begin{Lemma}
-$R_{X,Y}Z = \nabla_{XY}^2 Z - \nabla_{YX}^2 Z$.
+$R_{X,Y}Z = \nabla_{XY}^2 Z - \nabla_{YX}^2 Z$.\fish
 \end{Lemma}
 
 \proof
@@ -6886,7 +6814,7 @@ R_{X,Y}Z.
 \end{align*}
 \qed
 
-\subsection{Die Riemannsche Kr\"ummung in lokalen Koordinaten}
+\section{Die Riemannsche Kr\"ummung in lokalen Koordinaten}
 
 \begin{Lemma}
 Definiert man $R_{ijkl} := R(\frac{\partial}{\partial
@@ -6900,29 +6828,30 @@ R_{ijkl} \;= \;
 \;+\;
 \sum_m \, \Gamma^i_{lm} \, \Gamma^m_{k j}
 \;-\;
-\sum_m \Gamma^i_{km} \, \Gamma^m_{l j} \ . 
+\sum_m \Gamma^i_{km} \, \Gamma^m_{l j} \ . \fish
 \end{align*}
 \end{Lemma}
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Auf einer Riemannschen Mannigfaltigkeit existieren spezielle Koordinaten $(U,x)$
 mit $x(p) = 0$ (\emph{geod\"atische Normalkoordinaten}) in denen sich die Metrik
 schreiben l\"asst als
 \begin{align*}
 g_{ij}(x) = \delta_{ij} + \frac{1}{3}\sum_{k,l} R_{ikjl}(0)x_kx_l + O(|x|^2)
 \end{align*} 
+\end{rem*}
 
 
-\subsection{Die Schnittkr\"ummung}
+\section{Die Schnittkr\"ummung}
 
 \begin{Lemma}
 Sei $E\subset T_pM$ ein 2-dimensionaler Unterraum, dann ist die Zahl
 \begin{align*}
 K(X,Y) = \frac{R(X,Y,Y,X)}{g(X,X)g(Y,Y)-g(X,Y)^2}
 \end{align*}
-unabh\"angig von der Wahl der Basis $\setd{X,Y}$ von $E$.
+unabh\"angig von der Wahl der Basis $\setd{X,Y}$ von $E$.\fish
 \end{Lemma}
 
 \proof
@@ -6953,7 +6882,7 @@ g(X,Y)^2 \right).
 \end{align*}
 \qed
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
   \item Die Zahl $K(E) = K(X,Y)$ f\"ur $E = \mathrm{span}\setd{X,Y}$ nennt man
   \emph{Schnittkr\"ummung} von $E$ in $p$.
@@ -6976,11 +6905,12 @@ g(X,Y)^2 \right).
   Insbesondere ist $\|X\|^2\|Y\|^2 - g(X,Y)^2\neq 0$, falls $X,Y$ linear
   unabh\"angig.
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
 \begin{Satz}
-Die Riemannsche Kr\"ummung ist vollst\"andig durch die Schnittkr\"ummung bestimmt.
+Die Riemannsche Kr\"ummung ist vollst\"andig durch die Schnittkr\"ummung bestimmt.\fish
 \end{Satz}
 
 \bigskip
@@ -6988,13 +6918,14 @@ Die Riemannsche Kr\"ummung ist vollst\"andig durch die Schnittkr\"ummung bestimm
 \begin{Definition}
 Eine Riemannsche Mannigfaltigkeit ist ein \emph{Raum konstanter Kr\"ummung} $c$,
 falls $K(E) = c$ f\"ur alle 2-dimensionalen Unterr\"aume $E\subset T_pM$ und
-alle $p\in M$.
+alle $p\in M$.\fish
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 R\"aume konstanter Schnittkr\"ummung sind Quotienten von $\R^n$, $S^n$, $H^n$.
+\end{rem*}
 
 \bigskip
 
@@ -7002,7 +6933,7 @@ R\"aume konstanter Schnittkr\"ummung sind Quotienten von $\R^n$, $S^n$, $H^n$.
 Sei $(M,g)$ eine Riemannsche Mannigfaltigkeit mit konstanter Kr\"ummung $c$. Dann
 gilt
 \begin{align*}
-R_{X,Y}Z = c\left(g(Y,Z)X - g(X,Z)Y \right).
+R_{X,Y}Z = c\left(g(Y,Z)X - g(X,Z)Y \right).\fish
 \end{align*}
 \end{Satz}
 
@@ -7024,7 +6955,7 @@ Somit ist $F=R$.
 \bigskip
 
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
   \item Neben den R\"aumen konstanter Kr\"ummung bilden auch die R\"aume mit positiver
   Kr\"ummung eine interessante Familie. Diese bilden ein aktives Forschungsgebiet
@@ -7034,10 +6965,11 @@ Somit ist $F=R$.
   [1-\ep,1+\ep]$, $M$ hom\"oomorph zu $S^n$ ist. Erst k\"urzlich wurde gezeigt,
   dass $M$ dann tats\"achlich auch diffeomorph zu $S^n$ ist.
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
-{\bf Beispiele:}
+\begin{ex}
 \begin{enumerate}
   \item Ist $M=\R^n$, so ist $K\equiv 0$, denn $\nabla_X Y = X(Y)$. Dann gilt
 \begin{align*}
@@ -7143,13 +7075,14 @@ K = K(\partial_x,\partial_y) =
 \frac{R(\partial_x,\partial_y,\partial_y,\partial_x)}{\abs{\partial_x}^2\abs{\partial_y}^2
 - g(\partial_x,\partial_y)^2} = 
 -\frac{g\left(\frac{1}{y^2}\partial_y,\partial_y
-\right)}{\frac{1}{y^2}\frac{1}{y^2}} = -1.
+\right)}{\frac{1}{y^2}\frac{1}{y^2}} = -1.\boxc
 \end{align*}
 \end{enumerate}
+\end{ex}
 
 \bigskip
 
-\subsection{Ricci-Kr\"ummung}
+\section{Ricci-Kr\"ummung}
 
 \begin{Definition}
 Die \emph{Ricci-Kr\"ummung} von $(M,g)$ ist punktweise definiert durch die
@@ -7159,13 +7092,13 @@ Abbildung
 \end{align*}
 mit
 \begin{align*}
-\Ric(X,Y) = \tr\left(Z\mapsto R_{ZX}Y\right).
+\Ric(X,Y) = \tr\left(Z\mapsto R_{ZX}Y\right).\fish
 \end{align*}
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
   \item $\Ric$ ist ein $(0,2)$-Tensor.
   \item $\Ric$ definiert einen Endomorphismus von $TM$ durch die Gleichung
@@ -7178,11 +7111,12 @@ Darstellung
 \Ric(X,Y) = \sum_{i=1}^k R(e_i,X,Y,e_i) = \sum_{i=1}^k R(X,e_i,e_i,Y).
 \end{align*}
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
 \begin{Lemma}
-$\Ric$ ist ein symmetrischer $(0,2)$-Tensor.
+$\Ric$ ist ein symmetrischer $(0,2)$-Tensor.\fish
 \end{Lemma}
 
 \proof
@@ -7206,7 +7140,7 @@ die Schnittkr\"ummung beschrieben ist.
 Sei $\setd{e_i}_{i=1}^{n-1}$ eine Orthonormalbasis in $X^\bot \subset T_pM$.
 Dann gilt
 \begin{align*}
-\Ric(X,X) = \sum_{i=1}^{n-1} K(X,e_i)g(X,X).
+\Ric(X,X) = \sum_{i=1}^{n-1} K(X,e_i)g(X,X).\fish
 \end{align*}
 \end{Lemma}
 
@@ -7228,7 +7162,7 @@ und folglich
 Die \emph{Skalarkr\"ummung} ist definiert als
 \begin{align*}
 \scal_g = \tr(\Ric) = \sum_{i} \Ric(e_i,e_i)
-= \sum_{i,j} R(e_i,e_j,e_j,e_i).
+= \sum_{i,j} R(e_i,e_j,e_j,e_i).\fish
 \end{align*}
 \end{Definition}
 Die Skalarkr\"ummung ist eine glatte Funktion auf $M$, die von der Metrik $g$
@@ -7236,19 +7170,20 @@ abh\"angt.
 
 \bigskip
 
-{\bf Beispiel:}
+\begin{ex}
 $(M,g)$ habe konstante Schnittkr\"ummung $c$. Dann gilt f\"ur die Ricci-Kr\"umung
 \begin{align*}
 \Ric(X,X) = \sum_{i=1}^{n-1} K(X,e_i)g(X,X) =  c\cdot(n-1)g(X,X),
 \end{align*}
 und folglich ist die Skalarkr\"ummung ebenfalls konstant und gegeben durch
 \begin{align*}
-\scal_g = c\cdot n(n-1).
+\scal_g = c\cdot n(n-1).\boxc
 \end{align*}
+\end{ex}
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Der Kr\"ummungstensor l\"asst sich als Element
 \begin{align*}
 R \in \Sym^2(\Lambda^2V)\cap\ker b,\qquad V =T_pM,
@@ -7264,18 +7199,19 @@ liegt, l\"asst sich $R$ somit darstellen als
 R = \scal + \Ric + w,
 \end{align*}
 wobei $w$ f\"ur die Weyl-Kr\"ummung steht.
+\end{rem*}
 
-\subsection{Einsteinmetriken}
+\section{Einsteinmetriken}
 
 \begin{Definition}
 Eine \emph{Einsteinmetrik} ist eine Metrik $g$ mit
 \begin{align*}
 \Ric_g = \lambda g,
 \end{align*}
-f\"ur eine Konstante $\lambda\in\R$.
+f\"ur eine Konstante $\lambda\in\R$.\fish
 \end{Definition}
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
   \item R\"aume konstanter Schnittkr\"ummung sind Einstein, denn
 \begin{align*}
@@ -7345,6 +7281,7 @@ konstant. Man kann diese Mannigfaltigkeiten klassifizieren nach
 \scal_g < 0,\qquad \scal_g = 0,\qquad \scal_g  > 0.
 \end{align*}
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
@@ -7354,7 +7291,7 @@ Sei $(M^n,g)$ eine Riemannsche Mannigfaltigkeit mit $n\ge 3$ und
 \Ric_g = f\cdot g
 \end{align*}
 mit einer glatten Funktion $f\in \CC^\infty(M)$. Dann ist $f$
-konstant.
+konstant.\fish
 \end{Satz}
 
 Die Beweisidee liegt darin, die Gleichung $\Ric_g = f\cdot g$ zu differenzieren
@@ -7366,13 +7303,13 @@ Sei $B$ ein $(0,r)$-Tensor und $\setd{e_i}$ eine ONB von $T_pM$. Dann ist die
 \emph{Divergenz} von $B$ definiert durch
 \begin{align*}
 (\delta B)(X_1,\ldots,X_{r-1}) := -\sum_{i} (\nabla_{e_i}
-B)(e_i,X_1,\ldots,X_{r-1}).
+B)(e_i,X_1,\ldots,X_{r-1}).\fish
 \end{align*}
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
   \item 
 Seien $A,B$ zwei $(0,r)$-Tensoren, dann definiert man
@@ -7389,6 +7326,7 @@ Levi-Civita-Zusammenhang.
 \tr_g(B) = \sum_i B(e_i,e_i) = \scp{B,g}.
 \end{align*}
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
@@ -7397,10 +7335,10 @@ Sei $X$ ein Vektorfeld auf $M$, dann ist
 \begin{align*}
 \div(X) = \sum g(\nabla_{e_i}X,e_i)
 \end{align*}
-die Divergenz von $X$.
+die Divergenz von $X$.\fish
 \end{Definition}
 % 
-% {\bf Beispiel:}
+% \begin{ex}
 % Ist $M=\R^n$, dann ist 
 % \begin{align*}
 % \div(X) = \sum_{i=1}^n g(\nabla_{e_i}X,e_i)
@@ -7417,7 +7355,7 @@ Sei $\omega_X$ die 1-Form zum Vektorfeld $X$, d.h.
 \end{align*}
 Dann gilt
 \begin{align*}
-\delta \omega_X = -\div(X).
+\delta \omega_X = -\div(X).\fish
 \end{align*}
 \end{Lemma}
 
@@ -7434,16 +7372,17 @@ $g$ ist metrisch und folglich,
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Der \emph{Laplace Operator} l\"asst sich nun f\"ur $f\in\CC^\infty(M)$ definieren
 durch
 \begin{align*}
 \Delta f = -\div(\grad(f)) = - \delta(\df).
 \end{align*}
+\end{rem*}
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Sei $X\in T_pM$, dann existiert lokal eine sogenannte \textit{parallele}
 Fortsetzung von $X$ zu einem lokalen Vektorfeld $\tilde{X}$ mit $(\nabla \tilde{X})_p = 0$.
 Sei nun $B$ ein $(0,r)$-Tensor und $X_1,\ldots,X_r,V\in T_pM$ in diesem Sinne
@@ -7453,11 +7392,12 @@ parallel fortgesetzt, dann ist
 - \sum_{i=1}^r B(\ldots,\nabla_V \tilde{X}_i,\ldots)_p\\
 &= L_V(B(\tilde{X}_1,\ldots,\tilde{X}_r)).
 \end{align*}
+\end{rem*}
 
 \bigskip
 
 \begin{Lemma}
-$\delta \Ric = - \frac{1}{2}\,\diffd\scal_g$.
+$\delta \Ric = - \frac{1}{2}\,\ddd\scal_g$.\fish
 \end{Lemma}
 \proof
 Sei $p\in M$ und $\setd{e_i}$ eine ONB von $T_pM$, $v\in T_pM$ und
@@ -7476,55 +7416,56 @@ Summation \"uber $i$ und $j$ ergibt,
 0 &= L_v \scal_g - 
 \sum_{i} L_{e_i} \Ric(v,e_i)
 - \sum_j L_{e_j} \Ric(v,e_j)\\
-&= \diffd\scal_g(v) + 2 (\delta\Ric)(v).
+&= \ddd\scal_g(v) + 2 (\delta\Ric)(v).
 \end{align*}
 Somit folgt die Behauptung.
 \qed
 
 \bigskip
 
-{\bf Beweis des Satzes von Schur:}
+{\bfseries Beweis des Satzes von Schur:}
 Sei also $\Ric = f\cdot g$ f\"ur ein $f\in \CC^\infty(M)$, dann ist
 \begin{align*}
 f = \frac{\scal_g}{n},\qquad n = \dim M.
 \end{align*}
 Es gilt nun nach dem vorigen Lemma,
 \begin{align*}
--\frac{1}{2}\diffd\scal_g &= \delta\Ric = \delta(f\cdot g)\\
+-\frac{1}{2}\ddd\scal_g &= \delta\Ric = \delta(f\cdot g)\\
 &= -\sum  (\nabla_{e_i} (f\cdot g))(e_i,\cdot)\\
 &= -\sum  L_{e_i} (f\cdot g)(e_i,\cdot)\\
 &= -\sum  L_{e_i} (f)\cdot g(e_i,\cdot)-\sum  f\cdot
 \underbrace{L_{e_i}g(e_i,\cdot)}_{=0}\\ &= -g(\grad f,\cdot) = -\df =
--\frac{1}{n}\diffd\scal_g.
+-\frac{1}{n}\ddd\scal_g.
 \end{align*}
-Daher ist $0 = \left(\frac{1}{2}-\frac{1}{n}\right)\diffd\scal_g$ und
+Daher ist $0 = \left(\frac{1}{2}-\frac{1}{n}\right)\ddd\scal_g$ und
 schlie\ss{}lich
 \begin{align*}
-\diffd\scal_g = 0,\qquad \text{f\"ur }n\neq 2.
+\ddd\scal_g = 0,\qquad \text{f\"ur }n\neq 2.
 \end{align*}
 Also ist $f$ konstant.
 \qed
 
-\subsection{Lie-Gruppen}
+\section{Lie-Gruppen}
 
 Sei $G$ eine Lie-Gruppe mit Lie-Algebra $\g = T_eG$.
 
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
   \item 
 Linksinvariante Metriken auf $G$ stehen in einer 1:1 Beziehung zu
 Skalarprodukten auf der Lie-Algebra. Betrachte dazu  ein
 Skalarprodukt $\scp{\cdot,\cdot}$ auf $\g$, dann definiert man
 \begin{align*}
-g_h(X,Y) = \scp{\diffd l_h(X),\diffd l_h(Y)} = 
+g_h(X,Y) = \scp{\ddd l_h(X),\ddd l_h(Y)} = 
 l_{h}^*\scp{X,Y}.
 \end{align*}
 Analog definiert jede linksinvariante Metrik ein Skalarprodukt auf $\g$.
 \item Bi-invariante Metriken sind Metriken, die links- und rechtsinvariant sind,
 d.h. sowohl Links- als auch Rechtstranslation sind Isometrien.
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
@@ -7537,7 +7478,7 @@ $\scp{\cdot,\cdot}$. Dann sind \"aquivalent:
   \item $\scp{\ad(X)Y,Z} + \scp{Y,\ad(X)Z} = 0$.
   \item Der Levi-Civita-Zusammenhang ist gegeben durch
 \begin{align*}
-\nabla_X Y = \frac{1}{2}[X,Y],\qquad \text{f\"ur }X,Y\in\g. 
+\nabla_X Y = \frac{1}{2}[X,Y],\qquad \text{f\"ur }X,Y\in\g. \fish
 \end{align*}
 \end{enumerate}
 \end{Lemma}
@@ -7580,7 +7521,7 @@ K(X,Y) = \frac{R(X,Y,Y,X)}{\norm{X\wedge Y}^2}
 \end{align*}
 \qed
 
-{\bf Bemerkung:}
+\begin{rem*}
 Auf Lie-Gruppen kennen wir bereits die Killing Form
 \begin{align*}
 B_G(X,Y) = \Tr(\ad(X)\circ\ad(Y)).
@@ -7590,12 +7531,13 @@ $G$ halbeinfach ist.
 Ist $G$ kompakt und halbeinfach, dann ist $B_G$ negativ definit. In diesem Fall
 wird $G$ durch die Killing Form zu einer Riemannschen Mannigfaltigkeit
 $(G,-B_G)$.
+\end{rem*}
 
 \bigskip
 
 \begin{Satz}
 Sei $G$ eine kompakte, halbeinfache Lie-Gruppe. Dann ist $(G,-B_G)$ eine
-Einstein Mannigfaltigkeit.
+Einstein Mannigfaltigkeit.\fish
 \end{Satz}
 \proof
 Man berechnet die Ricci-Kr\"ummung zu
@@ -7614,7 +7556,7 @@ Man berechnet die Ricci-Kr\"ummung zu
 \end{align*}
 \qed
 
-\subsection{Riemannsche Produkte}
+\section{Riemannsche Produkte}
 
 Seien $(M_1,g_1)$ und $(M_2,g_2)$ zwei Riemmansche Mannigfaltigkeiten. Wir
 betrachten die Produktmannigfaltigkeit $M=M_1\times M_2$ mit der Metrik $g=
@@ -7633,7 +7575,7 @@ F\"ur die Kr\"ummungsgr\"o\ss{}en erh\"alt man weiterhin
 &K(X,Y) = 0,\qquad \text{falls } X \in TM_i,Y\in TM_j,\quad i\neq j.
 \end{align*}
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
   \item 
 Man erh\"alt sofort, dass f\"ur die Kr\"ummung bez\"uglich der Produktmetrik
@@ -7650,10 +7592,11 @@ falls
 \frac{\scal_{g_2}}{\dim M_2}.
 \end{align*}
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
-{\bf Beispiele:}
+\begin{ex}
 \begin{enumerate}
   \item Die Produktmetrik auf $S^1\times S^{n-1}$ f\"ur $n\ge 3$ ist nicht
   Einstein. Denn Sei $X\in TS^1$, dann ist
@@ -7674,10 +7617,11 @@ falls
   zusammenh\"angend und hat Dimension $1+2 = 3$. Verlangt man nun, dass die
   Schnittkr\"ummung konstant ist, ist $\tilde{M}$ diffeomorph zu $S^3$ oder
   $\R^3$, jedoch h\"atte dann $S^1\times S^2$ eine triviale
-  Fundamentalgruppe $\Pi_2(M) = 0$ was unm\"oglich ist.
+  Fundamentalgruppe $\Pi_2(M) = 0$ was unm\"oglich ist.\boxc
 \end{enumerate}
+\end{ex}
 
-\subsection{Kr\"ummung von Untermannigfaltigkeiten}
+\section{Kr\"ummung von Untermannigfaltigkeiten}
 
 
 \renewcommand{\bar}[1]{\overline{#1}}
@@ -7702,7 +7646,7 @@ wobei $X^\top$ tangential und $X^\bot$ normal zu $TM$ ist.
 
 \begin{Lemma}
 Sei $X\in\chi(M)$ und $p\in M$, dann existiert eine offene Umgebung $U$ von $p$
-in $\bar{M}$ und eine lokale Fortsetzung von $X$ zu einem Vektorfeld auf $U$. 
+in $\bar{M}$ und eine lokale Fortsetzung von $X$ zu einem Vektorfeld auf $U$. \fish
 \end{Lemma}
 \begin{proof}
 Sei $(U,x)$ eine Karte um $p$ und weiter
@@ -7732,7 +7676,7 @@ Levi-Civita-Zusammenhang von $g$ durch
 \nabla_XY = \left(\bar{\nabla}_{\tilde{X}}\tilde{Y} \right)^\top = 
 \pr_{TM}\left(\bar{\nabla}_{\tilde{X}}\tilde{Y} \right),
 \end{align*}
-wobei $X,Y\in\chi(M)$ mit lokalen Fortsetzungen $\tilde{X},\tilde{Y}$.
+wobei $X,Y\in\chi(M)$ mit lokalen Fortsetzungen $\tilde{X},\tilde{Y}$.\fish
 \end{Satz}
 
 \begin{proof}
@@ -7799,7 +7743,7 @@ X(g(Y,Z))_p &= \tilde{X}(\bar{g}(\tilde{Y},\tilde{Z}))_p =
 
 \bigskip
 
-{\bf Beispiel:}
+\begin{ex}
 Wir betrachten auf $S^n\subset\R^{n+1}$ zwei Vektorfelder $X,Y\in\chi(M)$. Wie
 bereits festgestellt ist das Normalenvektorfeld gegeben durch 
 \begin{align*}
@@ -7811,8 +7755,9 @@ auf $S^n$,
 \nabla_XY &= \left(\nabla_{\tilde{X}}\tilde{Y} \right)^\top
 = \tilde{X}(\tilde{Y}) - \scp{\tilde{X}(\tilde{Y}),N}N
 = \tilde{X}(\tilde{Y}) + \scp{\tilde{Y},\tilde{X}(N)}N\\
-&= \tilde{X}(\tilde{Y}) + \scp{X,Y}N.
+&= \tilde{X}(\tilde{Y}) + \scp{X,Y}N.\boxc
 \end{align*}
+\end{ex}
 
 \bigskip
 
@@ -7824,22 +7769,23 @@ Sei $M\subset\bar{M}$ eine Riemannsche Untermannigfaltigkeit. Dann ist die
 \begin{align*}
 \II(X,Y) = (\bar{\nabla}_{\tilde{X}} \tilde{Y} )^\bot,
 \end{align*}
-f\"ur Vektorfelder $X,Y\in\chi(M)$.
+f\"ur Vektorfelder $X,Y\in\chi(M)$.\fish
 \end{Definition}
 
 \bigskip
 
-{\bf Beispiel:}
+\begin{ex}
 F\"ur $S^n\subset\R^{n+1}$ ist die 2. Fundamentalform gegeben durch
 \begin{align*}
 \II(X,Y) = \scp{\bar{\nabla}_{\tilde{X}}\tilde{Y},N}N
-= -\scp{X,Y}n.
+= -\scp{X,Y}n.\boxc
 \end{align*}
+\end{ex}
 
 \bigskip
 
 \begin{Lemma}
-$\II$ ist eine symmetrische $\CC^\infty(M)$-bilineare Abbildung.
+$\II$ ist eine symmetrische $\CC^\infty(M)$-bilineare Abbildung.\fish
 \end{Lemma}
 \begin{proof}
 % Wir zeigen nur die $\CC^\infty(M)$-linearit\"at im 2. Argument.
@@ -7863,18 +7809,19 @@ da $[\tilde{X},\tilde{Y}]_p \in T_pM$ f\"ur $p\in M$.
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 $\II$ definiert punktweise eine $\R$-bilineare Abbildung
 \begin{align*}
 \II_p : T_pM\times T_p M \to T_pM^\bot,\qquad p\in M.
 \end{align*}
+\end{rem*}
 
 \bigskip
 
 Als unmittelbare Konsequenz aus den Definitionen ergibt sich die
 
 \begin{Satz}[Gau\ss{}-Formel]
-$\bar{\nabla}_X Y = \nabla_X Y + \II(X,Y)$ f\"ur $X,Y\in\chi(M)$.
+$\bar{\nabla}_X Y = \nabla_X Y + \II(X,Y)$ f\"ur $X,Y\in\chi(M)$.\fish
 \end{Satz}
 
 \bigskip
@@ -7885,7 +7832,7 @@ Der \emph{Form-Operator} in Richtung eines Normalenfeldes $\xi\in
 \begin{align*}
 A_\xi X = -(\bar{\nabla}_{\tilde{X}}\xi)^\top, 
 \end{align*}
-d.h. $A_\xi\in \End TM$.
+d.h. $A_\xi\in \End TM$.\fish
 \end{Definition}
 
 \bigskip
@@ -7894,7 +7841,7 @@ d.h. $A_\xi\in \End TM$.
 $A_\xi$ ist ein selbstadjungierter Endomorphismus von $TM$ und es gilt die
 Formel
 \begin{align*}
-\bar{g}(\II(X,Y),\xi) = \bar{g}(A_\xi X, Y), \qquad X,Y\in\chi(M).
+\bar{g}(\II(X,Y),\xi) = \bar{g}(A_\xi X, Y), \qquad X,Y\in\chi(M).\fish
 \end{align*}
 \end{Lemma}
 
@@ -7918,7 +7865,7 @@ Die Selbstadjungiertheit folgt direkt aus der Formel. Zu dieser betrachte
 Seien $X,Y,V,W\in\chi(M)$, dann gilt
 \begin{align*}
 R(X,Y,V,W) = \bar{R}(X,Y,V,W) - \bar{g}(\II(X,V),\II(Y,W))
-+ \bar{g}(\II(X,W),\II(Y,V))
++ \bar{g}(\II(X,W),\II(Y,V)).\fish
 \end{align*}
 \end{Satz}
 
@@ -7971,35 +7918,38 @@ K(X,Y) = \bar{K}(X,Y) - \frac{\norm{\II(X,Y)}^2 - \bar{g}(\II(X,X),\II(Y,Y))}{
 
 \bigskip
 
-{\bf Beispiel:}
+\begin{ex}
 Wir betrachten $S^n\subset\R^{n+1}$. Dann ist $\bar{K} = 0$, denn der $\R^{n+1}$
 ist flach und $\II(X,Y) =\scp{X,Y}N$. Somit erh\"alt man
 \begin{align*}
 K(X,Y) = 0 - \frac{\scp{X,Y}^2 - \abs{X}^2\abs{Y}^2}{\abs{X}^2\abs{Y}^2-
-\scp{X,Y}^2} = 1.
+\scp{X,Y}^2} = 1.\boxc
 \end{align*}
+\end{ex}
+
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Den zweiten Summanden, also  $\frac{\norm{\II(X,Y)}^2 - \bar{g}(\II(X,X),\II(Y,Y))}{
 \norm{X\wedge Y}^2}$, nennt man auch Gau\ss{}-Kr\"ummung. Er  h\"angt von der Einbettung
 $M\subset\bar{M}$ ab. Wie die obige Formel zeigt, stimmt er allerdings im Fall von Hyperfl\"achen 
 des $\R^3$ mit der intrinsisch definierten Schnittkr\"ummung \"uberein, ist dann also 
 unabh\"angig von der Einbettung. Diese Tatsache ist Inhalt des Theorema Egregium von
 Gau\ss{}.
+\end{rem*}
 
 \bigskip
 
-{\bf Beispiel:}
+\begin{ex}
 Sei $M^2\subset\R^3$. Wir betrachten das Normalenvektorfeld $N: M\to
 S^2\subset\R^3$. Die Weingartenabbildung ist
 \begin{align*}
-\diffd N : T_pM \to T_{n(p)}S^2 =N(p)^\bot = T_pM
+\ddd N : T_pM \to T_{n(p)}S^2 =N(p)^\bot = T_pM
 \end{align*}
-Wir berechnen $\diffd n$ mit Hilfe der Integralkurve $c$ von $X$, $c(0) =p$
+Wir berechnen $\ddd n$ mit Hilfe der Integralkurve $c$ von $X$, $c(0) =p$
 und $\dot{c}(0) = X$. Dann ist
 \begin{align*}
-\diffd N(X) = \frac{\diffd}{\dt}\bigg|_{t=0} N(c(t))
+\ddd N(X) = \frac{\ddd}{\dt}\bigg|_{t=0} N(c(t))
 = X(N) = \bar{\nabla}_X N \overset{!}{=} (\bar{\nabla}_X N)^\top = -A_NX, 
 \end{align*}
 denn
@@ -8007,10 +7957,12 @@ denn
 g(\bar{\nabla}_X N,N) = \frac{1}{2}L_X g(N,N) = 0
 \end{align*}
 und folglich ist $\bar{\nabla}_X N = (\bar{\nabla}_X N)^\top$. Somit entspricht
-die Weingarten-Abbildung gerade dem Form-Operator.
+die Weingarten-Abbildung gerade dem Form-Operator.\boxc
+\end{ex}
+
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
 \item 
 Der Form-Operator ist selbstadjungiert also diagonaliserbar. Seine Eigenwerte
@@ -8033,6 +7985,7 @@ Hauptkr\"ummungs Vektorfeld parallel ist $\bar{\nabla}H = 0$.
 \II(X,Y) = g(X,Y)N.
 \end{align*}
 \end{enumerate}
+\end{rem*}
 
 
 
@@ -8041,14 +7994,9 @@ Hauptkr\"ummungs Vektorfeld parallel ist $\bar{\nabla}H = 0$.
 
 
 
-\section{Der Indexssatz von Poincare-Hopf und der Satz von Gau\ss{}-Bonet}
+\chapter{Der Indexssatz von Poincare-Hopf und der Satz von Gau\ss{}-Bonet}
 
-\newcommand{\ind}{\mathrm{ind}}
-\newcommand{\Hess}{\mathrm{Hess}}
-\newcommand{\dvol}{\mathrm{d}vol}
-\newcommand{\NN}{\mathcal{N}}
-
-\subsection{Integration auf Mannigfaltigkeiten}
+\section{Integration auf Mannigfaltigkeiten}
 
 Sei $M$ wieder eine differenzierbare Mannigfaltigkeit der Dimension $n$.
 Um technische Komplikationen bei der Integration zu vermeiden, beschr\"anken wir
@@ -8072,7 +8020,7 @@ jede Karte $(U,x)$ bez\"uglich der Darstellung
 \end{align*} 
 die Funktionen $\omega_I$ Lebesgue-integrierbar sind. Den Raum der
 integrierbaren $n$-Formen mit kompaktem Tr\"ager bezeichnen wir mit
-$\Omega_c^n(M)$.
+$\Omega_c^n(M)$.\fish
 \end{Definition}
  
 Sei nun $\omega\in\Omega_c^n(M^n)$ und $(U_i,\ph_i)$ seien Karten, die $\supp
@@ -8089,11 +8037,11 @@ Sei $M$ eine orientierte Mannigfaltigkeit mit glattem Rand $\partial M$, dessen
 Orientierung der der von $M$ induzierten entspricht. Sei
 $\omega\in\Omega_c^{n-1}(M)$. Dann gilt
 \begin{align*}
-\int_M \domega = \int_{\partial M} \omega.
+\int_M \dom = \int_{\partial M} \omega.\fish
 \end{align*}
 \end{Satz}
 
-\subsection{Der Abbildungsgrad}
+\section{Der Abbildungsgrad}
 
 Seien $M$ und $N$ kompakte, zusammenh\"angende, orientierte $n$-dimensionale
 Mannigfaltigkeiten.
@@ -8102,7 +8050,7 @@ Mannigfaltigkeiten.
 Sei $f: M\to N$ differenzierbar und $\omega\in\Omega_c^n(M)$. Dann definiert man
 den \emph{Abbildungsgrad} $\deg(f)$ durch
 \begin{align*}
-\int_M f^*\omega =  \deg(f)\int_N\omega.
+\int_M f^*\omega =  \deg(f)\int_N\omega.\fish
 \end{align*}
 \end{Definition}
 
@@ -8118,26 +8066,27 @@ definiert man
 \sign(\df_q) = 
 \begin{cases}
 +1, & \df_q \text{ ist orientierungserhaltend},\\
--1, & \df_q \text{ ist orientierungsumkehrend}. 
+-1, & \df_q \text{ ist orientierungsumkehrend}. \fish
 \end{cases}
 \end{align*}
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkung:} Ist $f: M\to N$ ein Diffeomorphismus, dann ist $\sign(\df_q)$
+\begin{rem*} Ist $f: M\to N$ ein Diffeomorphismus, dann ist $\sign(\df_q)$
 konstant auf $M$ und weiterhin f\"ur beliebiges $\omega\in\Omega_c^n(N)$,
 \begin{align*}
 \int_M f^*\omega = \sign(\df)\int_N\omega.
 \end{align*}
 Insbesondere ist $\deg(f) = \sign(\df_q)$ f\"ur jedes $q\in M$.
+\end{rem*}
 
 \bigskip
 
 \begin{Satz}
 Sei $p$ ein regul\"arer Wert von $f$. Dann gilt
 \begin{align*}
-\deg(f) = \sum_{q\,\in\, f^{-1}(p)} \sign(\df_q).
+\deg(f) = \sum_{q\,\in\, f^{-1}(p)} \sign(\df_q).\fish
 \end{align*}
 \end{Satz}
 
@@ -8178,21 +8127,21 @@ Dann gilt
 Sei $f:\partial X \to N$, wobei $X$ $n+1$-dimensional, kompakt, orientiert und
 $f = F\big|_{\partial X}$ f\"ur ein $F: X\to N$. Dann gilt
 \begin{align*}
-\deg(f) = 0.
+\deg(f) = 0.\fish
 \end{align*}
 \end{Satz}
 \begin{proof}
 Sei $\omega\in\Omega^n(N)$ mit $\int_{N}\omega = 1$. Dann gilt
 nach dem Satz von Stokes
 \begin{align*}
-\deg(f) = \int_{\partial X} f^*\omega = \int_X\diffd F^*\omega
-= \int_X F^*\domega = 0.
+\deg(f) = \int_{\partial X} f^*\omega = \int_X\ddd F^*\omega
+= \int_X F^*\dom = 0.
 \end{align*}
-Denn $\domega\in\Omega^{n+1}(N) = \setd{0}$.
+Denn $\dom\in\Omega^{n+1}(N) = \setd{0}$.
 \qed
 \end{proof}
 
-\subsection{Index von Vektorfeldern}
+\section{Index von Vektorfeldern}
 
 Sei $F\in\CC^\infty(U\to\R^n)$ ein Vektorfeld auf einer offenen Umgebung
 $U\subset\R^n$. Sei $0\in U$ eine isolierte Nullstelle von $F$, d.h. es gibt ein
@@ -8205,18 +8154,19 @@ B_\ep := \setdef{x\in\R^n}{\norm{x}<\ep}\subset U.
 Der \emph{lokale Index} von $F$ in $0$ ist
 \begin{align*}
 \ind_0(F) = \deg\left(S^{n-1}\cong\partial B_\ep\ni p \mapsto
-\frac{F(p)}{\norm{F(p)}}\in S^{n-1} \right).
+\frac{F(p)}{\norm{F(p)}}\in S^{n-1} \right).\fish
 \end{align*}
 \end{Definition}
 
 \bigskip
 
-{\bf Bemerkung:}
+\begin{rem*}
 Die Definition von $F$ ist invariant unter Homotopien und h\"angt insbesondere
 nicht von $\ep$ ab. Somit ist der lokale Index bereits f\"ur stetige Abbildungen
 definiert, denn die glatten Abbildungen bilden eine dichte Teilmenge der
 stetigen Abbildungen, d.h. es existiert f\"ur jede stetige Abbildung eine
 Homotopie zu einer differenzierbaren.
+\end{rem*}
 
 \bigskip
 
@@ -8226,7 +8176,7 @@ isolierten Nullstellen} von $V$. Sei weiter $p\in \NN(V)$ und $(U,x)$ eine
 Karte um $p$ mit $x(p) = 0$. Dann definiert man den \emph{lokalen Index} von
 $V$ in $p$,
 \begin{align*}
-\ind_p(V) = \ind_0(x_*V).
+\ind_p(V) = \ind_0(x_*V).\fish
 \end{align*}
 \end{Definition}
 
@@ -8236,7 +8186,7 @@ $V$ in $p$,
 Sei $p\in M$ eine nicht entartete Nullstelle von $V$, d.h. $x_* V$ ist ein
 lokaler Diffeomorphismus, dann ist
 \begin{align*}
-\ind_p(V) = \sign(\det \diffd(x_*V)_0).
+\ind_p(V) = \sign(\det \ddd(x_*V)_0).\fish
 \end{align*}
 \end{Lemma}
 
@@ -8246,19 +8196,19 @@ lokaler Diffeomorphismus, dann ist
 Sei $V$ ein Vektorfeld auf $M$, das nur isolierte Nullstellen besitzt.
 Der \emph{totale Index} von $V$ ist definiert als
 \begin{align*}
-I(V) = \sum_{p\,\in\,\NN(V)}\ind_p(V).
+I(V) = \sum_{p\,\in\,\NN(V)}\ind_p(V).\fish
 \end{align*}
 \end{Definition}
 
-\subsection{Der Indexsatz von Poincare-Hopf}
+\section{Der Indexsatz von Poincare-Hopf}
 
 \begin{Satz}[Indexsatz von Poincare-Hopf]
 Sei $M$ eine kompakte Mannigfaltigkeit und $V$ ein Vektorfeld mit isolierten
 Nullstellen. Dann ist $I(V)$ eine topologische Invariante. Insbesondere ist
-$I(V)$ unabh\"angig von $V$ und man setzt $I(M) := I(V)$.
+$I(V)$ unabh\"angig von $V$ und man setzt $I(M) := I(V)$.\fish
 \end{Satz}
 
-{\bf Zur Beweisidee:}
+{\bfseries Zur Beweisidee:}
 Sei $X\subset\R^m$ eine kompakte berandete Mannigfaltigkeit der Dimension $m$.
 Die \emph{Gau\ss{}-Abbildung} bildet einen Punkt auf dem Rand auf die \"au\ss{}ere Normale
 ab,
@@ -8274,7 +8224,7 @@ zeige $V$ "`nach au\ss{}en"'. Dann gilt
 \begin{align*}
 I(V) = \sum_{p\,\in\,\NN(V)} \ind_p(V) = \deg(g),
 \end{align*}
-insbesondere h\"angt der totale Index $I(V)$ nicht von $V$ ab.
+insbesondere h\"angt der totale Index $I(V)$ nicht von $V$ ab.\fish
 \end{Lemma}
 \begin{proof}
 Sei $(p_i)$ eine Abz\"ahlung der endlich vielen Nullstellen $\NN(V)$ von $V$ und
@@ -8311,17 +8261,18 @@ F\"ur berandete Mannigfaltigkeiten ist die Situation jedoch deutlich verwickelte
 
 \bigskip
 
-{\bf Bemerkungen:}
+\begin{rem*}[Bemerkungen.]
 \begin{enumerate}
   \item Existiert ein Vektorfeld ohne Nullstellen, dann folgt $I(M) = 0$.
   \item Der \textit{Satz von Hopf} besagt, dass unter gewissen
   Voraussetzungen auch die Umkehrung gilt, d.h. ist $I(M) = 0$, dann existiert
   ein Vektorfeld ohne Nullstellen.
 \end{enumerate}
+\end{rem*}
 
 \bigskip
 
-{\bf Beispiele:}
+\begin{ex}
 \begin{enumerate}
   \item 
 Auf $S^n$ betrachten wir das Vektorfeld $V(x) = p_+ - \scp{p_+,x}x$, wobei $p_+$
@@ -8357,10 +8308,11 @@ d.h. $\Sigma_g$ hat $g$-L\"ocher. Es folgt, dass
 I(\Sigma_g) = 2-2g.
 \end{align*}
 Insbesondere ist $T^2$ die einzige orientierte kompakte Fl\"ache mit einem
-Vektorfeld ohne Nullstellen.
+Vektorfeld ohne Nullstellen.\boxc
 \end{enumerate}
+\end{ex}
 
-\subsection{Euler Charakteristik und Index}
+\section{Euler Charakteristik und Index}
 
 \begin{Definition}
 Die \emph{Euler Charakteristik} von $M$ ist definiert als
@@ -8368,14 +8320,14 @@ Die \emph{Euler Charakteristik} von $M$ ist definiert als
 \chi(M) := \sum_{k=0}^n (-1)^k \beta_k,\qquad \beta_k = \dim
 H_{dR}^k(M).
 \end{align*}
-$\beta_k$ hei\ss{}t auch \emph{$k$-te Betti-Zahl}.
+$\beta_k$ hei\ss{}t auch \emph{$k$-te Betti-Zahl}.\fish
 \end{Definition}
 
 \bigskip
 
 \begin{Satz}
 \label{Euler-Index}
-$\chi(M) = I(M)$.
+$\chi(M) = I(M)$.\fish
 \end{Satz}
 
 Diesen Satz kann man mit Hilfe der Morse Theorie beweisen, die sich mit den
@@ -8396,7 +8348,7 @@ Ein kritischer Punkt $p$ hei\ss{}t \emph{nicht entartet}, falls
 Der \emph{Index} eines nicht entarteten kritischen Punktes $p$ ist die Dimension
 des maximalen Unterraums von $T_pM$ auf dem die Hessische negativ definit ist, d.h.
 \begin{align*}
-\ind(p) = \max\setdef{\dim V}{V\le T_pM,\quad \Hess(f)_p\big|_V \le 0}.
+\ind(p) = \max\setdef{\dim V}{V\le T_pM,\quad \Hess(f)_p\big|_V \le 0}.\fish
 \end{align*} 
 \end{Definition}
 
@@ -8416,7 +8368,7 @@ $p$ hat dann den Index $\lambda$. Weiterhin gilt dann
 und insbesondere ist
 \begin{align*}
 I(\grad f ) = \sum_{\lambda = 0}^n (-1)^\lambda c_\lambda,\qquad
-c_\lambda = \#\setd{\text{krit. Punkte vom Index }\lambda}.
+c_\lambda = \#\setd{\text{krit. Punkte vom Index }\lambda}.\fish
 \end{align*}
 \end{Lemma}
 
@@ -8429,7 +8381,7 @@ erbringen, indem man die Gleichheit
 \end{align*}
 zeigt.
 
-\subsection{Der Satz von Gau\ss{}-Bonet}
+\section{Der Satz von Gau\ss{}-Bonet}
 
 Sei nun $M^2\subset\R^3$ eine orientierte Fl\"ache, dann ist $\chi(M) = 2-2g$,
 wenn $g$ das Geschlecht von $M$ bezeichnet.
@@ -8437,14 +8389,14 @@ wenn $g$ das Geschlecht von $M$ bezeichnet.
 \begin{Satz}[Gau\ss{}-Bonet]
 Sei $K$ die Gau\ss{}-Kr\"ummung von $M$. Dann gilt
 \begin{align*}
-2\pi\ \chi(M) = \int_M K\;\dvol_M.
+2\pi\ \chi(M) = \int_M K\;\dvol_M.\fish
 \end{align*} 
 \end{Satz}
 
 \begin{Lemma}
 Sei $N: M\to S^2$, $p\mapsto N_p$ die Gau\ss{}-Abbildung, dann gilt
 \begin{align*}
-K(p) = \det \diffd N_p,\qquad p\in M. 
+K(p) = \det \ddd N_p,\qquad p\in M. \fish
 \end{align*}
 \end{Lemma}
 
@@ -8464,15 +8416,15 @@ K(X,Y) &= -\frac{\norm{\II(X,Y)}^2-\bar{g}(\II(X,X),\II(Y,Y))}
 &= \det A_N,
 \end{align*}
 denn $\omega_X\wedge\omega_Y$ ist eine Volumenform auf $M$. Wie schon bemerkt
-ist $\diffd N_p =  -A_N$ also ist $K(p) = K(X,Y) = (-1)^2\det \diffd N_p$.
+ist $\ddd N_p =  -A_N$ also ist $K(p) = K(X,Y) = (-1)^2\det \ddd N_p$.
 \qed
 
 \bigskip
 
-{\bf Beweis des Satzes von Gau\ss{}-Bonet:}
+\begin{proof}[Beweis des Satzes von Gau\ss{}-Bonet.]
 Nach dem obigen Lemma und der Morse Theorie ist also zu zeigen,
 \begin{align*}
-2\pi\ I(\grad h) = \int_M \det\diffd N_p\;\dvol_p, 
+2\pi\ I(\grad h) = \int_M \det\ddd N_p\;\dvol_p, 
 \end{align*}
 f\"ur ein geeignetes $h: M\to \R$, das keine entarteten kritischen
 Punkte besitzt. Wir wollen nun solch ein $h$ w\"ahlen. 
@@ -8487,19 +8439,19 @@ F: M\to \R^3,\qquad (u,v) \mapsto (u,v,f\circ i(u,v)).
 \end{align*}
 Setzen wir $h=f\circ i$, dann gilt
 \begin{align*}
-g(\grad h,X) = \diffd h(X) = 
-\diffd f\circ \diffd i(X)
-= g(\grad(f),\diffd i(X)).
+g(\grad h,X) = \ddd h(X) = 
+\ddd f\circ \ddd i(X)
+= g(\grad(f),\ddd i(X)).
 \end{align*}
-Somit ist $p$ ein kritischer Punkt von $h$ genau dann, wenn $\diffd i(X)\ \bot\
+Somit ist $p$ ein kritischer Punkt von $h$ genau dann, wenn $\ddd i(X)\ \bot\
 \grad(f) = e_3$ f\" ur alle $X\in T_pM$, d.h. genau dann, wenn $N(p) = (0,0,\pm
 1) =: p_{\pm}$. Ohne Einschr\"ankung sind $p_\pm$ regul\"are Punkte von $N$, denn nach dem Satz von
 Sard liegen die regul\"aren Punkte dicht in $M$, so dass wir dies immer einrichten
-k\"onnen. Dann ist $\diffd N_{p_\pm}$ ist Isomorphismus, d.h. $K(p_{\pm}) = \det
-\diffd N_{p_\pm} \neq 0$ und $N$ ist ein lokaler Diffeomorphismus. Insbesondere
+k\"onnen. Dann ist $\ddd N_{p_\pm}$ ist Isomorphismus, d.h. $K(p_{\pm}) = \det
+\ddd N_{p_\pm} \neq 0$ und $N$ ist ein lokaler Diffeomorphismus. Insbesondere
 gilt
 \begin{align*}
-\int_M \det \diffd N_p\;\dvol_p = \int_{M} N^* \dvol_{S^2} = 
+\int_M \det \ddd N_p\;\dvol_p = \int_{M} N^* \dvol_{S^2} = 
 \deg(N) \int_{S^2} \dvol_{S^2}.
 \end{align*}
 
@@ -8544,7 +8496,7 @@ also ist $\chi(M) = 2 \deg(N)$. Somit folgt der Satz von Gau\ss{}-Bonet
 = 2\pi\ \chi(M).
 \end{align*}
 \qed
-
+\end{proof}
 
 
 
